@@ -64,3 +64,33 @@ s4_adjudication_evidence.json）。
 - pytest 结果原文标注 observed 09:50（早于本轮），extractor 未将其填入 effective_at
   而是统一用本轮时间戳——晚到语义会被记为轮内事件。属抽取质量问题，非机制缺陷。
 - 修复方向：prompt v2.1 明确"原文出现更早时间戳时填入 effective_at"。
+
+
+## S5 过期动作实际阻止 —— ✅ PASS（2026-09-06）
+
+场景：CL 侧 `graph/projects/pilot_s5/` 两态历史（r1: alpha=open → r2: 注入取消，
+alpha 全部退出当前态）。宿主项目 `pilot/s5-gate-project/` 装 CL-V0 关口插件
+（`tool.execute.before` 中调 verify_preaction.py，exit 2 即抛错阻断）。
+
+**第一轮（依据过期 r1 行动）：**
+- 关口裁定：write 工具，exit_code=2，reason_codes=[STATE_REVISION_STALE] → 抛错阻断
+- **副作用核验：stale_action.txt 未被创建**（工具真实未执行，非仅返回失败）
+- Agent 自行复述了契约恢复行为："文件未创建。需要宿主重新装配后重试"
+
+**第二轮（模拟重新装配：控制文件 expected_revision 更新到 r2）：**
+- 关口裁定：write 工具，exit_code=0 → 放行
+- **副作用核验：stale_action.txt 创建成功，内容 fresh**
+
+评审 §三.4 验收标准逐条对照：
+| 要求 | 结果 |
+|---|---|
+| 旧动作没有真正执行 | ✅ 文件不存在（副作用层核验，非仅返回值） |
+| 宿主采取契约规定的恢复行为 | ✅ 重新装配（r2 凭据）后动作成功 |
+| 覆盖范围 | 仅主会话工具调用（write 已实证）；子 Agent/后台路径不在保证范围 |
+
+证据：`traces/s5/host_events_run{1,2}.jsonl`（cl_gate_verdict 事件含 exit code 与
+reason_codes）；控制文件 `.opencode/cl_gate.json`（唯一机器契约 = verify_preaction
+退出码 + JSON 控制文件，未 import CL 代码）。
+
+实现备注：关口 fail-open（控制文件不可读时放行并留痕 cl_gate_error）——关口自身
+故障不得放大为任务故障；该取舍记录待评审确认。
