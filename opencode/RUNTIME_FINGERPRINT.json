@@ -1,5 +1,5 @@
 {
-  "kind": "host_runtime_fingerprint.v1",
+  "kind": "host_runtime_fingerprint.v2",
   "captured_at": "2026-09-06",
   "purpose": "GPT-6 评审 §三.5：版本钉扎不能只对齐两个版本字符串。本记录钉死实际运行的宿主、插件面与配置；缺任何一项则影子/成对运行结论无效。",
   "host": {
@@ -10,16 +10,38 @@
     "binary_size_bytes": 179632680,
     "binary_installed_at": "2026-09-05 11:01",
     "launcher_shim": "C:/Users/Lenovo/AppData/Roaming/npm/opencode (296B shim, sha256_prefix 0f2f05dcd20bcaefd7c050e)",
-    "npm_package_version": "1.18.29"
+    "npm_package_version": "1.18.29",
+    "npm_package_shasum": "e7d5d249b55f6e138f195e5b81f67cb58efd5af5"
   },
-  "source_checkout": {
-    "path": "D:/CCXXLESSON/opencode",
-    "branch": "dev",
-    "head": "dfeb1b5051a05b359bd4af711b204d2c0342c5f4",
-    "workspace_version": "1.17.11",
-    "alignment_status": "MISALIGNED",
-    "alignment_note": "checkout 停在 1.17.11+128 commits；本地无 1.18.29 对应标签（仅 v0.1.x 与 github-v1.2.25 通道）。对齐需要 git fetch 拉取运行版本 tag 或把 npm 包降级到 checkout 版本——涉及网络操作/依赖变更，须用户确认后执行。",
-    "consequence": "对齐完成前，源码级 hook 证据（file:line）不得视为已验证；experimental.chat.* 签名复核不得进行。"
+  "pinning": {
+    "method": "SDK 精确版本钉扎（等效验证）",
+    "status": "PINNED_AT_SDK_LEVEL",
+    "evidence": {
+      "plugin_sdk": "@opencode-ai/plugin@1.18.29（与运行版本完全一致）",
+      "sdk_shasum": "7e57638c7dea59d4a7a4b9e4ed00f23510e7840f",
+      "sdk_types_snapshot": "opencode/sdk-1.18.29/index.d.ts (sha256_prefix f3ec1a150d1354be3c9d)",
+      "channel": "npmmirror（用户实际安装通道，二进制同源于 npm）"
+    },
+    "hook_surface_verified_at_1_18_29": {
+      "chat.params": "index.d.ts:203 —— output 仅含 temperature/topP/topK/maxOutputTokens/options【无 messages：不能观察/注入上下文，修正早期结论】",
+      "experimental.chat.messages.transform": "index.d.ts:259 —— output.messages: {info, parts}[] 完整可改写【上下文观察与注入的唯一边界】",
+      "experimental.chat.system.transform": "index.d.ts:265 —— output.system: string[]",
+      "permission.ask": "index.d.ts:225 —— output.status: ask|deny|allow【阻断面确认】",
+      "tool.execute.before": "index.d.ts:235 —— output.args 可改写【不可阻断】",
+      "tool.execute.after": "index.d.ts:249",
+      "event": "index.d.ts:175 —— 通用事件入口（file.edited / session.compacted 经 SDK Event 联合类型）",
+      "additional_discovered": ["chat.message:187", "chat.headers:216", "command.execute.before:228", "shell.env:242", "experimental.session.compacting:283", "experimental.compaction.autocontinue:296", "experimental.text.complete:306", "tool.definition:316"]
+    },
+    "source_checkout_alignment": {
+      "status": "OPEN_BLOCKED_BY_NETWORK",
+      "evidence": [
+        "HTTPS github.com:443 连接超时（21056ms）",
+        "SSH git@github.com → ssh.github.com Permission denied (publickey)（无密钥）",
+        "无 git/环境代理配置；常见本地代理端口 7890/10809/1080/8888 均无响应",
+        "npm 走 npmmirror（用户实际通道）"
+      ],
+      "note": "源码级对齐在网络条件恢复后执行（npm 包未携带 gitHead，无法离线定位构建 commit）。SDK 精确版本钉扎已覆盖 hook 签名复核这一 load-bearing 需求。"
+    }
   },
   "plugins": {
     "config_plugin_key": "ABSENT（opencode.json 无 plugin 键）",
@@ -29,27 +51,25 @@
       "D:/CCXXLESSON/contextledger/.opencode/plugin —— 不存在"
     ],
     "loaded_plugins": [],
-    "note": "当前零插件加载 = 干净观测基线。CL 影子插件安装后必须重采本指纹，确认其为唯一新增插件（排除其他已加载插件影响，评审 §三.5）。"
+    "note": "当前零插件加载 = 干净观测基线。CL 影子插件安装后必须重采本指纹，确认其为唯一新增插件（评审 §三.5：OpenCode 插件可从全局配置/项目配置/两类目录加载，必须排除其他已加载插件影响）。"
   },
   "config": {
     "path": "C:/Users/Lenovo/.config/opencode/opencode.json",
     "model": "zhipuai-coding-plan/glm-5.3-flash",
     "small_model": "zhipuai-coding-plan/glm-5.3-flash",
     "provider_api": "https://open.bigmodel.cn/api/paas/v4",
-    "api_key": "REDACTED（存在于原文件，指纹中脱敏）",
-    "other_keys": "无"
+    "api_key": "REDACTED（存在于原文件，指纹中脱敏）"
   },
   "dependencies": {
     "config_lockfile": "C:/Users/Lenovo/.config/opencode/bun.lock (sha256_prefix e6324053604d4cb3ddd0)",
     "config_package_json": {"dependencies": {"@opencode-ai/plugin": "1.18.23"}},
-    "note": "插件 SDK 版本(1.18.23) ≠ 运行版本(1.18.29)：插件 API 兼容性在钉扎时须一并复核"
+    "note": "配置目录里装的 SDK 是 1.18.23（旧一版）；钉扎验证使用显式下载的 1.18.29。安装影子插件时须把配置目录 SDK 升到 1.18.29 对齐。"
   },
   "launch_command": "opencode（交互启动；成对运行时必须改为可复现的完整命令行并回填本记录）",
   "open_actions": [
-    "版本对齐（fetch 运行版本 tag 或降级 npm 包）——需用户确认网络/依赖操作",
-    "钉扎后重采本指纹（含 sha256 全量而非前缀）",
-    "安装影子插件后重采 loaded_plugins",
-    "在真实模型请求前的可观测边界核验最终输入包含装配结果且未被覆盖（评审 §三.5 验收项）"
+    "安装 cl-shadow-observer 插件（同时把配置目录 @opencode-ai/plugin 对齐 1.18.29）→ 重采本指纹确认唯一新增插件",
+    "冒烟清单 S1-S6（reports/review_round2/pilot_design.md）——S3 须在 experimental.chat.messages.transform 边界 dump 最终输入证据",
+    "网络条件恢复后补源码级对齐（checkout 到 1.18.29 构建 commit）"
   ],
-  "stop_condition_ack": "按评审停止条件：上述 open_actions 完成前，只交付观测结果，不宣称完成最终上下文接管或动作阻断验证。"
+  "stop_condition_ack": "按评审停止条件：S3（最终输入可核验）与 S5（过期动作实际阻断）完成前，只交付观测结果，不宣称完成最终上下文接管或动作阻断验证。"
 }
