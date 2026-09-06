@@ -1,0 +1,68 @@
+{
+  "kind": "shadow_scenario.v1",
+  "scenario_id": "reassignment_recovery",
+  "title": "长程编码任务：方案取消 / 任务改派 / 旧工具结果晚到 / 任务恢复",
+  "created_at": "2026-09-05",
+  "preregistration_ref": "graph/projects/abu_modern/host_integration/paired_run_preregistration.json",
+  "domain": "coding_agent",
+  "turn_count": 22,
+  "k": 8,
+  "preregistered_events": {
+    "plan_cancellation": "host-turn-008 (k)",
+    "task_reassignment": "host-turn-011 (k+3)",
+    "late_stale_tool_result": "host-turn-014 (k+6)",
+    "recovery": "host-turn-017 (k+9)"
+  },
+  "pollution_checkpoints": [
+    "host-turn-008",
+    "host-turn-014",
+    "host-turn-017"
+  ],
+  "entities": {
+    "refactor-plan-a": "量化重构方案A（≤k 生效，k 被取消，k+9 恢复）",
+    "impl-owner": "实现负责人（k+3 由 agent-wang 改派 agent-liu）",
+    "backtest-module": "回测模块状态（晚到的旧测试结果声称早已失败）"
+  },
+  "scripted_turns": [
+    {"turn_id": "host-turn-001", "at": "2026-09-05T09:00:00Z", "note": "任务启动：确立方案A", "host_context_refs": [{"entity": "refactor-plan-a", "state": "proposed", "source": "prompt"}]},
+    {"turn_id": "host-turn-002", "at": "2026-09-05T09:10:00Z", "note": "方案A 采纳", "host_context_refs": [{"entity": "refactor-plan-a", "state": "adopted", "source": "prompt"}]},
+    {"turn_id": "host-turn-003", "at": "2026-09-05T09:20:00Z", "note": "实现排期", "host_context_refs": [{"entity": "refactor-plan-a", "state": "adopted"}, {"entity": "impl-owner", "state": "agent-wang"}]},
+    {"turn_id": "host-turn-004", "at": "2026-09-05T09:30:00Z", "note": "回测模块开始改造", "host_context_refs": [{"entity": "refactor-plan-a", "state": "adopted"}, {"entity": "impl-owner", "state": "agent-wang"}, {"entity": "backtest-module", "state": "refactoring", "source": "tool"}]},
+    {"turn_id": "host-turn-005", "at": "2026-09-05T09:40:00Z", "note": "单元测试运行中", "host_context_refs": [{"entity": "backtest-module", "state": "testing", "source": "tool"}]},
+    {"turn_id": "host-turn-006", "at": "2026-09-05T09:50:00Z", "note": "提交第一批改造", "host_context_refs": [{"entity": "backtest-module", "state": "partial_committed", "source": "tool"}]},
+    {"turn_id": "host-turn-007", "at": "2026-09-05T10:00:00Z", "note": "发起全量测试（异步工具）", "host_context_refs": [{"entity": "backtest-module", "state": "full_test_running", "source": "tool"}], "tool_events": [{"tool": "bash", "args": {"cmd": "pytest -q"}, "note": "异步长任务，结果将在 k+6 才返回（旧观测）"}]},
+    {"turn_id": "host-turn-008", "at": "2026-09-05T10:10:00Z", "note": "【k】用户取消方案A。污染检查点：宿主上下文仍把方案A当作当前依据", "host_context_refs": [{"entity": "refactor-plan-a", "state": "adopted"}]},
+    {"turn_id": "host-turn-009", "at": "2026-09-05T10:20:00Z", "note": "转向评估方案B（宿主若仍按方案A继续则为准静止污染）", "host_context_refs": [{"entity": "refactor-plan-a", "state": "adopted"}]},
+    {"turn_id": "host-turn-010", "at": "2026-09-05T10:30:00Z", "note": "方案B草案", "host_context_refs": [{"entity": "refactor-plan-a", "state": "adopted"}]},
+    {"turn_id": "host-turn-011", "at": "2026-09-05T10:40:00Z", "note": "【k+3】任务改派：agent-wang → agent-liu", "host_context_refs": [{"entity": "impl-owner", "state": "agent-wang"}]},
+    {"turn_id": "host-turn-012", "at": "2026-09-05T10:50:00Z", "note": "agent-liu 接手（宿主上下文仍写 agent-wang 则污染）", "host_context_refs": [{"entity": "impl-owner", "state": "agent-wang"}]},
+    {"turn_id": "host-turn-013", "at": "2026-09-05T11:00:00Z", "note": "交接文档整理", "host_context_refs": [{"entity": "impl-owner", "state": "agent-wang"}]},
+    {"turn_id": "host-turn-014", "at": "2026-09-05T11:10:00Z", "note": "【k+6】turn_007 的异步测试结果晚到：observed_at 更早的旧观测声称回测失败。污染检查点：宿主把旧失败当作当前状态", "host_context_refs": [{"entity": "backtest-module", "state": "failed", "source": "tool"}], "tool_events": [{"tool": "bash", "returns": {"exit_code": 1, "summary": "3 failed"}, "observed_at": "2026-09-05T09:55:00Z", "note": "effective/observed 时点早于已处理事件，属晚到旧结果"}]},
+    {"turn_id": "host-turn-015", "at": "2026-09-05T11:20:00Z", "note": "宿主可能基于旧失败回滚改造（污染后果）", "host_context_refs": [{"entity": "backtest-module", "state": "failed", "source": "tool"}]},
+    {"turn_id": "host-turn-016", "at": "2026-09-05T11:30:00Z", "note": "重新评估测试环境", "host_context_refs": [{"entity": "backtest-module", "state": "failed", "source": "tool"}]},
+    {"turn_id": "host-turn-017", "at": "2026-09-05T11:40:00Z", "note": "【k+9】任务恢复：用户恢复方案A（新决策，非回写历史）。污染检查点：宿主不知道恢复，仍把取消态当当前", "host_context_refs": [{"entity": "refactor-plan-a", "state": "cancelled"}]},
+    {"turn_id": "host-turn-018", "at": "2026-09-05T11:50:00Z", "note": "方案A v2 重排期", "host_context_refs": [{"entity": "refactor-plan-a", "state": "cancelled"}]},
+    {"turn_id": "host-turn-019", "at": "2026-09-05T12:00:00Z", "note": "实现按恢复后的方案A推进", "host_context_refs": [{"entity": "refactor-plan-a", "state": "cancelled"}]},
+    {"turn_id": "host-turn-020", "at": "2026-09-05T12:10:00Z", "note": "收尾检查", "host_context_refs": [{"entity": "backtest-module", "state": "failed", "source": "tool"}]},
+    {"turn_id": "host-turn-021", "at": "2026-09-05T12:20:00Z", "note": "文档同步", "host_context_refs": [{"entity": "impl-owner", "state": "agent-wang"}]},
+    {"turn_id": "host-turn-022", "at": "2026-09-05T12:30:00Z", "note": "交接总结", "host_context_refs": [{"entity": "refactor-plan-a", "state": "adopted"}]}
+  ],
+  "expected_shadow_hits": {
+    "host-turn-008": "stale_in_host：方案A 已取消而宿主仍引用 adopted",
+    "host-turn-011": "stale_in_host：改派后宿主仍引用 agent-wang",
+    "host-turn-014": "stale_in_host：晚到旧结果（observed_at 早于已处理事件）不得覆盖当前态",
+    "host-turn-017": "stale_in_host：恢复决策后宿主仍引用 cancelled"
+  },
+  "cl_event_stream_note": "真值事件流（预注册，供 CL 影子状态机械构建；host_context_refs 是宿主上下文快照，含故意污染，不等于真值）",
+  "cl_event_stream": [
+    {"event_id": "evt_plan_001", "observed_at": "2026-09-05T09:10:00Z", "effective_at": "2026-09-05T09:10:00Z", "source": "coding_host", "payload": {"entity_ref": "refactor-plan-a", "lifecycle_ref": "lc-plan-a", "lifecycle_seq": 1, "state_slot": "approval_status", "node_type": "Fact", "content": "方案A 采纳", "state": "adopted"}},
+    {"event_id": "evt_owner_001", "observed_at": "2026-09-05T09:20:00Z", "effective_at": "2026-09-05T09:20:00Z", "source": "coding_host", "payload": {"entity_ref": "impl-owner", "lifecycle_ref": "lc-impl-owner", "lifecycle_seq": 1, "state_slot": "assignment", "node_type": "Fact", "content": "实现负责人 agent-wang", "state": "agent-wang"}},
+    {"event_id": "evt_bt_001", "observed_at": "2026-09-05T09:30:00Z", "effective_at": "2026-09-05T09:30:00Z", "source": "coding_host", "payload": {"entity_ref": "backtest-module", "lifecycle_ref": "lc-backtest", "lifecycle_seq": 1, "state_slot": "build_status", "node_type": "Fact", "content": "回测模块改造中", "state": "refactoring"}},
+    {"event_id": "evt_bt_002", "observed_at": "2026-09-05T10:00:00Z", "effective_at": "2026-09-05T10:00:00Z", "source": "coding_host", "payload": {"entity_ref": "backtest-module", "lifecycle_ref": "lc-backtest", "lifecycle_seq": 2, "state_slot": "build_status", "node_type": "Fact", "content": "全量测试发起（异步）", "state": "full_test_running"}},
+    {"event_id": "evt_plan_002", "observed_at": "2026-09-05T10:10:00Z", "effective_at": "2026-09-05T10:10:00Z", "source": "coding_host", "payload": {"entity_ref": "refactor-plan-a", "lifecycle_ref": "lc-plan-a", "lifecycle_seq": 2, "state_slot": "approval_status", "node_type": "Fact", "content": "用户取消方案A", "state": "cancelled"}},
+    {"event_id": "evt_owner_002", "observed_at": "2026-09-05T10:40:00Z", "effective_at": "2026-09-05T10:40:00Z", "source": "coding_host", "payload": {"entity_ref": "impl-owner", "lifecycle_ref": "lc-impl-owner", "lifecycle_seq": 2, "state_slot": "assignment", "node_type": "Fact", "content": "任务改派 agent-liu", "state": "agent-liu"}},
+    {"event_id": "evt_bt_003", "observed_at": "2026-09-05T11:10:00Z", "effective_at": "2026-09-05T09:55:00Z", "source": "coding_host", "payload": {"entity_ref": "backtest-module", "lifecycle_ref": "lc-backtest", "lifecycle_seq": 3, "state_slot": "build_status", "node_type": "Fact", "content": "旧测试结果晚到：声称回测失败（时点早于测试发起后处理）", "state": "failed"}},
+    {"event_id": "evt_plan_003", "observed_at": "2026-09-05T11:40:00Z", "effective_at": "2026-09-05T11:40:00Z", "source": "coding_host", "payload": {"entity_ref": "refactor-plan-a", "lifecycle_ref": "lc-plan-a", "lifecycle_seq": 3, "state_slot": "approval_status", "node_type": "Fact", "content": "恢复方案A（新决策）", "state": "adopted"}}
+  ],
+  "caveat": "本场景用于影子模式输入差异验证与成对运行预注册；影子命中不构成行动收益结论。"
+}
