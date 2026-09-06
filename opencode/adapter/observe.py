@@ -146,6 +146,43 @@ def call_verify_preaction(shadow_project: str, state_revision: str) -> dict[str,
     }
 
 
+def _misuse_level(
+    entity: str,
+    ref: dict[str, Any],
+    cl_state_of: Any,
+    host_refs: dict[str, dict[str, Any]],
+) -> dict[str, str]:
+    """stale 命中的误用层级（评审 §三.3：命中 ≠ 误用）。
+
+    level_1_old_content_present:
+        同 turn 宿主上下文里同时存在该实体的 CL 当前值（撤销/更正信息也在）——
+        旧内容出现但更正已供给，属最轻层级。D1（完整历史）天然处于此层，
+        用"旧字符串是否存在"评分会结构性判输 D1，必须区分。
+    level_2_supplied_as_valid:
+        该实体只有旧值被供给，撤销关系缺失或表达不清——旧内容被当作
+        有效行动依据供给。
+    level_3_action_misuse:
+        Agent 实际依据旧内容执行了错误动作——影子模式不可观测，
+        只能由成对运行的 trace 证明（paired run 阶段）。
+    """
+    cl_value = cl_state_of(entity)
+    cl_norm = str(cl_value or "").strip().lower()
+    if cl_norm:
+        for other in host_refs.values():
+            if str(other.get("entity")) != entity:
+                continue
+            other_state = str(other.get("state") or "").strip().lower()
+            if other_state and other_state == cl_norm:
+                return {
+                    "misuse_level": "level_1_old_content_present",
+                    "misuse_note": "更正信息已同时供给（同 turn 存在 CL 当前值引用）",
+                }
+    return {
+        "misuse_level": "level_2_supplied_as_valid",
+        "misuse_note": "旧值被单独供给、撤销关系缺失——被当作有效行动依据",
+    }
+
+
 def classify_turn(
     turn_events: list[dict[str, Any]],
     cl_state: dict[str, Any],
@@ -211,6 +248,7 @@ def classify_turn(
                     "cl_state": None,
                     "cl_note": "CL 当前无有效状态（已终结或待裁定）",
                     "as_of": snapshot_entry.get("as_of") if snapshot_entry else None,
+                    **_misuse_level(entity, ref, cl_state_of, host_refs),
                 })
             else:
                 extra_in_host.append({"entity": entity, "host_state": ref.get("state")})
@@ -223,6 +261,7 @@ def classify_turn(
                 "host_state": ref.get("state"),
                 "cl_state": cl_state_of(entity),
                 "as_of": snapshot_entry.get("as_of") if snapshot_entry else None,
+                **_misuse_level(entity, ref, cl_state_of, host_refs),
             })
     for entity in cl_active:
         if entity not in host_refs:

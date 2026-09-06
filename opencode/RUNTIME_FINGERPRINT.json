@@ -1,0 +1,55 @@
+{
+  "kind": "host_runtime_fingerprint.v1",
+  "captured_at": "2026-09-06",
+  "purpose": "GPT-6 评审 §三.5：版本钉扎不能只对齐两个版本字符串。本记录钉死实际运行的宿主、插件面与配置；缺任何一项则影子/成对运行结论无效。",
+  "host": {
+    "name": "opencode",
+    "version_reported": "1.18.29",
+    "binary_path": "C:/Users/Lenovo/AppData/Roaming/npm/node_modules/opencode-ai/bin/opencode.exe",
+    "binary_sha256_prefix": "88d2fa691b2d9e32fde",
+    "binary_size_bytes": 179632680,
+    "binary_installed_at": "2026-09-05 11:01",
+    "launcher_shim": "C:/Users/Lenovo/AppData/Roaming/npm/opencode (296B shim, sha256_prefix 0f2f05dcd20bcaefd7c050e)",
+    "npm_package_version": "1.18.29"
+  },
+  "source_checkout": {
+    "path": "D:/CCXXLESSON/opencode",
+    "branch": "dev",
+    "head": "dfeb1b5051a05b359bd4af711b204d2c0342c5f4",
+    "workspace_version": "1.17.11",
+    "alignment_status": "MISALIGNED",
+    "alignment_note": "checkout 停在 1.17.11+128 commits；本地无 1.18.29 对应标签（仅 v0.1.x 与 github-v1.2.25 通道）。对齐需要 git fetch 拉取运行版本 tag 或把 npm 包降级到 checkout 版本——涉及网络操作/依赖变更，须用户确认后执行。",
+    "consequence": "对齐完成前，源码级 hook 证据（file:line）不得视为已验证；experimental.chat.* 签名复核不得进行。"
+  },
+  "plugins": {
+    "config_plugin_key": "ABSENT（opencode.json 无 plugin 键）",
+    "global_plugin_dir": "不存在（~/.config/opencode/plugin/）",
+    "project_plugin_dirs_checked": [
+      "D:/CCXXLESSON/.opencode/plugin —— 不存在",
+      "D:/CCXXLESSON/contextledger/.opencode/plugin —— 不存在"
+    ],
+    "loaded_plugins": [],
+    "note": "当前零插件加载 = 干净观测基线。CL 影子插件安装后必须重采本指纹，确认其为唯一新增插件（排除其他已加载插件影响，评审 §三.5）。"
+  },
+  "config": {
+    "path": "C:/Users/Lenovo/.config/opencode/opencode.json",
+    "model": "zhipuai-coding-plan/glm-5.3-flash",
+    "small_model": "zhipuai-coding-plan/glm-5.3-flash",
+    "provider_api": "https://open.bigmodel.cn/api/paas/v4",
+    "api_key": "REDACTED（存在于原文件，指纹中脱敏）",
+    "other_keys": "无"
+  },
+  "dependencies": {
+    "config_lockfile": "C:/Users/Lenovo/.config/opencode/bun.lock (sha256_prefix e6324053604d4cb3ddd0)",
+    "config_package_json": {"dependencies": {"@opencode-ai/plugin": "1.18.23"}},
+    "note": "插件 SDK 版本(1.18.23) ≠ 运行版本(1.18.29)：插件 API 兼容性在钉扎时须一并复核"
+  },
+  "launch_command": "opencode（交互启动；成对运行时必须改为可复现的完整命令行并回填本记录）",
+  "open_actions": [
+    "版本对齐（fetch 运行版本 tag 或降级 npm 包）——需用户确认网络/依赖操作",
+    "钉扎后重采本指纹（含 sha256 全量而非前缀）",
+    "安装影子插件后重采 loaded_plugins",
+    "在真实模型请求前的可观测边界核验最终输入包含装配结果且未被覆盖（评审 §三.5 验收项）"
+  ],
+  "stop_condition_ack": "按评审停止条件：上述 open_actions 完成前，只交付观测结果，不宣称完成最终上下文接管或动作阻断验证。"
+}
