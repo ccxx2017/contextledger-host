@@ -30,7 +30,16 @@
       "tool.execute.before": "index.d.ts:235 —— output.args 可改写【不可阻断】",
       "tool.execute.after": "index.d.ts:249",
       "event": "index.d.ts:175 —— 通用事件入口（file.edited / session.compacted 经 SDK Event 联合类型）",
-      "additional_discovered": ["chat.message:187", "chat.headers:216", "command.execute.before:228", "shell.env:242", "experimental.session.compacting:283", "experimental.compaction.autocontinue:296", "experimental.text.complete:306", "tool.definition:316"]
+      "additional_discovered": [
+        "chat.message:187",
+        "chat.headers:216",
+        "command.execute.before:228",
+        "shell.env:242",
+        "experimental.session.compacting:283",
+        "experimental.compaction.autocontinue:296",
+        "experimental.text.complete:306",
+        "tool.definition:316"
+      ]
     },
     "source_checkout_alignment": {
       "status": "OPEN_BLOCKED_BY_NETWORK",
@@ -50,8 +59,15 @@
       "D:/CCXXLESSON/.opencode/plugin —— 不存在",
       "D:/CCXXLESSON/contextledger/.opencode/plugin —— 不存在"
     ],
-    "loaded_plugins": [],
-    "note": "当前零插件加载 = 干净观测基线。CL 影子插件安装后必须重采本指纹，确认其为唯一新增插件（评审 §三.5：OpenCode 插件可从全局配置/项目配置/两类目录加载，必须排除其他已加载插件影响）。"
+    "loaded_plugins": [
+      {
+        "name": "cl-shadow-observer (JS 冒烟版)",
+        "scope": "项目级 pilot/smoke-project/.opencode/plugin/（仅该项目）",
+        "loaded_confirmed_at": "2026-09-06 冒烟 S1",
+        "evidence": "pilot/smoke_20260906_events.jsonl 12 事件"
+      }
+    ],
+    "note": "全局配置仍为无插件；项目级插件仅存在于冒烟项目。正式 pilot 安装时重采本指纹。"
   },
   "config": {
     "path": "C:/Users/Lenovo/.config/opencode/opencode.json",
@@ -62,7 +78,11 @@
   },
   "dependencies": {
     "config_lockfile": "C:/Users/Lenovo/.config/opencode/bun.lock (sha256_prefix e6324053604d4cb3ddd0)",
-    "config_package_json": {"dependencies": {"@opencode-ai/plugin": "1.18.23"}},
+    "config_package_json": {
+      "dependencies": {
+        "@opencode-ai/plugin": "1.18.23"
+      }
+    },
     "note": "配置目录里装的 SDK 是 1.18.23（旧一版）；钉扎验证使用显式下载的 1.18.29。安装影子插件时须把配置目录 SDK 升到 1.18.29 对齐。"
   },
   "launch_command": "opencode（交互启动；成对运行时必须改为可复现的完整命令行并回填本记录）",

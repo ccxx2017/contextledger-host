@@ -1,0 +1,12 @@
+{"type":"sampling_params","ts":"2026-09-06T07:16:03.687Z","turn_id":"host-turn-000","context_refs":[],"payload":{"temperature":0.5}}
+{"type":"llm_call_start","ts":"2026-09-06T07:16:04.468Z","turn_id":"host-turn-001","context_refs":[],"payload":{"message_count":1,"boundary":"experimental.chat.messages.transform (final pre-model input)"}}
+{"type":"sampling_params","ts":"2026-09-06T07:16:05.399Z","turn_id":"host-turn-001","context_refs":[],"payload":{}}
+{"type":"tool_execute_before","ts":"2026-09-06T07:16:09.829Z","turn_id":"host-turn-001","context_refs":[],"payload":{"tool":"write","args":{"filePath":"D:\\CCXXLESSON\\contextledger-host\\pilot\\smoke-project\\smoke.txt","content":"ok"}}}
+{"type":"file_edited","ts":"2026-09-06T07:16:09.838Z","turn_id":"host-turn-001","context_refs":[],"payload":{"file":"D:\\CCXXLESSON\\contextledger-host\\pilot\\smoke-project\\smoke.txt"}}
+{"type":"tool_execute_after","ts":"2026-09-06T07:16:09.844Z","turn_id":"host-turn-001","context_refs":[],"payload":{"tool":"write","title":"pilot\\smoke-project\\smoke.txt"}}
+{"type":"llm_call_start","ts":"2026-09-06T07:16:10.478Z","turn_id":"host-turn-002","context_refs":[],"payload":{"message_count":2,"boundary":"experimental.chat.messages.transform (final pre-model input)"}}
+{"type":"sampling_params","ts":"2026-09-06T07:16:10.498Z","turn_id":"host-turn-002","context_refs":[],"payload":{}}
+{"type":"tool_execute_before","ts":"2026-09-06T07:16:15.874Z","turn_id":"host-turn-002","context_refs":[],"payload":{"tool":"bash","args":{"command":"wc -c smoke.txt && cat smoke.txt"}}}
+{"type":"tool_execute_after","ts":"2026-09-06T07:16:16.112Z","turn_id":"host-turn-002","context_refs":[],"payload":{"tool":"bash","title":"wc -c smoke.txt && cat smoke.txt"}}
+{"type":"llm_call_start","ts":"2026-09-06T07:16:16.525Z","turn_id":"host-turn-003","context_refs":[],"payload":{"message_count":3,"boundary":"experimental.chat.messages.transform (final pre-model input)"}}
+{"type":"sampling_params","ts":"2026-09-06T07:16:16.542Z","turn_id":"host-turn-003","context_refs":[],"payload":{}}
