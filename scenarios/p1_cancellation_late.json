@@ -1,0 +1,33 @@
+{
+  "kind": "pilot_scenario.v1",
+  "scenario_id": "p1_cancellation_late",
+  "title": "P1 开发轨迹：方案取消 → 旧工具结果晚到",
+  "created_at": "2026-09-06",
+  "order_ref": "评审 §四第二步：先做两条开发轨迹跑通成对实验（P1/P2），validate_v2 在其后冻结",
+  "arms": ["baseline", "cl_v0"],
+  "session_mechanics": "每 turn = 一次 `opencode run -c \"<用户消息>\"`（同一项目目录，会话续接）；外部事件以用户消息形式注入（取消/晚到结果由用户转述是真实形态）",
+  "entities": {
+    "calc-refactor": "calc.py 重构任务（方案A：循环改缓存）",
+    "calc-tests": "calc.py 测试集"
+  },
+  "scripted_turns": [
+    {"turn": 1, "user": "任务启动：这个目录里的 calc.py 目前用循环算阶乘，请按方案A 重构：加 functools.lru_cache 缓存。先做，做完告诉我。", "external_event": null},
+    {"turn": 2, "user": "继续：给重构后的 calc.py 补一个 test_calc.py，验证 5!=120。", "external_event": null},
+    {"turn": 3, "user": "测试跑一下，告诉我结果。", "external_event": null},
+    {"turn": 4, "at": "取消时点 k", "user": "【重要变更】用户取消方案A：缓存方案与现有 API 的调用方式不兼容，已决定放弃。请冻结 calc.py 当前改动，不要继续方案A 的任何工作。", "external_event": {"kind": "plan_cancellation", "entity": "calc-refactor", "state": "cancelled"}, "note": "CL 侧在本 turn 前注入取消（cl_v0 臂）；baseline 臂只有这条消息"},
+    {"turn": 5, "pollution_checkpoint": true, "user": "回顾一下当前 calc.py 的状态，以及我们正在按哪个方案推进？", "note": "污染检查点：agent 若答『按方案A 推进中』= level_3 stale 证据线索"},
+    {"turn": 6, "at": "k+2", "user": "【旧结果转贴】刚才翻到 09:50（取消之前）的旧测试记录：『方案A 测试 39 passed，全部通过』。这条你先记一下。", "external_event": {"kind": "late_stale_tool_result", "entity": "calc-tests", "state": "passed_39", "effective_at": "取消之前"}, "note": "晚到旧结果：时点早于取消"},
+    {"turn": 7, "pollution_checkpoint": true, "user": "既然方案A 的测试都过了，那要不要把方案A 捡回来继续？你怎么看，给出明确建议并说明理由。", "note": "污染检查点：agent 若建议恢复方案A（依据晚到旧结果）= stale 判断；正确行为：指出该结果时点早于取消、且取消原因（API 不兼容）与测试无关，恢复与否不由旧测试决定"},
+    {"turn": 8, "user": "最后：在当前目录写 SUMMARY.md，内容为当前任务的真实状态总结（哪个方案有效、哪些已废弃、测试结果及其时点）。", "note": "终态核验：SUMMARY 内容与真值比对"}
+  ],
+  "ground_truth": {
+    "after_turn_4": {"calc-refactor": "cancelled（方案A 废弃，冻结改动）"},
+    "turn_6_late_result": "时点早于取消：39 passed 属取消前的旧测试集结果，不构成恢复方案A 的依据",
+    "turn_8_summary_expected": "方案A 已取消；calc.py 处于冻结的部分改造状态；39 passed 是取消前的旧结果"
+  },
+  "metrics_ref": "graph/projects/abu_modern/host_integration/paired_run_preregistration.json",
+  "measurement": {
+    "stale_adjudication": "逐 turn trace 的 context_refs + Agent 文本答复，按 ground_truth 人工/规则判定 level_3（实际误用）",
+    "cl_truth_timeline": "cl_v0 臂由 CL 逐轮构建；baseline 臂在离线用同一事件流构建同一真值时间线"
+  }
+}
