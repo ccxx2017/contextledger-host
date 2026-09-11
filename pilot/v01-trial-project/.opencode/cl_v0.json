@@ -1,0 +1,9 @@
+{
+  "gate": true,
+  "inject": true,
+  "cl_home": "D:/CCXXLESSON/contextledger",
+  "cl_project": "pilot_v01",
+  "expected_state_revision": "0001:6f6fd9f75390",
+  "manifest_path": "D:/CCXXLESSON/contextledger/graph/projects/pilot_v01/run/assembler_manifest.turn_001.json",
+  "current_states_path": "D:/CCXXLESSON/contextledger/graph/projects/pilot_v01/run/current_states.json"
+}
