@@ -37,6 +37,83 @@ python tools/cl_turn.py --project <你的项目目录> --cl-project <CL项目名
 - **被拦后怎么办**：按错误提示处理——通常等待 CL 裁定完成（隔离条目）或确认装配刷新，
   然后重试。Agent 自己也会执行该恢复流程。
 
+### 2.1 参数详解
+
+```bash
+python tools/cl_turn.py --project . --cl-project my_trial --text "你这轮的任务描述"
+```
+
+| 参数 | 含义 |
+|---|---|
+| `--project .` | **Agent 干活的项目目录**。也是插件（`.opencode/plugin/`）和 AGENTS.md 所在地。`.` = 当前目录 |
+| `--cl-project my_trial` | **CL 账本名**。裁定后的状态存在 CL 主仓库 `graph/projects/my_trial/` 下，与别的项目隔离。同一个项目每次用同一个名字，账本连续累积；换新项目换新名字 |
+| `--text "..."` | **本轮你对 Agent 说的话**（用户消息） |
+| `--turn N` | 轮次号（缺省自动 +1，存于 `.opencode/cl_turn_state.json`） |
+| `--new-session` | 强制新会话（见 2.3） |
+| `--timeout 420` | 宿主会话超时秒数（端点偶发挂起时自动结束，重跑即可） |
+
+**插件加载由目录决定，与 git 分支无关**：插件装在哪个项目目录，就在那个目录里启动
+opencode 才生效；切分支不影响（文件在工作区就在）。
+
+### 2.2 会话续接（-c 自动机制）
+
+`cl_turn.py` 默认自动带 `-c`（续接该项目上一次会话）——Agent 记得之前所有对话和操作：
+
+```bash
+# 第 1 轮：新会话
+python tools/cl_turn.py --project . --cl-project my_trial --text "任务启动：重构 calc.py"
+# 第 2、3、4 轮：自动续接同一会话，Agent 记得前面所有事
+python tools/cl_turn.py --project . --cl-project my_trial --text "继续：补测试"
+```
+
+只有想**故意失忆**时才加 `--new-session`（新会话从零开始）——测"跨会话记忆丢失"或
+开启全新独立任务时使用。
+
+### 2.3 每轮哪些内容进入 CL（数据边界）
+
+一轮的完整数据流：
+
+```
+cl_turn.py --text "继续：给 calc.py 补测试"
+   ├─ ① 装配刷新：AGENTS.md / 控制文件更新到 CL 最新裁定态
+   ├─ ② opencode run -c "<text>"     ← Agent 自主调工具、生成答复（会话内记得）
+   ├─ ③ 插件把工具调用留痕到 trace（工具名 + 参数）
+   └─ ④ CL 驱动组装本轮 raw：
+         【本轮时间】…
+         【用户】继续：给 calc.py 补测试
+         【本轮工具活动摘要】
+         - 工具调用 write: {"filePath": ".../test_calc.py", ...}
+      → DeepSeek 抽取 → 裁定入库 → AGENTS.md 刷新
+```
+
+| 内容 | 是否进入 CL | 形式 |
+|---|---|---|
+| 你说的话（--text） | ✅ | 原文 |
+| Agent 的工具调用 | ✅ | 工具名 + 参数摘要（每条 200 字符） |
+| Agent 的文字反馈 | ❌ | 设计如此：raw 只收"用户说了什么 + 客观工具痕迹"，不把 Agent 自我叙述当事实源 |
+| Agent 的任务记忆 | 不经 CL | `-c` 续接的会话内 Agent 自己记得；CL 补充的是裁定过的状态层（AGENTS.md） |
+
+### 2.4 三种使用方式与能力边界
+
+| 方式 | 门控 | 观察（trace） | AGENTS.md 供给 | CL 裁定入库 | 适用 |
+|---|---|---|---|---|---|
+| **cl_turn.py**（推荐） | ✅ | ✅ | ✅ 自动 | ✅ 自动 | 日常任务；v0.1 主推 |
+| **TUI 交互式**（项目目录内直接 `opencode`） | ✅ | ✅ | ⚠️ 会话内即时重读未单独实测（`run -c` 续接已实测生效） | ❌ 需手动跑驱动器 | 习惯交互式的用户 |
+| **裸 opencode**（其他目录） | ❌ | ❌ | ❌ | ❌ | 对照 / 不想用 CL 时 |
+
+TUI 交互式的完整用法：项目目录内 `opencode` 正常对话（门控+观察生效）；对话告一段落后，
+在另一终端跑一次驱动器入库刷新：
+
+```bash
+python D:/CCXXLESSON/contextledger/graph/scripts/pilot_turn_driver.py \
+  --cl-project my_trial --turn-num 1 --user-text "刚才的任务概要" \
+  --control-file <项目>/.opencode/cl_v0.json --agents-md <项目>/AGENTS.md \
+  --env-file D:/CCXXLESSON/contextledger/env
+```
+
+验证供给是否生效的最简单方法：新会话里问 Agent "AGENTS.md 里的 CL-PILOT-STATE
+列了哪些状态？"——答得出来即通道正常。
+
 ## 三、故障排查
 
 | 现象 | 处理 |
