@@ -1,8 +1,8 @@
 {
   "archived": {
-    "host_turns": 33,
+    "host_turns": 35,
     "extractions": 17,
-    "note": "reassignment_recovery 首轮污染运行（git 组间污染，第七号裁定 C' 作废归档）已移入 pilot/round1/archive/rr_polluted_20260924/，不随 run-root 重数；其消耗计入总预算（61+44=105/300，53 抽取≈6.1/50 元）。"
+    "note": "两笔归档不计入 run-root 重数、但计入总账：(1) reassignment_recovery 首轮污染运行（git 组间污染，第七号裁定 C' 作废）33 轮/17 抽取 -> pilot/round1/archive/rr_polluted_20260924/；(2) v2 尝试（clv0 t1 超时 + baseline t1 被中断，共 2 次 opencode 调用、0 次完成的抽取）-> pilot/round1/archive/v2_aborted_timeout_misclass_20260924/。总预算 = 28(场景1-3) + 35(归档) + 重跑 44 = 107/300；抽取 14+17+22=53 次≈6.1/50 元。"
   },
   "checks": [
     {

@@ -1,0 +1,11 @@
+﻿$ git log --all
+f96f4e1 round1 window seed（布景初始提交）
+
+$ git status --short
+ M __pycache__/backtest.cpython-39.pyc
+ M __pycache__/test_backtest.cpython-39-pytest-8.4.2.pyc
+ M backtest.py
+ M notes.md
+ M test_backtest.py
+?? AGENTS.md
+

@@ -1,0 +1,5 @@
+﻿$ git log --all
+f96f4e1 round1 window seed（布景初始提交）
+
+$ git status --short
+
