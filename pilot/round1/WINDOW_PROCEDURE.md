@@ -70,6 +70,13 @@ python tools/cl_turn.py --project <clv0/task-project> \
 - 摘要须先经 `make_summary_recovery.py --scenario <场景> --out <路径>` 生成，
   再经 `check_info_floor.py --scenario <场景> --summary <路径>` 退出码 0 方可注入。
 
+**投递核验（机械，每场景一次，第六号裁定 M3）**：会话 2 首轮结束后，核验
+`answers/turn_NNN.json` 记录的 user_text 包含 summary_recovery.md 全文（或至少
+首行标记 + 全部 external_event 三元组）；不含 = 装置故障 → 按 §7-2 报阻塞，
+该场景不得继续。（cmd.exe 吞 `>` 事件属投递层漏洞：check_info_floor 只检生成
+文件、不检实际投递；摘要若再静默丢失将单向利多 CL——最危险偏置方向，故字节级
+机械核验封口。）
+
 ## 4. 每轮采集项（写入 answers/turn_NNN.json）
 
 `arm / session / turn / new_session / user_text / cmd / rc / stdout / stderr / seconds`；
@@ -103,3 +110,19 @@ blocked/decision 字段。因此机械识别规则为：
 - 单轮 rc≠0 或超时：记录为该轮装置事件（answers JSON 如实留存），**不删轮、
   不静默重试**；同一轮重试 = 新轮次（轮次计数 +1，预算同记）；
 - 任何 §7 验收项不过 / 装置异常：按封存令先报阻塞，不文字模拟结果。
+
+## 8. 记录纪律（第六号裁定 §五）
+
+- **全路径**：两个 `reassignment_recovery.json` 同名异径（`scenarios/` spec 与
+  `pilot/round1/scenarios/` 转写稿）——窗口记录与结果登记一律写全路径；
+- **种子基线分场景**：`seeds/r1_stale_test_result/` 布景 `pytest -q` = 3 failed
+  （T1 基线）；`seeds/reassignment_recovery/` 布景 `pytest -q` = 3 passed（全通过
+  基线）——报告与记录分开登记，不得混写。
+
+## 9. 判断点仪器披露（预写，第六号裁定 M1/§四-3）
+
+- reassignment_recovery = **5 检查点（3 冻结 + 2 核定增补）**（008/014/017 冻结
+  + s2_t12/s2_t20 增补，判分规则不变、两臂同题对称）；
+- 结论按 criteria §9 三层格式，reassignment_recovery 固定标注"设计已见、运行未消耗"；
+- 局限节必写：O1（首轮 read_states TypeError fail-open 伪影）、O2（readiness=degraded
+  与图内容无关、仅 blocked 计拦截）、t17"（新决策，非回写历史）"括注的脚手架作用知悉。
