@@ -1,0 +1,15 @@
+{
+  "clv0": {
+    ".gitignore": "b35bf22357192397",
+    "AGENTS.md": "6048664cba46671b",
+    "backtest.py": "9d181b44428e5f99",
+    "notes.md": "28a29ef0e78e351c",
+    "test_backtest.py": "cd69383625d96403"
+  },
+  "baseline": {
+    ".gitignore": "b35bf22357192397",
+    "backtest.py": "acd577c05b11a77b",
+    "notes.md": "5fea51acf508b644",
+    "test_backtest.py": "4846b835777033dc"
+  }
+}

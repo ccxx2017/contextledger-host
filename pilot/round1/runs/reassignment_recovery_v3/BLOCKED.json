@@ -1,0 +1,23 @@
+{
+  "reason": "种子与场景 seed_files 不一致: backtest.py",
+  "at": "2026-09-24T22:34:59+0800",
+  "resolution": {
+    "status": "resolved_resumed_after_driver_fix2",
+    "at": "2026-09-24T22:40:00+0800",
+    "history": [
+      {
+        "stop": "clv0 t3 rc=TIMEOUT（驱动外层包装器 540s 超时，进程被杀致 stdout/stderr 缓冲丢失）",
+        "at": "2026-09-24T22:28:42+0800",
+        "root_cause": "驱动缺陷两处：(1) 失败分类只查 stderr 的 TimeoutExpired，未识别包装器自身的 rc=TIMEOUT；(2) clv0 包装器余量 420+120=540s 过薄——宿主 420s 上限后的 CL 后处理（抽取+reconcile 重试）可能再需数分钟。偶发时延尖刺（同运行 clv0 t2=33s、t1 重试=58s；首轮污染运行同轮 57s），非系统性。",
+        "fix": "分类补 rc=='TIMEOUT'；clv0 包装器余量提至 420+300=720s。超时按 §7 记装置事件、重试算新轮次（turn_003 留作 attempt 1，重试落 turn_003_r2，预算同记）。"
+      },
+      {
+        "stop": "种子与场景 seed_files 不一致: backtest.py（续跑启动时）",
+        "at": "2026-09-24T22:34:59+0800",
+        "root_cause": "驱动缺陷：seed_files 逐字节核对未限定于布景时——resume 时 task-project 已被 t1/t2 按设计改写（backtest.py 等），核对必败。",
+        "fix": "seed_files 核对改为仅首建 seeding_manifest（布景时）执行；resume 显式跳过并打印。"
+      }
+    ],
+    "note": "两次停机均为驱动层缺陷（超时分类/余量、resume 种子核对语义），受测系统与实验条件未变；第六号裁定对场景 1 的同类处置先例（记录缺陷，非条件缺陷，停-修-续）适用。v3 运行继续；本文件保留为过程记录。"
+  }
+}

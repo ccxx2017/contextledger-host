@@ -1,0 +1,40 @@
+{
+  "scenario": "reassignment_recovery",
+  "run_name": "reassignment_recovery_v3",
+  "scenario_path": "D:\\CCXXLESSON\\contextledger-host\\pilot\\round1\\scenarios\\reassignment_recovery.json",
+  "cl_project": "round1_wr1rr3_clv0",
+  "steps": [
+    {
+      "step": "cl_install",
+      "rc": 0
+    },
+    {
+      "step": "cl_selfcheck",
+      "rc": 0,
+      "six_of_six": true
+    },
+    {
+      "step": "baseline_summary",
+      "rc": 0
+    },
+    {
+      "step": "info_floor",
+      "rc": 0
+    },
+    {
+      "step": "clv0_halt_state_restored",
+      "from": "D:\\CCXXLESSON\\contextledger-host\\pilot\\round1\\runs\\reassignment_recovery_v3\\HALTED_clv0.json"
+    },
+    {
+      "step": "git_archive",
+      "clv0": {
+        "head": "67600f2",
+        "history_preserved": true
+      },
+      "baseline": {
+        "head": "cdc2288",
+        "history_preserved": true
+      }
+    }
+  ]
+}

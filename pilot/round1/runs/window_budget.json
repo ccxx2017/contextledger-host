@@ -52,6 +52,56 @@
       "extractions_total": 29,
       "deepseek_est_cny": 3.335,
       "at": "2026-09-24T21:18:29+0800"
+    },
+    {
+      "at_turn": 5,
+      "scenario": "reassignment_recovery_v3",
+      "live_host_turns": 38,
+      "archived_host_turns": 35,
+      "host_turns_total": 73,
+      "extractions_total": 36,
+      "deepseek_est_cny": 4.14,
+      "at": "2026-09-24T22:43:52+0800"
+    },
+    {
+      "at_turn": 10,
+      "scenario": "reassignment_recovery_v3",
+      "live_host_turns": 43,
+      "archived_host_turns": 35,
+      "host_turns_total": 78,
+      "extractions_total": 36,
+      "deepseek_est_cny": 4.14,
+      "at": "2026-09-24T22:49:15+0800"
+    },
+    {
+      "at_turn": 15,
+      "scenario": "reassignment_recovery_v3",
+      "live_host_turns": 48,
+      "archived_host_turns": 35,
+      "host_turns_total": 83,
+      "extractions_total": 36,
+      "deepseek_est_cny": 4.14,
+      "at": "2026-09-24T22:52:27+0800"
+    },
+    {
+      "at_turn": 20,
+      "scenario": "reassignment_recovery_v3",
+      "live_host_turns": 54,
+      "archived_host_turns": 35,
+      "host_turns_total": 89,
+      "extractions_total": 36,
+      "deepseek_est_cny": 4.14,
+      "at": "2026-09-24T23:08:43+0800"
+    },
+    {
+      "at_turn": 22,
+      "scenario": "reassignment_recovery_v3",
+      "live_host_turns": 56,
+      "archived_host_turns": 35,
+      "host_turns_total": 91,
+      "extractions_total": 36,
+      "deepseek_est_cny": 4.14,
+      "at": "2026-09-24T23:10:55+0800"
     }
   ]
 }

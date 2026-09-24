@@ -1,0 +1,26 @@
+{
+  "cmd": [
+    "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+    "D:\\CCXXLESSON\\contextledger-host\\tools\\cl_turn.py",
+    "--project",
+    "D:\\CCXXLESSON\\contextledger-host\\pilot\\round1\\runs\\reassignment_recovery_v3\\clv0\\task-project",
+    "--cl-project",
+    "round1_wr1rr3_clv0",
+    "--text",
+    "开始改造回测模块。",
+    "--timeout",
+    "420"
+  ],
+  "cwd": "D:\\CCXXLESSON\\contextledger-host",
+  "rc": "TIMEOUT",
+  "stdout": "",
+  "stderr": "",
+  "seconds": 540.0,
+  "arm": "clv0",
+  "session": 1,
+  "turn": 3,
+  "attempt": 1,
+  "new_session": false,
+  "user_text": "开始改造回测模块。",
+  "delivered_text": "开始改造回测模块。"
+}
