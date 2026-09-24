@@ -1,0 +1,496 @@
+{
+  "trajectory_id": "r1np_clv0_trial",
+  "coverage_tags": [],
+  "observations": [
+    {
+      "obs_id": "turn_001",
+      "observed_at": "2026-09-24T10:53:46Z",
+      "valid_from": "2026-09-24T10:53:46Z",
+      "valid_to": null,
+      "source": {
+        "channel": "pilot_trace",
+        "provenance": "cl_extractor_v2+patch_001.json"
+      },
+      "mentions": [
+        "format_greeting",
+        "greet.py"
+      ],
+      "payload": {
+        "statement": "在 greet.py 里实现一个 format_greeting(name) 函数，返回 '你好, {name}！'，完成后告知用户；目标文件 greet.py，需在其中实现 format_greeting(name) 函数；实现函数 format_greeting(name)，接收 name 参数并返回问候字符串；format_greeting(name) 的返回格式必须为 '你好, {name}！'",
+        "claim_bundle": [
+          {
+            "claim_id": "n_0002",
+            "dimension": "build_status",
+            "value": "open",
+            "importance": "should_include"
+          },
+          {
+            "claim_id": "n_0003",
+            "dimension": "execution_status",
+            "value": "open",
+            "importance": "should_include"
+          }
+        ]
+      },
+      "host_actions": [
+        {
+          "kind": "injection",
+          "states_count": 0,
+          "readiness": "degraded",
+          "state_revision": "0000:addc43dba02c"
+        },
+        {
+          "kind": "injection",
+          "states_count": 0,
+          "readiness": "degraded",
+          "state_revision": "0000:addc43dba02c"
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "glob",
+          "gate": "readiness",
+          "readiness": "degraded",
+          "reason_codes": [
+            "LINT_WARNING_PRESENT"
+          ]
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "glob",
+          "gate": "preaction",
+          "readiness": null,
+          "reason_codes": []
+        },
+        {
+          "kind": "injection",
+          "states_count": 0,
+          "readiness": "degraded",
+          "state_revision": "0000:addc43dba02c"
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "read",
+          "gate": "readiness",
+          "readiness": "degraded",
+          "reason_codes": [
+            "LINT_WARNING_PRESENT"
+          ]
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "read",
+          "gate": "preaction",
+          "readiness": null,
+          "reason_codes": []
+        },
+        {
+          "kind": "injection",
+          "states_count": 0,
+          "readiness": "degraded",
+          "state_revision": "0000:addc43dba02c"
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "edit",
+          "gate": "readiness",
+          "readiness": "degraded",
+          "reason_codes": [
+            "LINT_WARNING_PRESENT"
+          ]
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "edit",
+          "gate": "preaction",
+          "readiness": null,
+          "reason_codes": []
+        },
+        {
+          "kind": "injection",
+          "states_count": 0,
+          "readiness": "degraded",
+          "state_revision": "0000:addc43dba02c"
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "bash",
+          "gate": "readiness",
+          "readiness": "degraded",
+          "reason_codes": [
+            "LINT_WARNING_PRESENT"
+          ]
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "bash",
+          "gate": "preaction",
+          "readiness": null,
+          "reason_codes": []
+        },
+        {
+          "kind": "injection",
+          "states_count": 0,
+          "readiness": "degraded",
+          "state_revision": "0000:addc43dba02c"
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "bash",
+          "gate": "readiness",
+          "readiness": "degraded",
+          "reason_codes": [
+            "LINT_WARNING_PRESENT"
+          ]
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "bash",
+          "gate": "preaction",
+          "readiness": null,
+          "reason_codes": []
+        },
+        {
+          "kind": "injection",
+          "states_count": 0,
+          "readiness": "degraded",
+          "state_revision": "0000:addc43dba02c"
+        }
+      ],
+      "cl_superseded_nodes": [],
+      "cl_patch_ref": "patch_001.json"
+    },
+    {
+      "obs_id": "turn_002",
+      "observed_at": "2026-09-24T10:55:08Z",
+      "valid_from": "2026-09-24T10:55:08Z",
+      "valid_to": null,
+      "source": {
+        "channel": "pilot_trace",
+        "provenance": "cl_extractor_v2+patch_002.json"
+      },
+      "mentions": [
+        "format_greeting"
+      ],
+      "payload": {
+        "statement": "自测 format_greeting：分别以 '张三'、'李四' 各调用一次，并向用户报告两次输出结果",
+        "claim_bundle": [
+          {
+            "claim_id": "n_0005",
+            "dimension": "test_status",
+            "value": "open",
+            "importance": "should_include"
+          }
+        ]
+      },
+      "host_actions": [
+        {
+          "kind": "injection",
+          "states_count": 3,
+          "readiness": "degraded",
+          "state_revision": "0001:345d02db8715"
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "bash",
+          "gate": "readiness",
+          "readiness": "degraded",
+          "reason_codes": [
+            "LINT_WARNING_PRESENT"
+          ]
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "bash",
+          "gate": "preaction",
+          "readiness": null,
+          "reason_codes": []
+        },
+        {
+          "kind": "injection",
+          "states_count": 3,
+          "readiness": "degraded",
+          "state_revision": "0001:345d02db8715"
+        }
+      ],
+      "cl_superseded_nodes": [],
+      "cl_patch_ref": "patch_002.json"
+    },
+    {
+      "obs_id": "turn_003",
+      "observed_at": null,
+      "valid_from": null,
+      "valid_to": null,
+      "source": {
+        "channel": "pilot_trace",
+        "provenance": "cl_extractor_v2+patch_003.json"
+      },
+      "mentions": [],
+      "payload": {
+        "statement": "",
+        "claim_bundle": []
+      },
+      "host_actions": [
+        {
+          "kind": "injection",
+          "states_count": 3,
+          "readiness": "degraded",
+          "state_revision": "0002:ee2fed13b17e"
+        },
+        {
+          "kind": "injection",
+          "states_count": 3,
+          "readiness": "degraded",
+          "state_revision": "0002:ee2fed13b17e"
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "read",
+          "gate": "readiness",
+          "readiness": "degraded",
+          "reason_codes": [
+            "LINT_WARNING_PRESENT"
+          ]
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "read",
+          "gate": "preaction",
+          "readiness": null,
+          "reason_codes": []
+        },
+        {
+          "kind": "injection",
+          "states_count": 3,
+          "readiness": "degraded",
+          "state_revision": "0002:ee2fed13b17e"
+        }
+      ],
+      "cl_superseded_nodes": [],
+      "cl_patch_ref": "patch_003.json"
+    },
+    {
+      "obs_id": "turn_004",
+      "observed_at": "2026-09-24T10:57:29Z",
+      "valid_from": "2026-09-24T10:57:29Z",
+      "valid_to": null,
+      "source": {
+        "channel": "pilot_trace",
+        "provenance": "cl_extractor_v2+patch_004.json"
+      },
+      "mentions": [
+        "SUMMARY.md"
+      ],
+      "payload": {
+        "statement": "将 format_greeting 的实现过程与自测结果整理写入 SUMMARY.md，完成本轮收尾；SUMMARY.md 文档，用于记录 format_greeting 的实现过程与自测结果；；；",
+        "claim_bundle": [
+          {
+            "claim_id": "n_0006",
+            "dimension": "execution_status",
+            "value": "open",
+            "importance": "should_include"
+          },
+          {
+            "claim_id": "n_0007",
+            "dimension": "FileArtifact",
+            "value": "open",
+            "importance": "should_include"
+          }
+        ]
+      },
+      "host_actions": [
+        {
+          "kind": "injection",
+          "states_count": 3,
+          "readiness": "degraded",
+          "state_revision": "0003:dbe82f6240b8"
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "glob",
+          "gate": "readiness",
+          "readiness": "degraded",
+          "reason_codes": [
+            "LINT_WARNING_PRESENT"
+          ]
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "glob",
+          "gate": "preaction",
+          "readiness": null,
+          "reason_codes": []
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "bash",
+          "gate": "readiness",
+          "readiness": "degraded",
+          "reason_codes": [
+            "LINT_WARNING_PRESENT"
+          ]
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "bash",
+          "gate": "preaction",
+          "readiness": null,
+          "reason_codes": []
+        },
+        {
+          "kind": "injection",
+          "states_count": 3,
+          "readiness": "degraded",
+          "state_revision": "0003:dbe82f6240b8"
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "read",
+          "gate": "readiness",
+          "readiness": "degraded",
+          "reason_codes": [
+            "LINT_WARNING_PRESENT"
+          ]
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "read",
+          "gate": "preaction",
+          "readiness": null,
+          "reason_codes": []
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "bash",
+          "gate": "readiness",
+          "readiness": "degraded",
+          "reason_codes": [
+            "LINT_WARNING_PRESENT"
+          ]
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "bash",
+          "gate": "preaction",
+          "readiness": null,
+          "reason_codes": []
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "bash",
+          "gate": "readiness",
+          "readiness": "degraded",
+          "reason_codes": [
+            "LINT_WARNING_PRESENT"
+          ]
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "bash",
+          "gate": "preaction",
+          "readiness": null,
+          "reason_codes": []
+        },
+        {
+          "kind": "injection",
+          "states_count": 3,
+          "readiness": "degraded",
+          "state_revision": "0003:dbe82f6240b8"
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "bash",
+          "gate": "readiness",
+          "readiness": "degraded",
+          "reason_codes": [
+            "LINT_WARNING_PRESENT"
+          ]
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "bash",
+          "gate": "preaction",
+          "readiness": null,
+          "reason_codes": []
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "bash",
+          "gate": "readiness",
+          "readiness": "degraded",
+          "reason_codes": [
+            "LINT_WARNING_PRESENT"
+          ]
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "bash",
+          "gate": "preaction",
+          "readiness": null,
+          "reason_codes": []
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "read",
+          "gate": "readiness",
+          "readiness": "degraded",
+          "reason_codes": [
+            "LINT_WARNING_PRESENT"
+          ]
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "read",
+          "gate": "preaction",
+          "readiness": null,
+          "reason_codes": []
+        },
+        {
+          "kind": "injection",
+          "states_count": 3,
+          "readiness": "degraded",
+          "state_revision": "0003:dbe82f6240b8"
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "read",
+          "gate": "readiness",
+          "readiness": "degraded",
+          "reason_codes": [
+            "LINT_WARNING_PRESENT"
+          ]
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "read",
+          "gate": "preaction",
+          "readiness": null,
+          "reason_codes": []
+        },
+        {
+          "kind": "injection",
+          "states_count": 3,
+          "readiness": "degraded",
+          "state_revision": "0003:dbe82f6240b8"
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "read",
+          "gate": "readiness",
+          "readiness": "degraded",
+          "reason_codes": [
+            "LINT_WARNING_PRESENT"
+          ]
+        },
+        {
+          "kind": "gate_verdict",
+          "tool": "read",
+          "gate": "preaction",
+          "readiness": null,
+          "reason_codes": []
+        }
+      ],
+      "cl_superseded_nodes": [],
+      "cl_patch_ref": "patch_004.json"
+    }
+  ]
+}

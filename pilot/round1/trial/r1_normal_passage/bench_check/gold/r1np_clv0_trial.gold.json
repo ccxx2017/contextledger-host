@@ -1,0 +1,34 @@
+{
+  "schema_neutral": true,
+  "trajectory_id": "r1np_clv0_trial",
+  "steps": [
+    {
+      "after_obs_id": "turn_001",
+      "expected_active_set": [],
+      "expected_invalidations": [],
+      "entity_clusters": [],
+      "must_include": []
+    },
+    {
+      "after_obs_id": "turn_002",
+      "expected_active_set": [],
+      "expected_invalidations": [],
+      "entity_clusters": [],
+      "must_include": []
+    },
+    {
+      "after_obs_id": "turn_003",
+      "expected_active_set": [],
+      "expected_invalidations": [],
+      "entity_clusters": [],
+      "must_include": []
+    },
+    {
+      "after_obs_id": "turn_004",
+      "expected_active_set": [],
+      "expected_invalidations": [],
+      "entity_clusters": [],
+      "must_include": []
+    }
+  ]
+}

@@ -1,0 +1,1578 @@
+{
+  "validation": {
+    "ok": false,
+    "trajectory_count": 1,
+    "coverage_counts": {
+      "full": 0,
+      "partial": 0,
+      "conditional": 0,
+      "revival": 0,
+      "alias_trap": 0,
+      "provenance_conflict": 0,
+      "non_invalidation_decoy": 0,
+      "out_of_order_late": 0
+    },
+    "issues": [
+      "轨迹数量不足：1 < 15",
+      "覆盖矩阵缺失形态：full",
+      "覆盖矩阵缺失形态：partial",
+      "覆盖矩阵缺失形态：conditional",
+      "覆盖矩阵缺失形态：revival",
+      "覆盖矩阵缺失形态：alias_trap",
+      "覆盖矩阵缺失形态：provenance_conflict",
+      "覆盖矩阵缺失形态：non_invalidation_decoy",
+      "覆盖矩阵缺失形态：out_of_order_late"
+    ]
+  },
+  "baselines": {
+    "phase0_current": {
+      "baseline": "phase0_current",
+      "metrics": {
+        "invalidation_precision": 0.0,
+        "invalidation_recall": 1.0,
+        "invalidation_event_summary": {
+          "true_positive_count": 0,
+          "false_positive_count": 1,
+          "false_negative_count": 0,
+          "predicted_count": 1,
+          "gold_count": 0,
+          "precision": 0.0,
+          "recall": null
+        },
+        "active_set_set_f1": 0.0,
+        "must_include_recall": 1.0,
+        "entity_resolution_false_merge_rate": 0.0,
+        "entity_resolution_false_split_rate": 0.0,
+        "valid_time_adjudication_accuracy": 1.0,
+        "valid_time_breakdown": {
+          "observed_at_present_correct": 0,
+          "observed_at_present_total": 0,
+          "observed_at_present_accuracy": 1.0,
+          "observed_at_absent_fallback_correct": 0,
+          "observed_at_absent_fallback_total": 0,
+          "observed_at_absent_fallback_accuracy": 1.0
+        },
+        "counts": {
+          "steps": 4,
+          "gold_invalidations": 0,
+          "predicted_invalidations": 1,
+          "valid_time_targets": 0,
+          "entity_gold_same_pairs": 0,
+          "entity_gold_diff_pairs": 3
+        }
+      },
+      "invalidation_by_tag": {
+        "full": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "partial": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "conditional": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "revival": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "alias_trap": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "provenance_conflict": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "non_invalidation_decoy": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "out_of_order_late": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        }
+      },
+      "per_trajectory": {
+        "r1np_clv0_trial": {
+          "step_count": 4,
+          "steps": [
+            {
+              "after_obs_id": "turn_001",
+              "gold_active_set": [],
+              "predicted_active_set": [
+                "n_0002",
+                "n_0003"
+              ],
+              "active_set_f1": 0.0,
+              "gold_must_include": [],
+              "predicted_must_include": [],
+              "must_include_recall": 1.0,
+              "gold_invalidations": [],
+              "predicted_invalidations": [],
+              "gold_valid_time_targets": [],
+              "predicted_valid_time": [
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "build_status",
+                  "winner_obs_id": "turn_001",
+                  "fallback_used": true
+                },
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "execution_status",
+                  "winner_obs_id": "turn_001",
+                  "fallback_used": true
+                }
+              ]
+            },
+            {
+              "after_obs_id": "turn_002",
+              "gold_active_set": [],
+              "predicted_active_set": [
+                "n_0005"
+              ],
+              "active_set_f1": 0.0,
+              "gold_must_include": [],
+              "predicted_must_include": [],
+              "must_include_recall": 1.0,
+              "gold_invalidations": [],
+              "predicted_invalidations": [
+                {
+                  "source_obs_id": "turn_002",
+                  "target_obs_id": "turn_001",
+                  "kind": "full",
+                  "dropped_claims": [
+                    "n_0002",
+                    "n_0003"
+                  ],
+                  "replacement_claims": [
+                    "n_0005"
+                  ]
+                }
+              ],
+              "gold_valid_time_targets": [],
+              "predicted_valid_time": [
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "build_status",
+                  "winner_obs_id": "turn_001",
+                  "fallback_used": true
+                },
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "execution_status",
+                  "winner_obs_id": "turn_001",
+                  "fallback_used": true
+                },
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "test_status",
+                  "winner_obs_id": "turn_002",
+                  "fallback_used": true
+                }
+              ]
+            },
+            {
+              "after_obs_id": "turn_003",
+              "gold_active_set": [],
+              "predicted_active_set": [
+                "n_0005"
+              ],
+              "active_set_f1": 0.0,
+              "gold_must_include": [],
+              "predicted_must_include": [],
+              "must_include_recall": 1.0,
+              "gold_invalidations": [],
+              "predicted_invalidations": [],
+              "gold_valid_time_targets": [],
+              "predicted_valid_time": [
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "build_status",
+                  "winner_obs_id": "turn_001",
+                  "fallback_used": true
+                },
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "execution_status",
+                  "winner_obs_id": "turn_001",
+                  "fallback_used": true
+                },
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "test_status",
+                  "winner_obs_id": "turn_002",
+                  "fallback_used": true
+                }
+              ]
+            },
+            {
+              "after_obs_id": "turn_004",
+              "gold_active_set": [],
+              "predicted_active_set": [
+                "n_0005",
+                "n_0006",
+                "n_0007"
+              ],
+              "active_set_f1": 0.0,
+              "gold_must_include": [],
+              "predicted_must_include": [],
+              "must_include_recall": 1.0,
+              "gold_invalidations": [],
+              "predicted_invalidations": [],
+              "gold_valid_time_targets": [],
+              "predicted_valid_time": [
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "build_status",
+                  "winner_obs_id": "turn_001",
+                  "fallback_used": true
+                },
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "execution_status",
+                  "winner_obs_id": "turn_001",
+                  "fallback_used": true
+                },
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "test_status",
+                  "winner_obs_id": "turn_002",
+                  "fallback_used": true
+                },
+                {
+                  "entity_key": "summary.md",
+                  "dimension": "FileArtifact",
+                  "winner_obs_id": "turn_004",
+                  "fallback_used": true
+                },
+                {
+                  "entity_key": "summary.md",
+                  "dimension": "execution_status",
+                  "winner_obs_id": "turn_004",
+                  "fallback_used": true
+                }
+              ]
+            }
+          ],
+          "entity_resolution": {
+            "gold_same_pairs": 0,
+            "gold_diff_pairs": 3,
+            "false_split_count": 0,
+            "false_merge_count": 0,
+            "false_split_rate": 0.0,
+            "false_merge_rate": 0.0
+          },
+          "invalidation_event_summary": {
+            "predicted_count": 1,
+            "gold_count": 0,
+            "true_positive_count": 0,
+            "false_positive_count": 1,
+            "false_negative_count": 0
+          }
+        }
+      }
+    },
+    "phase0_current_lifecycle": {
+      "baseline": "phase0_current_lifecycle",
+      "metrics": {
+        "invalidation_precision": 1.0,
+        "invalidation_recall": 1.0,
+        "invalidation_event_summary": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null
+        },
+        "active_set_set_f1": 0.0,
+        "must_include_recall": 1.0,
+        "entity_resolution_false_merge_rate": 0.0,
+        "entity_resolution_false_split_rate": 0.0,
+        "valid_time_adjudication_accuracy": 1.0,
+        "valid_time_breakdown": {
+          "observed_at_present_correct": 0,
+          "observed_at_present_total": 0,
+          "observed_at_present_accuracy": 1.0,
+          "observed_at_absent_fallback_correct": 0,
+          "observed_at_absent_fallback_total": 0,
+          "observed_at_absent_fallback_accuracy": 1.0
+        },
+        "counts": {
+          "steps": 4,
+          "gold_invalidations": 0,
+          "predicted_invalidations": 0,
+          "valid_time_targets": 0,
+          "entity_gold_same_pairs": 0,
+          "entity_gold_diff_pairs": 3
+        }
+      },
+      "invalidation_by_tag": {
+        "full": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "partial": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "conditional": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "revival": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "alias_trap": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "provenance_conflict": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "non_invalidation_decoy": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "out_of_order_late": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        }
+      },
+      "per_trajectory": {
+        "r1np_clv0_trial": {
+          "step_count": 4,
+          "steps": [
+            {
+              "after_obs_id": "turn_001",
+              "gold_active_set": [],
+              "predicted_active_set": [
+                "n_0002",
+                "n_0003"
+              ],
+              "active_set_f1": 0.0,
+              "gold_must_include": [],
+              "predicted_must_include": [],
+              "must_include_recall": 1.0,
+              "gold_invalidations": [],
+              "predicted_invalidations": [],
+              "gold_valid_time_targets": [],
+              "predicted_valid_time": [
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "build_status",
+                  "winner_obs_id": "turn_001",
+                  "fallback_used": true
+                },
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "execution_status",
+                  "winner_obs_id": "turn_001",
+                  "fallback_used": true
+                }
+              ]
+            },
+            {
+              "after_obs_id": "turn_002",
+              "gold_active_set": [],
+              "predicted_active_set": [
+                "n_0002",
+                "n_0003",
+                "n_0005"
+              ],
+              "active_set_f1": 0.0,
+              "gold_must_include": [],
+              "predicted_must_include": [],
+              "must_include_recall": 1.0,
+              "gold_invalidations": [],
+              "predicted_invalidations": [],
+              "gold_valid_time_targets": [],
+              "predicted_valid_time": [
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "build_status",
+                  "winner_obs_id": "turn_001",
+                  "fallback_used": true
+                },
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "execution_status",
+                  "winner_obs_id": "turn_001",
+                  "fallback_used": true
+                },
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "test_status",
+                  "winner_obs_id": "turn_002",
+                  "fallback_used": true
+                }
+              ]
+            },
+            {
+              "after_obs_id": "turn_003",
+              "gold_active_set": [],
+              "predicted_active_set": [
+                "n_0002",
+                "n_0003",
+                "n_0005"
+              ],
+              "active_set_f1": 0.0,
+              "gold_must_include": [],
+              "predicted_must_include": [],
+              "must_include_recall": 1.0,
+              "gold_invalidations": [],
+              "predicted_invalidations": [],
+              "gold_valid_time_targets": [],
+              "predicted_valid_time": [
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "build_status",
+                  "winner_obs_id": "turn_001",
+                  "fallback_used": true
+                },
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "execution_status",
+                  "winner_obs_id": "turn_001",
+                  "fallback_used": true
+                },
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "test_status",
+                  "winner_obs_id": "turn_002",
+                  "fallback_used": true
+                }
+              ]
+            },
+            {
+              "after_obs_id": "turn_004",
+              "gold_active_set": [],
+              "predicted_active_set": [
+                "n_0002",
+                "n_0003",
+                "n_0005",
+                "n_0006",
+                "n_0007"
+              ],
+              "active_set_f1": 0.0,
+              "gold_must_include": [],
+              "predicted_must_include": [],
+              "must_include_recall": 1.0,
+              "gold_invalidations": [],
+              "predicted_invalidations": [],
+              "gold_valid_time_targets": [],
+              "predicted_valid_time": [
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "build_status",
+                  "winner_obs_id": "turn_001",
+                  "fallback_used": true
+                },
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "execution_status",
+                  "winner_obs_id": "turn_001",
+                  "fallback_used": true
+                },
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "test_status",
+                  "winner_obs_id": "turn_002",
+                  "fallback_used": true
+                },
+                {
+                  "entity_key": "summary.md",
+                  "dimension": "FileArtifact",
+                  "winner_obs_id": "turn_004",
+                  "fallback_used": true
+                },
+                {
+                  "entity_key": "summary.md",
+                  "dimension": "execution_status",
+                  "winner_obs_id": "turn_004",
+                  "fallback_used": true
+                }
+              ]
+            }
+          ],
+          "entity_resolution": {
+            "gold_same_pairs": 0,
+            "gold_diff_pairs": 3,
+            "false_split_count": 0,
+            "false_merge_count": 0,
+            "false_split_rate": 0.0,
+            "false_merge_rate": 0.0
+          },
+          "invalidation_event_summary": {
+            "predicted_count": 0,
+            "gold_count": 0,
+            "true_positive_count": 0,
+            "false_positive_count": 0,
+            "false_negative_count": 0
+          }
+        }
+      }
+    },
+    "flat_rag_d1": {
+      "baseline": "flat_rag_d1",
+      "metrics": {
+        "invalidation_precision": 1.0,
+        "invalidation_recall": 1.0,
+        "invalidation_event_summary": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null
+        },
+        "active_set_set_f1": 0.0,
+        "must_include_recall": 1.0,
+        "entity_resolution_false_merge_rate": 0.0,
+        "entity_resolution_false_split_rate": 0.0,
+        "valid_time_adjudication_accuracy": 1.0,
+        "valid_time_breakdown": {
+          "observed_at_present_correct": 0,
+          "observed_at_present_total": 0,
+          "observed_at_present_accuracy": 1.0,
+          "observed_at_absent_fallback_correct": 0,
+          "observed_at_absent_fallback_total": 0,
+          "observed_at_absent_fallback_accuracy": 1.0
+        },
+        "counts": {
+          "steps": 4,
+          "gold_invalidations": 0,
+          "predicted_invalidations": 0,
+          "valid_time_targets": 0,
+          "entity_gold_same_pairs": 0,
+          "entity_gold_diff_pairs": 3
+        }
+      },
+      "invalidation_by_tag": {
+        "full": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "partial": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "conditional": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "revival": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "alias_trap": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "provenance_conflict": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "non_invalidation_decoy": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "out_of_order_late": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        }
+      },
+      "per_trajectory": {
+        "r1np_clv0_trial": {
+          "step_count": 4,
+          "steps": [
+            {
+              "after_obs_id": "turn_001",
+              "gold_active_set": [],
+              "predicted_active_set": [
+                "n_0002",
+                "n_0003"
+              ],
+              "active_set_f1": 0.0,
+              "gold_must_include": [],
+              "predicted_must_include": [],
+              "must_include_recall": 1.0,
+              "gold_invalidations": [],
+              "predicted_invalidations": [],
+              "gold_valid_time_targets": [],
+              "predicted_valid_time": [
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "build_status",
+                  "winner_obs_id": "turn_001",
+                  "fallback_used": true
+                },
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "execution_status",
+                  "winner_obs_id": "turn_001",
+                  "fallback_used": true
+                }
+              ]
+            },
+            {
+              "after_obs_id": "turn_002",
+              "gold_active_set": [],
+              "predicted_active_set": [
+                "n_0002",
+                "n_0003",
+                "n_0005"
+              ],
+              "active_set_f1": 0.0,
+              "gold_must_include": [],
+              "predicted_must_include": [],
+              "must_include_recall": 1.0,
+              "gold_invalidations": [],
+              "predicted_invalidations": [],
+              "gold_valid_time_targets": [],
+              "predicted_valid_time": [
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "test_status",
+                  "winner_obs_id": "turn_002",
+                  "fallback_used": true
+                }
+              ]
+            },
+            {
+              "after_obs_id": "turn_003",
+              "gold_active_set": [],
+              "predicted_active_set": [
+                "n_0002",
+                "n_0003",
+                "n_0005"
+              ],
+              "active_set_f1": 0.0,
+              "gold_must_include": [],
+              "predicted_must_include": [],
+              "must_include_recall": 1.0,
+              "gold_invalidations": [],
+              "predicted_invalidations": [],
+              "gold_valid_time_targets": [],
+              "predicted_valid_time": [
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "test_status",
+                  "winner_obs_id": "turn_002",
+                  "fallback_used": true
+                }
+              ]
+            },
+            {
+              "after_obs_id": "turn_004",
+              "gold_active_set": [],
+              "predicted_active_set": [
+                "n_0002",
+                "n_0003",
+                "n_0005",
+                "n_0006",
+                "n_0007"
+              ],
+              "active_set_f1": 0.0,
+              "gold_must_include": [],
+              "predicted_must_include": [],
+              "must_include_recall": 1.0,
+              "gold_invalidations": [],
+              "predicted_invalidations": [],
+              "gold_valid_time_targets": [],
+              "predicted_valid_time": [
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "test_status",
+                  "winner_obs_id": "turn_002",
+                  "fallback_used": true
+                },
+                {
+                  "entity_key": "summary.md",
+                  "dimension": "FileArtifact",
+                  "winner_obs_id": "turn_004",
+                  "fallback_used": true
+                },
+                {
+                  "entity_key": "summary.md",
+                  "dimension": "execution_status",
+                  "winner_obs_id": "turn_004",
+                  "fallback_used": true
+                }
+              ]
+            }
+          ],
+          "entity_resolution": {
+            "gold_same_pairs": 0,
+            "gold_diff_pairs": 3,
+            "false_split_count": 0,
+            "false_merge_count": 0,
+            "false_split_rate": 0.0,
+            "false_merge_rate": 0.0
+          },
+          "invalidation_event_summary": {
+            "predicted_count": 0,
+            "gold_count": 0,
+            "true_positive_count": 0,
+            "false_positive_count": 0,
+            "false_negative_count": 0
+          }
+        }
+      }
+    },
+    "flat_rag_d2": {
+      "baseline": "flat_rag_d2",
+      "metrics": {
+        "invalidation_precision": 1.0,
+        "invalidation_recall": 1.0,
+        "invalidation_event_summary": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null
+        },
+        "active_set_set_f1": 0.0,
+        "must_include_recall": 1.0,
+        "entity_resolution_false_merge_rate": 0.0,
+        "entity_resolution_false_split_rate": 0.0,
+        "valid_time_adjudication_accuracy": 1.0,
+        "valid_time_breakdown": {
+          "observed_at_present_correct": 0,
+          "observed_at_present_total": 0,
+          "observed_at_present_accuracy": 1.0,
+          "observed_at_absent_fallback_correct": 0,
+          "observed_at_absent_fallback_total": 0,
+          "observed_at_absent_fallback_accuracy": 1.0
+        },
+        "counts": {
+          "steps": 4,
+          "gold_invalidations": 0,
+          "predicted_invalidations": 0,
+          "valid_time_targets": 0,
+          "entity_gold_same_pairs": 0,
+          "entity_gold_diff_pairs": 3
+        }
+      },
+      "invalidation_by_tag": {
+        "full": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "partial": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "conditional": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "revival": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "alias_trap": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "provenance_conflict": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "non_invalidation_decoy": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "out_of_order_late": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        }
+      },
+      "per_trajectory": {
+        "r1np_clv0_trial": {
+          "step_count": 4,
+          "steps": [
+            {
+              "after_obs_id": "turn_001",
+              "gold_active_set": [],
+              "predicted_active_set": [
+                "n_0002",
+                "n_0003"
+              ],
+              "active_set_f1": 0.0,
+              "gold_must_include": [],
+              "predicted_must_include": [],
+              "must_include_recall": 1.0,
+              "gold_invalidations": [],
+              "predicted_invalidations": [],
+              "gold_valid_time_targets": [],
+              "predicted_valid_time": [
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "build_status",
+                  "winner_obs_id": "turn_001",
+                  "fallback_used": true
+                },
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "execution_status",
+                  "winner_obs_id": "turn_001",
+                  "fallback_used": true
+                }
+              ]
+            },
+            {
+              "after_obs_id": "turn_002",
+              "gold_active_set": [],
+              "predicted_active_set": [
+                "n_0005"
+              ],
+              "active_set_f1": 0.0,
+              "gold_must_include": [],
+              "predicted_must_include": [],
+              "must_include_recall": 1.0,
+              "gold_invalidations": [],
+              "predicted_invalidations": [],
+              "gold_valid_time_targets": [],
+              "predicted_valid_time": [
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "test_status",
+                  "winner_obs_id": "turn_002",
+                  "fallback_used": true
+                }
+              ]
+            },
+            {
+              "after_obs_id": "turn_003",
+              "gold_active_set": [],
+              "predicted_active_set": [
+                "n_0005"
+              ],
+              "active_set_f1": 0.0,
+              "gold_must_include": [],
+              "predicted_must_include": [],
+              "must_include_recall": 1.0,
+              "gold_invalidations": [],
+              "predicted_invalidations": [],
+              "gold_valid_time_targets": [],
+              "predicted_valid_time": [
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "test_status",
+                  "winner_obs_id": "turn_002",
+                  "fallback_used": true
+                }
+              ]
+            },
+            {
+              "after_obs_id": "turn_004",
+              "gold_active_set": [],
+              "predicted_active_set": [
+                "n_0005",
+                "n_0006",
+                "n_0007"
+              ],
+              "active_set_f1": 0.0,
+              "gold_must_include": [],
+              "predicted_must_include": [],
+              "must_include_recall": 1.0,
+              "gold_invalidations": [],
+              "predicted_invalidations": [],
+              "gold_valid_time_targets": [],
+              "predicted_valid_time": [
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "test_status",
+                  "winner_obs_id": "turn_002",
+                  "fallback_used": true
+                },
+                {
+                  "entity_key": "summary.md",
+                  "dimension": "FileArtifact",
+                  "winner_obs_id": "turn_004",
+                  "fallback_used": true
+                },
+                {
+                  "entity_key": "summary.md",
+                  "dimension": "execution_status",
+                  "winner_obs_id": "turn_004",
+                  "fallback_used": true
+                }
+              ]
+            }
+          ],
+          "entity_resolution": {
+            "gold_same_pairs": 0,
+            "gold_diff_pairs": 3,
+            "false_split_count": 0,
+            "false_merge_count": 0,
+            "false_split_rate": 0.0,
+            "false_merge_rate": 0.0
+          },
+          "invalidation_event_summary": {
+            "predicted_count": 0,
+            "gold_count": 0,
+            "true_positive_count": 0,
+            "false_positive_count": 0,
+            "false_negative_count": 0
+          }
+        }
+      }
+    },
+    "flat_rag": {
+      "baseline": "flat_rag_d2",
+      "metrics": {
+        "invalidation_precision": 1.0,
+        "invalidation_recall": 1.0,
+        "invalidation_event_summary": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null
+        },
+        "active_set_set_f1": 0.0,
+        "must_include_recall": 1.0,
+        "entity_resolution_false_merge_rate": 0.0,
+        "entity_resolution_false_split_rate": 0.0,
+        "valid_time_adjudication_accuracy": 1.0,
+        "valid_time_breakdown": {
+          "observed_at_present_correct": 0,
+          "observed_at_present_total": 0,
+          "observed_at_present_accuracy": 1.0,
+          "observed_at_absent_fallback_correct": 0,
+          "observed_at_absent_fallback_total": 0,
+          "observed_at_absent_fallback_accuracy": 1.0
+        },
+        "counts": {
+          "steps": 4,
+          "gold_invalidations": 0,
+          "predicted_invalidations": 0,
+          "valid_time_targets": 0,
+          "entity_gold_same_pairs": 0,
+          "entity_gold_diff_pairs": 3
+        }
+      },
+      "invalidation_by_tag": {
+        "full": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "partial": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "conditional": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "revival": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "alias_trap": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "provenance_conflict": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "non_invalidation_decoy": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        },
+        "out_of_order_late": {
+          "true_positive_count": 0,
+          "false_positive_count": 0,
+          "false_negative_count": 0,
+          "predicted_count": 0,
+          "gold_count": 0,
+          "precision": 1.0,
+          "recall": null,
+          "trajectory_ids": [],
+          "false_positive_trajectory_ids": [],
+          "true_positive_trajectory_ids": [],
+          "false_negative_trajectory_ids": []
+        }
+      },
+      "per_trajectory": {
+        "r1np_clv0_trial": {
+          "step_count": 4,
+          "steps": [
+            {
+              "after_obs_id": "turn_001",
+              "gold_active_set": [],
+              "predicted_active_set": [
+                "n_0002",
+                "n_0003"
+              ],
+              "active_set_f1": 0.0,
+              "gold_must_include": [],
+              "predicted_must_include": [],
+              "must_include_recall": 1.0,
+              "gold_invalidations": [],
+              "predicted_invalidations": [],
+              "gold_valid_time_targets": [],
+              "predicted_valid_time": [
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "build_status",
+                  "winner_obs_id": "turn_001",
+                  "fallback_used": true
+                },
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "execution_status",
+                  "winner_obs_id": "turn_001",
+                  "fallback_used": true
+                }
+              ]
+            },
+            {
+              "after_obs_id": "turn_002",
+              "gold_active_set": [],
+              "predicted_active_set": [
+                "n_0005"
+              ],
+              "active_set_f1": 0.0,
+              "gold_must_include": [],
+              "predicted_must_include": [],
+              "must_include_recall": 1.0,
+              "gold_invalidations": [],
+              "predicted_invalidations": [],
+              "gold_valid_time_targets": [],
+              "predicted_valid_time": [
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "test_status",
+                  "winner_obs_id": "turn_002",
+                  "fallback_used": true
+                }
+              ]
+            },
+            {
+              "after_obs_id": "turn_003",
+              "gold_active_set": [],
+              "predicted_active_set": [
+                "n_0005"
+              ],
+              "active_set_f1": 0.0,
+              "gold_must_include": [],
+              "predicted_must_include": [],
+              "must_include_recall": 1.0,
+              "gold_invalidations": [],
+              "predicted_invalidations": [],
+              "gold_valid_time_targets": [],
+              "predicted_valid_time": [
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "test_status",
+                  "winner_obs_id": "turn_002",
+                  "fallback_used": true
+                }
+              ]
+            },
+            {
+              "after_obs_id": "turn_004",
+              "gold_active_set": [],
+              "predicted_active_set": [
+                "n_0005",
+                "n_0006",
+                "n_0007"
+              ],
+              "active_set_f1": 0.0,
+              "gold_must_include": [],
+              "predicted_must_include": [],
+              "must_include_recall": 1.0,
+              "gold_invalidations": [],
+              "predicted_invalidations": [],
+              "gold_valid_time_targets": [],
+              "predicted_valid_time": [
+                {
+                  "entity_key": "format_greeting",
+                  "dimension": "test_status",
+                  "winner_obs_id": "turn_002",
+                  "fallback_used": true
+                },
+                {
+                  "entity_key": "summary.md",
+                  "dimension": "FileArtifact",
+                  "winner_obs_id": "turn_004",
+                  "fallback_used": true
+                },
+                {
+                  "entity_key": "summary.md",
+                  "dimension": "execution_status",
+                  "winner_obs_id": "turn_004",
+                  "fallback_used": true
+                }
+              ]
+            }
+          ],
+          "entity_resolution": {
+            "gold_same_pairs": 0,
+            "gold_diff_pairs": 3,
+            "false_split_count": 0,
+            "false_merge_count": 0,
+            "false_split_rate": 0.0,
+            "false_merge_rate": 0.0
+          },
+          "invalidation_event_summary": {
+            "predicted_count": 0,
+            "gold_count": 0,
+            "true_positive_count": 0,
+            "false_positive_count": 0,
+            "false_negative_count": 0
+          }
+        }
+      }
+    }
+  },
+  "alias_strategy_tradeoff": {
+    "conservative_exact_surface": {
+      "false_split_count": 0,
+      "false_merge_count": 0,
+      "gold_same_pairs": 0,
+      "gold_diff_pairs": 0,
+      "false_split_rate": 0.0,
+      "false_merge_rate": 0.0
+    },
+    "aggressive_token_overlap": {
+      "false_split_count": 0,
+      "false_merge_count": 0,
+      "gold_same_pairs": 0,
+      "gold_diff_pairs": 0,
+      "false_split_rate": 0.0,
+      "false_merge_rate": 0.0
+    },
+    "weighted_cost_profiles": {
+      "equal_cost": {
+        "false_merge_weight": 1,
+        "false_split_weight": 1,
+        "conservative_cost": 0,
+        "aggressive_cost": 0,
+        "preferred_strategy": "tie"
+      },
+      "merge_is_2x": {
+        "false_merge_weight": 2,
+        "false_split_weight": 1,
+        "conservative_cost": 0,
+        "aggressive_cost": 0,
+        "preferred_strategy": "tie"
+      },
+      "merge_is_5x": {
+        "false_merge_weight": 5,
+        "false_split_weight": 1,
+        "conservative_cost": 0,
+        "aggressive_cost": 0,
+        "preferred_strategy": "tie"
+      },
+      "split_is_2x": {
+        "false_merge_weight": 1,
+        "false_split_weight": 2,
+        "conservative_cost": 0,
+        "aggressive_cost": 0,
+        "preferred_strategy": "tie"
+      }
+    }
+  },
+  "tag_failures": {
+    "full": {
+      "phase0_current": [],
+      "flat_rag": []
+    },
+    "partial": {
+      "phase0_current": [],
+      "flat_rag": []
+    },
+    "conditional": {
+      "phase0_current": [],
+      "flat_rag": []
+    },
+    "revival": {
+      "phase0_current": [],
+      "flat_rag": []
+    },
+    "alias_trap": {
+      "phase0_current": [],
+      "flat_rag": []
+    },
+    "provenance_conflict": {
+      "phase0_current": [],
+      "flat_rag": []
+    },
+    "non_invalidation_decoy": {
+      "phase0_current": [],
+      "flat_rag": []
+    },
+    "out_of_order_late": {
+      "phase0_current": [],
+      "flat_rag": []
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{"type":"cl_v0_injected","ts":"2026-09-24T10:55:27.562Z","payload":{"states_count":3,"readiness":"degraded","state_revision":"0002:ee2fed13b17e"}}
+{"type":"cl_v0_boundary_dump","ts":"2026-09-24T10:55:27.958Z","payload":{"message_count":1,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_injected","ts":"2026-09-24T10:55:28.739Z","payload":{"states_count":3,"readiness":"degraded","state_revision":"0002:ee2fed13b17e"}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T10:55:41.171Z","tool":"read","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T10:55:41.227Z","tool":"read","payload":{"gate":"preaction","exit_code":0,"reason_codes":[]}}
+{"type":"cl_v0_boundary_dump","ts":"2026-09-24T10:55:41.655Z","payload":{"message_count":2,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_injected","ts":"2026-09-24T10:55:41.673Z","payload":{"states_count":3,"readiness":"degraded","state_revision":"0002:ee2fed13b17e"}}

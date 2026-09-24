@@ -1,0 +1,7 @@
+# round1 装置目录的版本控制规则（宿主仓 pilot/round1/）
+# 根 .gitignore 的 traces/ 会误杀本装置的 trace 证据——在此重新收容；
+# node_modules / __pycache__ 等运行副产物不入库。
+**/node_modules/
+**/__pycache__/
+!**/traces/
+!**/traces/*.jsonl

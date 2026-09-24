@@ -1,0 +1,24 @@
+{
+  "cmd": [
+    "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+    "D:\\CCXXLESSON\\contextledger-host\\tools\\cl_turn.py",
+    "--project",
+    "D:\\CCXXLESSON\\contextledger-host\\pilot\\round1\\trial\\r1_normal_passage\\clv0\\task-project",
+    "--cl-project",
+    "round1_r1np_clv0",
+    "--text",
+    "自测一下（调用两次：张三、李四），告诉我输出。",
+    "--timeout",
+    "420"
+  ],
+  "cwd": "D:\\CCXXLESSON\\contextledger-host",
+  "rc": 0,
+  "stdout": "[装配] revision -> 0001:345d02db8715\n[宿主] opencode run -c 自测一下（调用两次：张三、李四），告诉我输出。...\n[宿主] rc=0\n两次调用输出：\n\n```\n你好, 张三！\n你好, 李四！\n```\n\n[CL] pilot_turn_driver turn 2 ...\n[turn_002] CL ����ɣ�nodes=5 states={'greet.py@build_status': 'open', 'format_greeting@execution_status': 'open', 'format_greeting@test_status': 'open'} revision=0002:ee2fed13b17e\n\n",
+  "stderr": "",
+  "seconds": 30.1,
+  "arm": "clv0",
+  "session": 1,
+  "turn": 2,
+  "new_session": false,
+  "user_text": "自测一下（调用两次：张三、李四），告诉我输出。"
+}

@@ -1,0 +1,116 @@
+{
+  "scenario": "r1_normal_passage",
+  "seeds": {
+    "clv0": {
+      "greet.py": "6120898bedca26b9",
+      "SUMMARY.md": "797dce7f8b6ebcd4"
+    },
+    "baseline": {
+      "greet.py": "6120898bedca26b9",
+      "SUMMARY.md": "797dce7f8b6ebcd4"
+    }
+  },
+  "steps": [
+    {
+      "step": "cl_install",
+      "rc": 0,
+      "stdout": "initialized CL project: D:\\CCXXLESSON\\contextledger\\graph\\projects\\round1_r1np_clv0\ninstalled plugin: D:\\CCXXLESSON\\contextledger-host\\pilot\\round1\\trial\\r1_normal_passage\\clv0\\task-project\\.opencode\\plugin\\cl-v0-inject.js\ncreated control file: D:\\CCXXLESSON\\contextledger-host\\pilot\\round1\\trial\\r1_normal_passage\\clv0\\task-project\\.opencode\\cl_v0.json\n\n��װ��ɡ���һ���������Լ죺\n  python tools/cl_selfcheck.py --project D:\\CCXXLESSON\\contextledger-host\\pilot\\round1\\trial\\r1_normal_passage\\clv0\\task-project\n",
+      "stderr": "",
+      "seconds": 0.1
+    },
+    {
+      "step": "cl_selfcheck",
+      "rc": 0,
+      "stdout": "  [PASS] 1. ����Ѱ�װ �� D:\\CCXXLESSON\\contextledger-host\\pilot\\round1\\trial\\r1_normal_passage\\clv0\\task-project\\.opencode\\plugin\\cl-v0-inject.js\n  [PASS] 2. �����ļ� �� ������\n  [PASS] 3. CL ���棨verify_preaction.py�� �� D:\\CCXXLESSON\\contextledger\\graph\\scripts\\verify_preaction.py\n  [PASS] 4. verify_preaction ������Ӧ �� exit=2��ռλ revision ̽�⣬2=����������\n  [PASS] 5. CL װ����� �� ���� current_states.json������ǰ��������\n  [PASS] 6. AGENTS.md ����ͨ����д �� �ɶ�д\n\n�Լ���: 6/6 PASS �� ��������\n",
+      "stderr": "",
+      "seconds": 0.1
+    },
+    {
+      "step": "baseline_summary",
+      "rc": 0,
+      "stdout": "wrote D:\\CCXXLESSON\\contextledger-host\\pilot\\round1\\trial\\r1_normal_passage\\baseline\\summary_recovery.md (r1_summary_template_v1)\n",
+      "stderr": "",
+      "seconds": 0.0
+    },
+    {
+      "step": "info_floor",
+      "rc": 0,
+      "stdout": "��Ϣ�����޼��ͨ�����¼���Ԫ����ȫ�����ּ�¼��ȫ����й�йؼ��ʣ�\n",
+      "stderr": "",
+      "seconds": 0.0
+    },
+    {
+      "step": "turn_clv0_1",
+      "rc": 0,
+      "seconds": 40.6,
+      "session": 1,
+      "turn": 1
+    },
+    {
+      "step": "turn_baseline_1",
+      "rc": 0,
+      "seconds": 53.2,
+      "session": 1,
+      "turn": 1
+    },
+    {
+      "step": "turn_clv0_2",
+      "rc": 0,
+      "seconds": 30.1,
+      "session": 1,
+      "turn": 2
+    },
+    {
+      "step": "turn_baseline_2",
+      "rc": 0,
+      "seconds": 11.7,
+      "session": 1,
+      "turn": 2
+    },
+    {
+      "step": "turn_clv0_3",
+      "rc": 0,
+      "seconds": 22.6,
+      "session": 2,
+      "turn": 3
+    },
+    {
+      "step": "turn_baseline_3",
+      "rc": 0,
+      "seconds": 16.3,
+      "session": 2,
+      "turn": 3
+    },
+    {
+      "step": "turn_clv0_4",
+      "rc": 0,
+      "seconds": 103.7,
+      "session": 2,
+      "turn": 4
+    },
+    {
+      "step": "turn_baseline_4",
+      "rc": 0,
+      "seconds": 21.3,
+      "session": 2,
+      "turn": 4
+    }
+  ],
+  "end_state": {
+    "clv0": {
+      "AGENTS.md": "fe591ae4a667dbc0",
+      "greet.py": "a77341e2f89b235a",
+      "SUMMARY.md": "797dce7f8b6ebcd4"
+    },
+    "baseline": {
+      "greet.py": "a77341e2f89b235a",
+      "SUMMARY.md": "e88fac434034fa56"
+    }
+  },
+  "clv0_traces": [
+    "D:\\CCXXLESSON\\contextledger-host\\pilot\\round1\\trial\\r1_normal_passage\\clv0\\traces\\round1_r1np_clv0_turn_0000.jsonl",
+    "D:\\CCXXLESSON\\contextledger-host\\pilot\\round1\\trial\\r1_normal_passage\\clv0\\traces\\round1_r1np_clv0_turn_0001.jsonl",
+    "D:\\CCXXLESSON\\contextledger-host\\pilot\\round1\\trial\\r1_normal_passage\\clv0\\traces\\round1_r1np_clv0_turn_0002.jsonl",
+    "D:\\CCXXLESSON\\contextledger-host\\pilot\\round1\\trial\\r1_normal_passage\\clv0\\traces\\round1_r1np_clv0_turn_0003.jsonl"
+  ]
+}
