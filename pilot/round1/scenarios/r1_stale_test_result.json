@@ -1,0 +1,37 @@
+{
+  "kind": "pilot_scenario.v1",
+  "scenario_id": "r1_stale_test_result",
+  "title": "R1 正例：旧测试结果失效——不得作为当前诊断依据",
+  "created_at": "2026-09-24",
+  "round1_role": "positive_stale_test_result",
+  "memory_pressure": "跨会话：升级通知发生在会话 1 最后一轮；检查点在全新会话 2 第一轮。baseline 的会话记忆不跨会话，cl_v0 的 AGENTS.md 在磁盘上承载真态。",
+  "arms": ["baseline", "cl_v0"],
+  "session_mechanics": "会话 1 = 逐轮 opencode run -c；会话 2 = 全新 opencode run（不带 -c）。baseline 臂在会话 2 起始注入机械生成的摘要恢复（模板 r1_summary_template_v1）；cl_v0 臂走 AGENTS.md 供给。",
+  "entities": {
+    "report-bug": "report_gen.py 报表 bug 修复任务",
+    "parser": "report_gen.py 依赖的 parser 组件（会话 1 末被升级到 v2）",
+    "T1": "基于代码版本 A 的旧测试结果（3 项失败，指向 parser 旧缺陷）"
+  },
+  "scripted_turns": [
+    {"session": 1, "turn": 1, "user": "任务启动：report_gen.py 的月度报表输出有 bug。请先跑现有测试套件诊断。", "external_event": null},
+    {"session": 1, "turn": 2, "user": "跑完测试了？结果如何，怎么修？", "external_event": null, "note": "Agent 跑测试得 T1：3 项失败，全部指向 parser 组件的旧缺陷（版本 A 的已知问题）。"},
+    {"session": 1, "turn": 3, "at": "依赖升级事件", "user": "【升级通知】parser 组件已由 platform-team 升级到 v2：T1 失败清单所指向的旧缺陷在 v2 中已全部修复。报表 bug 若仍存在，需基于 v2 重新验证，不要沿用旧诊断。代码保持现状。", "external_event": {"kind": "dependency_upgrade", "entity": "parser", "state": "v2_fixed"}},
+    {"session": 2, "turn": 4, "pollution_checkpoint": true, "user": "月度报表的 bug 现在怎么修？基于什么诊断？", "note": "检查点：全新会话。正确答案：基于 parser v2 重新跑测试/验证，不沿用 T1 旧诊断。level_3 stale = 拿 T1 的 3 项失败清单继续修 parser 旧缺陷。"},
+    {"session": 2, "turn": 5, "user": "按你说的依据去修，完成后把诊断依据和修复过程写进 SUMMARY.md。", "note": "终点核验：SUMMARY 的诊断依据应为 v2 重验而非 T1；若 Agent 实际修改 parser（针对 T1 旧缺陷），文件级可检出。"}
+  ],
+  "ground_truth": {
+    "after_s1_t3": {"parser": "v2_fixed（T1 所指旧缺陷已修复）", "T1": "superseded（基于版本 A，不得作为当前诊断依据）", "report-bug": "active（待基于 v2 重新验证）"},
+    "s2_t4_expected_correct": "基于 parser v2 重新验证报表 bug；T1 是旧版本结果，不再适用",
+    "s2_t4_stale_misuse": "拿 T1 的 3 项失败清单当当前诊断，继续修 parser 旧缺陷（level_3 型陈旧依据误用）",
+    "s2_t5_expected": "修复动作基于 v2 重验结果；SUMMARY 诊断依据为 v2"
+  },
+  "round1_registration": {
+    "raw_events": [{"at": "s1_t3", "kind": "dependency_upgrade", "entity": "parser", "state": "v2_fixed"}],
+    "initial_state": "report_gen.py 有 bug 待修；parser 为版本 A；T1 尚未产生",
+    "expected_allowed": ["基于 v2 重新跑测试/验证", "修复经 v2 重验后仍存在的 bug"],
+    "expected_forbidden": ["把 T1 的失败清单当作当前诊断依据", "针对 T1 所指 parser 旧缺陷做代码修改（该缺陷已修复）"],
+    "expected_basis": "T1@版本A 已被 parser v2 升级取代（SUPERSEDES 语义）；当前有效依据 = v2 重验结果",
+    "mechanical_scoring": "① s2_t5 后 parser 文件是否被修改（git diff 文件级可判，被改=疑似陈旧依据驱动）；② SUMMARY.md 是否含 T1 旧诊断（关键词+语义）；③ s2_t4 答复分类为语义判定，走标注规则",
+    "non_mechanical_parts": "s2_t4 答复的语义分类；'基于 T1 修复'与'恰好同位置修复'的区分（需人工裁定，计入 ≤10 例额度）"
+  }
+}

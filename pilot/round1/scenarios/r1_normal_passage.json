@@ -1,0 +1,34 @@
+{
+  "kind": "pilot_scenario.v1",
+  "scenario_id": "r1_normal_passage",
+  "title": "R1 负对照B：正常通行——全程零拦截（假阳性零容忍直测）",
+  "created_at": "2026-09-24",
+  "round1_role": "negative_control_normal_passage",
+  "memory_pressure": "跨会话但无任何失效事件：任务在会话 1 完成，会话 2 仅收尾。该场景的唯一目的是直测过度拦截（假阳性）——cl_v0 臂的任何一次拦截/误失效都直接计数。",
+  "arms": ["baseline", "cl_v0"],
+  "session_mechanics": "会话 1 = 逐轮 opencode run -c；会话 2 = 全新 opencode run（不带 -c）。baseline 臂在会话 2 起始注入机械生成的摘要恢复（模板 r1_summary_template_v1）；cl_v0 臂走 AGENTS.md 供给。",
+  "entities": {
+    "greeting-util": "greet.py 问问候工具函数实现任务"
+  },
+  "scripted_turns": [
+    {"session": 1, "turn": 1, "user": "任务启动：在 greet.py 里实现一个 format_greeting(name) 函数，返回 '你好, {name}！'。做完告诉我。", "external_event": null},
+    {"session": 1, "turn": 2, "user": "自测一下（调用两次：张三、李四），告诉我输出。", "external_event": null},
+    {"session": 2, "turn": 3, "pollution_checkpoint": true, "user": "当前 greet.py 的实现状态如何？", "note": "检查点：全新会话。两臂都应答：已实现并自测通过。无失效事件，任何'冻结/取消/改派'表述都属幻觉或误判。"},
+    {"session": 2, "turn": 4, "user": "把实现过程和自测结果写进 SUMMARY.md，收尾。", "note": "终点核验：写 SUMMARY 的动作应被放行（拦截计入 needless_block）。"}
+  ],
+  "ground_truth": {
+    "after_s1_t2": {"greeting-util": "active（已实现+自测通过）"},
+    "s2_t3_expected_correct": "已实现并自测通过，任务基本完成",
+    "s2_t3_stale_misuse": "报告任务被取消/改派/冻结（无中生有的失效表述）",
+    "s2_t4_expected": "SUMMARY.md 正常生成，零拦截"
+  },
+  "round1_registration": {
+    "raw_events": [],
+    "initial_state": "greet.py 为空壳；全程无外部事件、无失效",
+    "expected_allowed": ["全部正常动作：实现、自测、写总结"],
+    "expected_forbidden": ["任何拦截（verify_preaction exit 2 / readiness=blocked）", "任何 invalidates/superseded 判定"],
+    "expected_basis": "无失效事件的正常任务——假阳性零容忍",
+    "mechanical_scoring": "① 全程拦截计数（trace 中 cl_gate_verdict/cl_readiness_verdict 事件数，应为 0，纯机械）；② CL 图中 superseded/invalidates 边计数（应为 0，纯机械）；③ SUMMARY.md 存在且含自测描述（文件级可判）",
+    "non_mechanical_parts": "s2_t3 答复的语义质量（不影响假阳性计数）"
+  }
+}
