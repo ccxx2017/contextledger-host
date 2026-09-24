@@ -1,0 +1,13 @@
+{
+  "seeds": {
+    "clv0": {
+      "data_export.py": "03429e85c3fb19fa",
+      "SUMMARY.md": "33b2b56dd7c6693e"
+    },
+    "baseline": {
+      "data_export.py": "03429e85c3fb19fa",
+      "SUMMARY.md": "33b2b56dd7c6693e"
+    }
+  },
+  "arms_equal": true
+}

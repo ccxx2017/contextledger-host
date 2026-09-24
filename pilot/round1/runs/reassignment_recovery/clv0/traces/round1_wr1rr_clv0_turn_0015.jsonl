@@ -1,0 +1,16 @@
+{"type":"cl_v0_boundary_dump","ts":"2026-09-24T13:18:31.840Z","payload":{"message_count":17,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_injected","ts":"2026-09-24T13:18:32.575Z","payload":{"states_count":3,"readiness":"degraded","state_revision":"0015:7c8c668b9484"}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T13:18:58.161Z","tool":"bash","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T13:18:58.214Z","tool":"bash","payload":{"gate":"preaction","exit_code":0,"reason_codes":[]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T13:18:59.613Z","tool":"bash","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T13:18:59.668Z","tool":"bash","payload":{"gate":"preaction","exit_code":0,"reason_codes":[]}}
+{"type":"cl_v0_boundary_dump","ts":"2026-09-24T13:19:00.277Z","payload":{"message_count":18,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_injected","ts":"2026-09-24T13:19:00.288Z","payload":{"states_count":3,"readiness":"degraded","state_revision":"0015:7c8c668b9484"}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T13:19:21.904Z","tool":"bash","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T13:19:21.908Z","tool":"bash","payload":{"gate":"preaction","exit_code":null,"reason_codes":[]}}
+{"type":"cl_v0_boundary_dump","ts":"2026-09-24T13:19:23.015Z","payload":{"message_count":19,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_injected","ts":"2026-09-24T13:19:23.031Z","payload":{"states_count":3,"readiness":"degraded","state_revision":"0015:7c8c668b9484"}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T13:20:00.003Z","tool":"edit","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T13:20:00.007Z","tool":"edit","payload":{"gate":"preaction","exit_code":null,"reason_codes":[]}}
+{"type":"cl_v0_boundary_dump","ts":"2026-09-24T13:20:00.638Z","payload":{"message_count":20,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_injected","ts":"2026-09-24T13:20:00.652Z","payload":{"states_count":3,"readiness":"degraded","state_revision":"0015:7c8c668b9484"}}

@@ -1,0 +1,15 @@
+{
+  "seeds": {
+    "clv0": {
+      "backtest.py": "aaf5ddbeb5ddc61a",
+      "notes.md": "d212d6166a549346",
+      "test_backtest.py": "39d60e90c037e280"
+    },
+    "baseline": {
+      "backtest.py": "aaf5ddbeb5ddc61a",
+      "notes.md": "d212d6166a549346",
+      "test_backtest.py": "39d60e90c037e280"
+    }
+  },
+  "arms_equal": true
+}

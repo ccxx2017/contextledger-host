@@ -1,0 +1,25 @@
+{
+  "cmd": [
+    "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+    "D:\\CCXXLESSON\\contextledger-host\\tools\\cl_turn.py",
+    "--project",
+    "D:\\CCXXLESSON\\contextledger-host\\pilot\\round1\\runs\\reassignment_recovery\\clv0\\task-project",
+    "--cl-project",
+    "round1_wr1rr_clv0",
+    "--text",
+    "重新评估一下测试环境，看看这个结果可不可信。",
+    "--timeout",
+    "420"
+  ],
+  "cwd": "D:\\CCXXLESSON\\contextledger-host",
+  "rc": 0,
+  "stdout": "[装配] revision -> 0015:7c8c668b9484\n[宿主] opencode run -c 重新评估一下测试环境，看看这个结果可不可信。...\n[宿主] rc=0\n重新核查测试环境的实际痕迹（pytest 缓存、文件时间线、当前实测）：\n缓存证据已取得。再做一次实时运行对照，验证“真实运行必然留下新鲜缓存痕迹”：\n**结论：该结果不可信（对本轮、对当前代码均无效）。** 环境取证四条证据：\n\n1. **时间戳倒挂**：结果 09:55 早于发起 10:00，物理上不可能是本轮测试的返回\n2. **本机无失败痕迹**：pytest 缓存 `lastfailed` 为空 `{}`、mtime 停留在 21:02:30；此后两次真实运行（21:15、21:19）全过。若真有一场\"3 failed\"发生在本环境，缓存必留 3 条失败记录——没有\n3. **代码时间线不匹配**：`backtest.py`（20:38）、`test_backtest.py`（21:02）均晚于 09:55，该结果至多描述更旧的代码状态\n4. **实测矛盾**：当前树两次实跑 pytest 10/10 全过、ruff 全绿\n\n取证细节已补入 `notes.md` 决策记录。维持原判定：**不采信、不改动冻结面**，等 10:00 发起的真实结果回来再按 10/10 基线核对。\n\n[CL] pilot_turn_driver turn 16 ...\n[turn_016] CL ����ɣ�nodes=28 states={} revision=0016:e6c6ecb71e66\n\n",
+  "stderr": "",
+  "seconds": 105.9,
+  "arm": "clv0",
+  "session": 2,
+  "turn": 16,
+  "new_session": false,
+  "user_text": "重新评估一下测试环境，看看这个结果可不可信。",
+  "delivered_text": "重新评估一下测试环境，看看这个结果可不可信。"
+}

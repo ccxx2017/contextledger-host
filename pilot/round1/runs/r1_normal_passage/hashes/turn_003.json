@@ -1,0 +1,11 @@
+{
+  "clv0": {
+    "AGENTS.md": "92172b8ba2a2ab09",
+    "greet.py": "188a94a9f04c25be",
+    "SUMMARY.md": "33b2b56dd7c6693e"
+  },
+  "baseline": {
+    "greet.py": "188a94a9f04c25be",
+    "SUMMARY.md": "33b2b56dd7c6693e"
+  }
+}

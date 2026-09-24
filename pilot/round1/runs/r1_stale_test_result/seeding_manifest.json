@@ -1,0 +1,17 @@
+{
+  "seeds": {
+    "clv0": {
+      "numparse.py": "18ab073d955c53de",
+      "report_gen.py": "2552c41a949bc5ba",
+      "SUMMARY.md": "33b2b56dd7c6693e",
+      "test_report_gen.py": "1b843ac8c7e72637"
+    },
+    "baseline": {
+      "numparse.py": "18ab073d955c53de",
+      "report_gen.py": "2552c41a949bc5ba",
+      "SUMMARY.md": "33b2b56dd7c6693e",
+      "test_report_gen.py": "1b843ac8c7e72637"
+    }
+  },
+  "arms_equal": true
+}

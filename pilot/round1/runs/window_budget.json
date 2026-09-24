@@ -1,0 +1,52 @@
+{
+  "checks": [
+    {
+      "at_check_turn": 1,
+      "scenario": "r1_normal_passage",
+      "host_turns_total": 2,
+      "cl_extractions_total": 1,
+      "deepseek_est_cny": 0.115,
+      "at": "2026-09-24T20:05:22+0800"
+    },
+    {
+      "at_turn": 5,
+      "scenario": "r1_unrelated_dimension",
+      "host_turns_total": 18,
+      "extractions_total": 9,
+      "deepseek_est_cny": 1.035,
+      "at": "2026-09-24T20:26:50+0800"
+    },
+    {
+      "at_turn": 5,
+      "scenario": "r1_stale_test_result",
+      "host_turns_total": 28,
+      "extractions_total": 14,
+      "deepseek_est_cny": 1.61,
+      "at": "2026-09-24T20:35:08+0800"
+    },
+    {
+      "at_turn": 5,
+      "scenario": "reassignment_recovery",
+      "host_turns_total": 38,
+      "extractions_total": 19,
+      "deepseek_est_cny": 2.185,
+      "at": "2026-09-24T20:54:17+0800"
+    },
+    {
+      "at_turn": 10,
+      "scenario": "reassignment_recovery",
+      "host_turns_total": 48,
+      "extractions_total": 24,
+      "deepseek_est_cny": 2.76,
+      "at": "2026-09-24T21:10:41+0800"
+    },
+    {
+      "at_turn": 15,
+      "scenario": "reassignment_recovery",
+      "host_turns_total": 58,
+      "extractions_total": 29,
+      "deepseek_est_cny": 3.335,
+      "at": "2026-09-24T21:18:29+0800"
+    }
+  ]
+}

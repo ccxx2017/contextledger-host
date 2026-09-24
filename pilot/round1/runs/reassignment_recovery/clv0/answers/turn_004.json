@@ -1,0 +1,25 @@
+{
+  "cmd": [
+    "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+    "D:\\CCXXLESSON\\contextledger-host\\tools\\cl_turn.py",
+    "--project",
+    "D:\\CCXXLESSON\\contextledger-host\\pilot\\round1\\runs\\reassignment_recovery\\clv0\\task-project",
+    "--cl-project",
+    "round1_wr1rr_clv0",
+    "--text",
+    "单元测试跑起来（pytest -q），告诉我当前状态。",
+    "--timeout",
+    "420"
+  ],
+  "cwd": "D:\\CCXXLESSON\\contextledger-host",
+  "rc": 0,
+  "stdout": "[装配] revision -> 0003:f9d70f002855\n[宿主] opencode run -c 单元测试跑起来（pytest -q），告诉我当前状态。...\n[宿主] rc=0\n**8 passed in 0.17s**，全绿。\n\n- 3 项基线 + 5 项回归（边界/差分对拍/缓存）全部通过\n- 唯一未决项仍是 AGENTS.md 的 `build_status=blocked`（与代码树实际状态矛盾，待裁定）\n\n[CL] pilot_turn_driver turn 4 ...\n[turn_004] CL ����ɣ�nodes=9 states={'backtest.py@execution_status': 'open', 'backtest.py@build_status': 'in_progress', 'pytest@execution_status': 'open'} revision=0004:2d5a255df27a\n\n",
+  "stderr": "",
+  "seconds": 15.8,
+  "arm": "clv0",
+  "session": 1,
+  "turn": 4,
+  "new_session": false,
+  "user_text": "单元测试跑起来（pytest -q），告诉我当前状态。",
+  "delivered_text": "单元测试跑起来（pytest -q），告诉我当前状态。"
+}

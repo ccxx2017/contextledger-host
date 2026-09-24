@@ -1,0 +1,94 @@
+{
+  "scenario": "r1_unrelated_dimension",
+  "scenario_path": "D:\\CCXXLESSON\\contextledger-host\\pilot\\round1\\scenarios\\r1_unrelated_dimension.json",
+  "cl_project": "round1_wr1ud_clv0",
+  "steps": [
+    {
+      "step": "cl_install",
+      "rc": 0
+    },
+    {
+      "step": "cl_selfcheck",
+      "rc": 0,
+      "six_of_six": true
+    },
+    {
+      "step": "baseline_summary",
+      "rc": 0
+    },
+    {
+      "step": "info_floor",
+      "rc": 0
+    },
+    {
+      "step": "turn_clv0_1",
+      "rc": 0,
+      "seconds": 172.5,
+      "session": 1,
+      "turn": 1
+    },
+    {
+      "step": "turn_baseline_1",
+      "rc": 0,
+      "seconds": 76.9,
+      "session": 1,
+      "turn": 1
+    },
+    {
+      "step": "turn_clv0_2",
+      "rc": 0,
+      "seconds": 110.9,
+      "session": 1,
+      "turn": 2
+    },
+    {
+      "step": "turn_baseline_2",
+      "rc": 0,
+      "seconds": 20.2,
+      "session": 1,
+      "turn": 2
+    },
+    {
+      "step": "turn_clv0_3",
+      "rc": 0,
+      "seconds": 30.7,
+      "session": 1,
+      "turn": 3
+    },
+    {
+      "step": "turn_baseline_3",
+      "rc": 0,
+      "seconds": 18.4,
+      "session": 1,
+      "turn": 3
+    },
+    {
+      "step": "turn_clv0_4",
+      "rc": 0,
+      "seconds": 50.6,
+      "session": 2,
+      "turn": 4
+    },
+    {
+      "step": "turn_baseline_4",
+      "rc": 0,
+      "seconds": 29.1,
+      "session": 2,
+      "turn": 4
+    },
+    {
+      "step": "turn_clv0_5",
+      "rc": 0,
+      "seconds": 274.8,
+      "session": 2,
+      "turn": 5
+    },
+    {
+      "step": "turn_baseline_5",
+      "rc": 0,
+      "seconds": 87.2,
+      "session": 2,
+      "turn": 5
+    }
+  ]
+}

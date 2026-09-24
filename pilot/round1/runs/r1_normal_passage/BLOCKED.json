@@ -1,0 +1,11 @@
+{
+  "reason": "投递核验失败：baseline t3 user_text 不含摘要（M3 装置故障，单向利多 CL 方向）",
+  "at": "2026-09-24T20:07:52+0800",
+  "resolution": {
+    "status": "resolved_scenario_completed",
+    "at": "2026-09-24T20:20:00+0800",
+    "root_cause": "驱动缺陷（非装置故障）：run_window.py 首版把 answers 的 user_text 记成 scripted 原文，实际投递的注入文本未入记录，M3 机械核验输入失真。摘要实际已投递并被模型消费（独立证据：t3 答复引用'两次调用自测'——仅摘要逐轮记录可达）。",
+    "fix": "驱动改记 delivered_text（实际投递文本）+ user_text 双字段；M3 核验改查 delivered_text；t3 投递经人工核验记录于 delivery_check.json（method=manual_verification_driver_defect）。",
+    "outcome": "场景 1 于修复后续跑完成：4/4 轮双臂 rc=0、零阻断、t4 之后各场景 M3 机械核验均 PASS（全文=True）。本 BLOCKED 标记保留为过程记录，场景最终状态=完成。"
+  }
+}

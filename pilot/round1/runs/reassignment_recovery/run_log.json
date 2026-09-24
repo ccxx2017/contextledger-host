@@ -1,0 +1,255 @@
+{
+  "scenario": "reassignment_recovery",
+  "scenario_path": "D:\\CCXXLESSON\\contextledger-host\\pilot\\round1\\scenarios\\reassignment_recovery.json",
+  "cl_project": "round1_wr1rr_clv0",
+  "steps": [
+    {
+      "step": "cl_install",
+      "rc": 0
+    },
+    {
+      "step": "cl_selfcheck",
+      "rc": 0,
+      "six_of_six": true
+    },
+    {
+      "step": "baseline_summary",
+      "rc": 0
+    },
+    {
+      "step": "info_floor",
+      "rc": 0
+    },
+    {
+      "step": "turn_clv0_1",
+      "rc": 0,
+      "seconds": 260.7,
+      "session": 1,
+      "turn": 1
+    },
+    {
+      "step": "turn_baseline_1",
+      "rc": 0,
+      "seconds": 215.8,
+      "session": 1,
+      "turn": 1
+    },
+    {
+      "step": "turn_clv0_2",
+      "rc": 0,
+      "seconds": 93.5,
+      "session": 1,
+      "turn": 2
+    },
+    {
+      "step": "turn_baseline_2",
+      "rc": 0,
+      "seconds": 32.7,
+      "session": 1,
+      "turn": 2
+    },
+    {
+      "step": "turn_clv0_3",
+      "rc": 0,
+      "seconds": 180.7,
+      "session": 1,
+      "turn": 3
+    },
+    {
+      "step": "turn_baseline_3",
+      "rc": 0,
+      "seconds": 115.8,
+      "session": 1,
+      "turn": 3
+    },
+    {
+      "step": "turn_clv0_4",
+      "rc": 0,
+      "seconds": 15.8,
+      "session": 1,
+      "turn": 4
+    },
+    {
+      "step": "turn_baseline_4",
+      "rc": 0,
+      "seconds": 8.0,
+      "session": 1,
+      "turn": 4
+    },
+    {
+      "step": "turn_clv0_5",
+      "rc": 0,
+      "seconds": 97.3,
+      "session": 1,
+      "turn": 5
+    },
+    {
+      "step": "turn_baseline_5",
+      "rc": 0,
+      "seconds": 66.4,
+      "session": 1,
+      "turn": 5
+    },
+    {
+      "step": "turn_clv0_6",
+      "rc": 0,
+      "seconds": 146.7,
+      "session": 1,
+      "turn": 6
+    },
+    {
+      "step": "turn_baseline_6",
+      "rc": 0,
+      "seconds": 97.5,
+      "session": 1,
+      "turn": 6
+    },
+    {
+      "step": "turn_clv0_7",
+      "rc": 0,
+      "seconds": 285.3,
+      "session": 1,
+      "turn": 7
+    },
+    {
+      "step": "turn_baseline_7",
+      "rc": 0,
+      "seconds": 87.9,
+      "session": 1,
+      "turn": 7
+    },
+    {
+      "step": "turn_clv0_8",
+      "rc": 0,
+      "seconds": 74.6,
+      "session": 1,
+      "turn": 8
+    },
+    {
+      "step": "turn_baseline_8",
+      "rc": 0,
+      "seconds": 17.2,
+      "session": 1,
+      "turn": 8
+    },
+    {
+      "step": "turn_clv0_9",
+      "rc": 0,
+      "seconds": 62.7,
+      "session": 1,
+      "turn": 9
+    },
+    {
+      "step": "turn_baseline_9",
+      "rc": 0,
+      "seconds": 65.4,
+      "session": 1,
+      "turn": 9
+    },
+    {
+      "step": "turn_clv0_10",
+      "rc": 0,
+      "seconds": 70.6,
+      "session": 1,
+      "turn": 10
+    },
+    {
+      "step": "turn_baseline_10",
+      "rc": 0,
+      "seconds": 75.4,
+      "session": 1,
+      "turn": 10
+    },
+    {
+      "step": "turn_clv0_11",
+      "rc": 0,
+      "seconds": 56.4,
+      "session": 1,
+      "turn": 11
+    },
+    {
+      "step": "turn_baseline_11",
+      "rc": 0,
+      "seconds": 9.8,
+      "session": 1,
+      "turn": 11
+    },
+    {
+      "step": "turn_clv0_12",
+      "rc": 0,
+      "seconds": 78.0,
+      "session": 2,
+      "turn": 12
+    },
+    {
+      "step": "turn_baseline_12",
+      "rc": 0,
+      "seconds": 80.8,
+      "session": 2,
+      "turn": 12
+    },
+    {
+      "step": "turn_clv0_13",
+      "rc": 0,
+      "seconds": 27.0,
+      "session": 2,
+      "turn": 13
+    },
+    {
+      "step": "turn_baseline_13",
+      "rc": 0,
+      "seconds": 21.8,
+      "session": 2,
+      "turn": 13
+    },
+    {
+      "step": "turn_clv0_14",
+      "rc": 0,
+      "seconds": 63.6,
+      "session": 2,
+      "turn": 14
+    },
+    {
+      "step": "turn_baseline_14",
+      "rc": 0,
+      "seconds": 59.4,
+      "session": 2,
+      "turn": 14
+    },
+    {
+      "step": "turn_clv0_15",
+      "rc": 0,
+      "seconds": 45.4,
+      "session": 2,
+      "turn": 15
+    },
+    {
+      "step": "turn_baseline_15",
+      "rc": 0,
+      "seconds": 25.9,
+      "session": 2,
+      "turn": 15
+    },
+    {
+      "step": "turn_clv0_16",
+      "rc": 0,
+      "seconds": 105.9,
+      "session": 2,
+      "turn": 16
+    },
+    {
+      "step": "turn_baseline_16",
+      "rc": 0,
+      "seconds": 170.2,
+      "session": 2,
+      "turn": 16
+    },
+    {
+      "step": "turn_clv0_17",
+      "rc": 1,
+      "seconds": 160.4,
+      "session": 2,
+      "turn": 17
+    }
+  ]
+}

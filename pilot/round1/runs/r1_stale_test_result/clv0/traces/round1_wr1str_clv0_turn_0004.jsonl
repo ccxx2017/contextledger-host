@@ -1,0 +1,14 @@
+{"type":"cl_v0_boundary_dump","ts":"2026-09-24T12:33:06.490Z","payload":{"message_count":8,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_injected","ts":"2026-09-24T12:33:07.290Z","payload":{"states_count":3,"readiness":"degraded","state_revision":"0004:8da65864237d"}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:33:25.450Z","tool":"read","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:33:25.505Z","tool":"read","payload":{"gate":"preaction","exit_code":0,"reason_codes":[]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:33:26.265Z","tool":"glob","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:33:26.321Z","tool":"glob","payload":{"gate":"preaction","exit_code":0,"reason_codes":[]}}
+{"type":"cl_v0_boundary_dump","ts":"2026-09-24T12:33:26.778Z","payload":{"message_count":9,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_injected","ts":"2026-09-24T12:33:26.794Z","payload":{"states_count":3,"readiness":"degraded","state_revision":"0004:8da65864237d"}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:33:51.396Z","tool":"bash","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:33:51.400Z","tool":"bash","payload":{"gate":"preaction","exit_code":null,"reason_codes":[]}}
+{"type":"cl_v0_boundary_dump","ts":"2026-09-24T12:33:52.804Z","payload":{"message_count":10,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_injected","ts":"2026-09-24T12:33:52.821Z","payload":{"states_count":3,"readiness":"degraded","state_revision":"0004:8da65864237d"}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:34:07.933Z","tool":"bash","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:34:07.939Z","tool":"bash","payload":{"gate":"preaction","exit_code":null,"reason_codes":[]}}

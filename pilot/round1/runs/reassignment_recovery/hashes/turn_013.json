@@ -1,0 +1,19 @@
+{
+  "clv0": {
+    "AGENTS.md": "4d03fa46119ab80c",
+    "backtest.py": "16455be68c1b21dd",
+    "benchmark_backtest.py": "507491d2384b6af2",
+    "handover.md": "fa310ef4eebc687a",
+    "notes.md": "bd96669af6b8093b",
+    "plan_b_draft.md": "5f099917579674c4",
+    "test_backtest.py": "2d82d5c5440cebf3"
+  },
+  "baseline": {
+    ".coverage": "4d111a1d790aba99",
+    "backtest.py": "ce6628531ecb8399",
+    "handover.md": "18b023ffe32ea5b2",
+    "notes.md": "5c5ce218dbde703f",
+    "plan_b_draft.md": "25977a9ab60a884f",
+    "test_backtest.py": "8e52918c7cb4d065"
+  }
+}

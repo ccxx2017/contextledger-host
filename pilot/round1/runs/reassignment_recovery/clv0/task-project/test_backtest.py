@@ -44,6 +44,14 @@ def test_nan_breaks_rising_run():
     assert run_backtest([1.0, float("nan"), 2.0]) == {"final_value": 10000.0, "trades": 0}
 
 
+def test_closed_run_only():
+    assert run_backtest([1.0, 2.0, 3.0, 2.0]) == {"final_value": 9999.0, "trades": 0}
+
+
+def test_closed_and_open_runs_mixed():
+    assert run_backtest([1.0, 2.0, 3.0, 2.0, 3.0]) == {"final_value": 9999.0, "trades": 1}
+
+
 def test_differential_against_reference():
     rng = random.Random(42)
     cases = [

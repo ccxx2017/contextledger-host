@@ -1,0 +1,14 @@
+{
+  "clv0": {
+    "AGENTS.md": "fa605a41d324a41d",
+    "backtest.py": "16455be68c1b21dd",
+    "benchmark_backtest.py": "507491d2384b6af2",
+    "notes.md": "82d9f26a9c3ca5b3",
+    "test_backtest.py": "b1d5c6d30accc416"
+  },
+  "baseline": {
+    "backtest.py": "ce6628531ecb8399",
+    "notes.md": "b1806593cfc5949a",
+    "test_backtest.py": "8e52918c7cb4d065"
+  }
+}

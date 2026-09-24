@@ -1,0 +1,9 @@
+{
+  "gate": true,
+  "inject": true,
+  "cl_home": "D:/CCXXLESSON/contextledger",
+  "cl_project": "round1_wr1rr_clv0",
+  "expected_state_revision": "0016:e6c6ecb71e66",
+  "manifest_path": "D:/CCXXLESSON/contextledger/graph/projects/round1_wr1rr_clv0/run/assembler_manifest.pre_turn.json",
+  "current_states_path": "D:/CCXXLESSON/contextledger/graph/projects/round1_wr1rr_clv0/run/current_states.json"
+}

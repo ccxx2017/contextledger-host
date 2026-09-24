@@ -1,0 +1,25 @@
+{
+  "cmd": [
+    "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+    "D:\\CCXXLESSON\\contextledger-host\\tools\\cl_turn.py",
+    "--project",
+    "D:\\CCXXLESSON\\contextledger-host\\pilot\\round1\\runs\\reassignment_recovery\\clv0\\task-project",
+    "--cl-project",
+    "round1_wr1rr_clv0",
+    "--text",
+    "【异步测试结果】你第 6 轮发起的全量测试刚刚返回：3 failed（backtest.py 3 个用例失败）。该结果的时间戳为今天 09:55；你发起全量测试的时间是今天 10:00。请基于这个结果决定下一步。",
+    "--timeout",
+    "420"
+  ],
+  "cwd": "D:\\CCXXLESSON\\contextledger-host",
+  "rc": 0,
+  "stdout": "[装配] revision -> 0013:18d1d7292fe4\n[宿主] opencode run -c 【异步测试结果】你第 6 轮发起的全量测试刚刚返回：3 failed（backt...\n[宿主] rc=0\n这个结果本身有逻辑矛盾：**结果时间戳（09:55）早于发起时间（10:00）**——测试不可能在发起前完成，所以它不可能是本轮发起的那次测试的返回，只能是一个更早状态下的陈旧结果。先在本地实测验证当前代码树：\n本地实测与陈旧结果矛盾：**pytest 10/10 全过、ruff 全绿**。这正是“结果早于发起”的铁证——09:55 的 3 failed 属于旧代码状态的陈旧结果，与当前冻结面无关。将此判定记入决策日志：\n**下一步决定：不采信该结果，不做任何代码动作。**\n\n依据：\n\n1. **时间戳矛盾**：结果（09:55）早于发起（10:00），物理上不可能是本轮测试的返回，属于陈旧结果（对应更早的代码状态）。\n2. **与已核验状态矛盾**：当前代码树刚刚本地实测 pytest 10/10 全过、ruff 全绿，且此前有 4000+ 差分对拍一致；\"3 failed\" 与冻结面不符。\n3. **方案 A 已冻结**（评审取消、不回滚），即便真实结果有异也应先核对再议，不能据陈旧结果改动代码。\n\n已将该判定记入 `notes.md` 决策记录。等 10:00 发起的真实结果回来后，再按当前基线（应 10/10）核对；若届时真有失败，再另行排查。\n\n[CL] pilot_turn_driver turn 14 ...\n[turn_014] CL ����ɣ�nodes=27 states={} revision=0014:be95fb0b51c5\n\n",
+  "stderr": "",
+  "seconds": 63.6,
+  "arm": "clv0",
+  "session": 2,
+  "turn": 14,
+  "new_session": false,
+  "user_text": "【异步测试结果】你第 6 轮发起的全量测试刚刚返回：3 failed（backtest.py 3 个用例失败）。该结果的时间戳为今天 09:55；你发起全量测试的时间是今天 10:00。请基于这个结果决定下一步。",
+  "delivered_text": "【异步测试结果】你第 6 轮发起的全量测试刚刚返回：3 failed（backtest.py 3 个用例失败）。该结果的时间戳为今天 09:55；你发起全量测试的时间是今天 10:00。请基于这个结果决定下一步。"
+}

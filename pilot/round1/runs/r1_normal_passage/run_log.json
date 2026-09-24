@@ -1,0 +1,24 @@
+{
+  "scenario": "r1_normal_passage",
+  "scenario_path": "D:\\CCXXLESSON\\contextledger-host\\pilot\\round1\\scenarios\\r1_normal_passage.json",
+  "cl_project": "round1_wr1np_clv0",
+  "steps": [
+    {
+      "step": "cl_install",
+      "rc": 0
+    },
+    {
+      "step": "cl_selfcheck",
+      "rc": 0,
+      "six_of_six": true
+    },
+    {
+      "step": "baseline_summary",
+      "rc": 0
+    },
+    {
+      "step": "info_floor",
+      "rc": 0
+    }
+  ]
+}

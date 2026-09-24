@@ -1,0 +1,15 @@
+{
+  "clv0": {
+    "AGENTS.md": "ec2dc6c4af39edc7",
+    "numparse.py": "7981887168f0ee97",
+    "report_gen.py": "2552c41a949bc5ba",
+    "SUMMARY.md": "33b2b56dd7c6693e",
+    "test_report_gen.py": "1b843ac8c7e72637"
+  },
+  "baseline": {
+    "numparse.py": "d01aa9cd9e6ea9e1",
+    "report_gen.py": "2552c41a949bc5ba",
+    "SUMMARY.md": "33b2b56dd7c6693e",
+    "test_report_gen.py": "1b843ac8c7e72637"
+  }
+}

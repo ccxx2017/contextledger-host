@@ -1,0 +1,80 @@
+{"type":"cl_v0_error","ts":"2026-09-24T12:12:31.647Z","payload":{"stage":"read_states","error":"TypeError [ERR_INVALID_ARG_TYPE]: path must be a string or a file descriptor"}}
+{"type":"cl_v0_injected","ts":"2026-09-24T12:12:31.648Z","payload":{"states_count":0,"readiness":"degraded","state_revision":"0000:addc43dba02c"}}
+{"type":"cl_v0_boundary_dump","ts":"2026-09-24T12:12:32.399Z","payload":{"message_count":1,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_error","ts":"2026-09-24T12:12:33.234Z","payload":{"stage":"read_states","error":"TypeError [ERR_INVALID_ARG_TYPE]: path must be a string or a file descriptor"}}
+{"type":"cl_v0_injected","ts":"2026-09-24T12:12:33.234Z","payload":{"states_count":0,"readiness":"degraded","state_revision":"0000:addc43dba02c"}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:12:36.474Z","tool":"read","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:12:36.534Z","tool":"read","payload":{"gate":"preaction","exit_code":0,"reason_codes":[]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:12:36.745Z","tool":"glob","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:12:36.805Z","tool":"glob","payload":{"gate":"preaction","exit_code":0,"reason_codes":[]}}
+{"type":"cl_v0_boundary_dump","ts":"2026-09-24T12:12:37.319Z","payload":{"message_count":2,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_error","ts":"2026-09-24T12:12:37.336Z","payload":{"stage":"read_states","error":"TypeError [ERR_INVALID_ARG_TYPE]: path must be a string or a file descriptor"}}
+{"type":"cl_v0_injected","ts":"2026-09-24T12:12:37.337Z","payload":{"states_count":0,"readiness":"degraded","state_revision":"0000:addc43dba02c"}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:12:45.193Z","tool":"read","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:12:45.262Z","tool":"read","payload":{"gate":"preaction","exit_code":0,"reason_codes":[]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:12:45.673Z","tool":"read","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:12:45.744Z","tool":"read","payload":{"gate":"preaction","exit_code":0,"reason_codes":[]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:12:46.120Z","tool":"read","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:12:46.174Z","tool":"read","payload":{"gate":"preaction","exit_code":0,"reason_codes":[]}}
+{"type":"cl_v0_boundary_dump","ts":"2026-09-24T12:12:46.578Z","payload":{"message_count":3,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_error","ts":"2026-09-24T12:12:46.593Z","payload":{"stage":"read_states","error":"TypeError [ERR_INVALID_ARG_TYPE]: path must be a string or a file descriptor"}}
+{"type":"cl_v0_injected","ts":"2026-09-24T12:12:46.593Z","payload":{"states_count":0,"readiness":"degraded","state_revision":"0000:addc43dba02c"}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:12:54.959Z","tool":"glob","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:12:55.012Z","tool":"glob","payload":{"gate":"preaction","exit_code":0,"reason_codes":[]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:12:55.370Z","tool":"glob","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:12:55.431Z","tool":"glob","payload":{"gate":"preaction","exit_code":0,"reason_codes":[]}}
+{"type":"cl_v0_boundary_dump","ts":"2026-09-24T12:12:55.886Z","payload":{"message_count":4,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_error","ts":"2026-09-24T12:12:55.902Z","payload":{"stage":"read_states","error":"TypeError [ERR_INVALID_ARG_TYPE]: path must be a string or a file descriptor"}}
+{"type":"cl_v0_injected","ts":"2026-09-24T12:12:55.902Z","payload":{"states_count":0,"readiness":"degraded","state_revision":"0000:addc43dba02c"}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:13:01.061Z","tool":"read","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:13:01.116Z","tool":"read","payload":{"gate":"preaction","exit_code":0,"reason_codes":[]}}
+{"type":"cl_v0_boundary_dump","ts":"2026-09-24T12:13:01.759Z","payload":{"message_count":5,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_error","ts":"2026-09-24T12:13:01.774Z","payload":{"stage":"read_states","error":"TypeError [ERR_INVALID_ARG_TYPE]: path must be a string or a file descriptor"}}
+{"type":"cl_v0_injected","ts":"2026-09-24T12:13:01.774Z","payload":{"states_count":0,"readiness":"degraded","state_revision":"0000:addc43dba02c"}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:13:06.761Z","tool":"read","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:13:06.816Z","tool":"read","payload":{"gate":"preaction","exit_code":0,"reason_codes":[]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:13:07.150Z","tool":"read","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:13:07.204Z","tool":"read","payload":{"gate":"preaction","exit_code":0,"reason_codes":[]}}
+{"type":"cl_v0_boundary_dump","ts":"2026-09-24T12:13:08.328Z","payload":{"message_count":6,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_error","ts":"2026-09-24T12:13:08.343Z","payload":{"stage":"read_states","error":"TypeError [ERR_INVALID_ARG_TYPE]: path must be a string or a file descriptor"}}
+{"type":"cl_v0_injected","ts":"2026-09-24T12:13:08.343Z","payload":{"states_count":0,"readiness":"degraded","state_revision":"0000:addc43dba02c"}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:13:12.809Z","tool":"grep","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:13:12.863Z","tool":"grep","payload":{"gate":"preaction","exit_code":0,"reason_codes":[]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:13:13.489Z","tool":"read","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:13:13.542Z","tool":"read","payload":{"gate":"preaction","exit_code":0,"reason_codes":[]}}
+{"type":"cl_v0_boundary_dump","ts":"2026-09-24T12:13:13.929Z","payload":{"message_count":7,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_error","ts":"2026-09-24T12:13:13.939Z","payload":{"stage":"read_states","error":"TypeError [ERR_INVALID_ARG_TYPE]: path must be a string or a file descriptor"}}
+{"type":"cl_v0_injected","ts":"2026-09-24T12:13:13.939Z","payload":{"states_count":0,"readiness":"degraded","state_revision":"0000:addc43dba02c"}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:13:19.487Z","tool":"read","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:13:19.540Z","tool":"read","payload":{"gate":"preaction","exit_code":0,"reason_codes":[]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:13:19.980Z","tool":"read","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:13:20.872Z","tool":"read","payload":{"gate":"preaction","exit_code":0,"reason_codes":[]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:13:20.878Z","tool":"read","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:13:20.931Z","tool":"read","payload":{"gate":"preaction","exit_code":0,"reason_codes":[]}}
+{"type":"cl_v0_boundary_dump","ts":"2026-09-24T12:13:21.329Z","payload":{"message_count":8,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_error","ts":"2026-09-24T12:13:21.348Z","payload":{"stage":"read_states","error":"TypeError [ERR_INVALID_ARG_TYPE]: path must be a string or a file descriptor"}}
+{"type":"cl_v0_injected","ts":"2026-09-24T12:13:21.348Z","payload":{"states_count":0,"readiness":"degraded","state_revision":"0000:addc43dba02c"}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:13:22.622Z","tool":"read","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:13:22.682Z","tool":"read","payload":{"gate":"preaction","exit_code":0,"reason_codes":[]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:13:23.020Z","tool":"read","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:13:23.072Z","tool":"read","payload":{"gate":"preaction","exit_code":0,"reason_codes":[]}}
+{"type":"cl_v0_boundary_dump","ts":"2026-09-24T12:13:23.463Z","payload":{"message_count":9,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_error","ts":"2026-09-24T12:13:23.472Z","payload":{"stage":"read_states","error":"TypeError [ERR_INVALID_ARG_TYPE]: path must be a string or a file descriptor"}}
+{"type":"cl_v0_injected","ts":"2026-09-24T12:13:23.472Z","payload":{"states_count":0,"readiness":"degraded","state_revision":"0000:addc43dba02c"}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:13:31.558Z","tool":"grep","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:13:31.622Z","tool":"grep","payload":{"gate":"preaction","exit_code":0,"reason_codes":[]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:13:31.897Z","tool":"read","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:13:31.957Z","tool":"read","payload":{"gate":"preaction","exit_code":0,"reason_codes":[]}}
+{"type":"cl_v0_boundary_dump","ts":"2026-09-24T12:13:32.376Z","payload":{"message_count":10,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_error","ts":"2026-09-24T12:13:32.385Z","payload":{"stage":"read_states","error":"TypeError [ERR_INVALID_ARG_TYPE]: path must be a string or a file descriptor"}}
+{"type":"cl_v0_injected","ts":"2026-09-24T12:13:32.386Z","payload":{"states_count":0,"readiness":"degraded","state_revision":"0000:addc43dba02c"}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:14:46.551Z","tool":"write","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:14:46.556Z","tool":"write","payload":{"gate":"preaction","exit_code":null,"reason_codes":[]}}
+{"type":"cl_v0_boundary_dump","ts":"2026-09-24T12:14:47.265Z","payload":{"message_count":11,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_error","ts":"2026-09-24T12:14:47.281Z","payload":{"stage":"read_states","error":"TypeError [ERR_INVALID_ARG_TYPE]: path must be a string or a file descriptor"}}
+{"type":"cl_v0_injected","ts":"2026-09-24T12:14:47.282Z","payload":{"states_count":0,"readiness":"degraded","state_revision":"0000:addc43dba02c"}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:14:53.111Z","tool":"bash","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-24T12:14:53.171Z","tool":"bash","payload":{"gate":"preaction","exit_code":0,"reason_codes":[]}}
+{"type":"cl_v0_boundary_dump","ts":"2026-09-24T12:14:53.831Z","payload":{"message_count":12,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_error","ts":"2026-09-24T12:14:53.848Z","payload":{"stage":"read_states","error":"TypeError [ERR_INVALID_ARG_TYPE]: path must be a string or a file descriptor"}}
+{"type":"cl_v0_injected","ts":"2026-09-24T12:14:53.849Z","payload":{"states_count":0,"readiness":"degraded","state_revision":"0000:addc43dba02c"}}
