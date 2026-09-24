@@ -22,17 +22,29 @@
 ```
 <run_root>/<scenario_id>/
   seeding_manifest.json          布景快照（两臂种子 sha256）
-  clv0/task-project/             cl_v0 臂（布景 + cl_install --init-cl）
+  git_heads.json                 两臂 task-project 初始 git HEAD（嵌套隔离）
+  clv0/task-project/             cl_v0 臂（布景 + git init + cl_install --init-cl）
   clv0/traces/                   CL 插件 trace（cl_turn 自动落盘）
   clv0/answers/turn_NNN.json     逐轮采集
-  baseline/task-project/         baseline 臂（仅布景，无 CL）
+  clv0/git_history.txt           场景结束导出（git log --all + status），随后删 .git
+  baseline/task-project/         baseline 臂（布景 + git init，无 CL）
   baseline/summary_recovery.md   机械摘要（会话 2 用）
   baseline/answers/turn_NNN.json 逐轮采集
+  baseline/git_history.txt       同上
   hashes/turn_NNN.json           每轮结束时的文件哈希快照（clv0 + baseline）
+  delivery_check.json            会话 2 首轮 M3 投递核验记录
+  BLOCKED.json / HALTED_clv0.json  场景停止 / clv0 臂停机终态（D'）
+  run_log.json                   场景级步骤日志
 ```
 
 CL 侧项目名约定：`round1_<scenario 短名>_clv0`（如 `round1_r1np_clv0`），
-建于主仓 `graph/projects/` 下，随证据归档。
+建于主仓 `graph/projects/` 下，随证据归档。**重跑用新目录 + 新 CL 项目名**
+（第七号裁定 C'：污染运行不继承、不复用毒化状态，如
+`round1_wr1rr2_clv0` + `runs/reassignment_recovery_v2/`）。
+
+**嵌套 git 隔离（第七号裁定 C' 修订）**：每臂 task-project 布景时 `git init` +
+初始提交（SEEDING §2.1），两臂 git 互相不可见；场景结束导出 git 史后删除嵌套
+`.git`（SEEDING §2.2，避免外层仓 gitlink）。
 
 ## 3. 每轮驱动命令
 
@@ -100,16 +112,32 @@ blocked/decision 字段。因此机械识别规则为：
 
 ## 6. 预算记账
 
-- 宿主轮次：每次 opencode 调用计 1 轮（上限 300；本窗口 72 + 试跑 8 = 80）；
+- 宿主轮次：每次 opencode 调用计 1 轮（上限 300；原计划 72 + 试跑 8 = 80；
+  第七号裁定后 = 已耗 61（含污染运行 33，归档不销账）+ 重跑 44 = 105/300）；
 - DeepSeek 成本：cl_v0 臂每轮 1 次抽取调用（≈0.115 元/次，试跑实测口径），
-  上限 50 元；每 5 轮在运行日志记一次累计估算；
+  上限 50 元；累计 ≈6.1/50 元；每 5 轮在 `window_budget.json` 记一次累计估算
+  （含 archived 口径：污染运行消耗计入总账）；
 - 人工裁定：≤10 例，只用于 §5 规则的语义分类争议，逐例登记。
 
 ## 7. 失败处理
 
 - 单轮 rc≠0 或超时：记录为该轮装置事件（answers JSON 如实留存），**不删轮、
   不静默重试**；同一轮重试 = 新轮次（轮次计数 +1，预算同记）；
-- 任何 §7 验收项不过 / 装置异常：按封存令先报阻塞，不文字模拟结果。
+- 任何 §7 验收项不过 / 装置异常：按封存令先报阻塞，不文字模拟结果；
+- **D' 复发预案（第七号裁定，仅适用重跑场景 4）**：重跑中 clv0 臂再度停机
+  （提取层失败可能系统性复发）→ 写 `HALTED_clv0.json` 终态、**不修复隔离条目、
+  不强制续跑 clv0、不第三次重跑**；baseline 臂继续跑完全场景（干净嵌套 git 下
+  两臂互不可见，纯采证补全，非不对称作弊）；双臂齐备检查点照封存 undeterminable
+  规则进判断点（clv0 缺失的检查点剔除）；
+- baseline 臂 rc≠0：仍按 §7-2 停场景报阻塞（D' 只覆盖 clv0 复发）。
+
+## 7.1 嵌套 git 整改（第七号裁定 C'，装置层缺陷修复记录）
+
+首轮窗口场景 4 因两臂 task-project 无嵌套 .git，第 5 轮 `git commit` 指令使两臂
+作业落入宿主仓主历史（`5ec05ba`/`45c53f3`），clv0 t17 把他臂 HEAD 当本仓状态
+引用——组间污染，场景作废归档（`archive/rr_polluted_20260924/`，审计见主仓
+`round1_window_git_audit.md`）。整改：SEEDING §2.1/§2.2（每臂 git init + 初始提交、
+收尾导出 git 史后清理嵌套 .git）；场景 1–3 经审计零 git 命中，数据成立。
 
 ## 8. 记录纪律（第六号裁定 §五）
 
@@ -119,10 +147,20 @@ blocked/decision 字段。因此机械识别规则为：
   （T1 基线）；`seeds/reassignment_recovery/` 布景 `pytest -q` = 3 passed（全通过
   基线）——报告与记录分开登记，不得混写。
 
-## 9. 判断点仪器披露（预写，第六号裁定 M1/§四-3）
+## 9. 判断点仪器披露（预写，第六号裁定 M1/§四-3 + 第七号裁定 C'-5 增补）
 
 - reassignment_recovery = **5 检查点（3 冻结 + 2 核定增补）**（008/014/017 冻结
   + s2_t12/s2_t20 增补，判分规则不变、两臂同题对称）；
 - 结论按 criteria §9 三层格式，reassignment_recovery 固定标注"设计已见、运行未消耗"；
 - 局限节必写：O1（首轮 read_states TypeError fail-open 伪影）、O2（readiness=degraded
-  与图内容无关、仅 blocked 计拦截）、t17"（新决策，非回写历史）"括注的脚手架作用知悉。
+  与图内容无关、仅 blocked 计拦截）、t17"（新决策，非回写历史）"括注的脚手架作用知悉；
+- **第七号裁定增补披露（必写）**：
+  (a) 装置层 git 组间污染缺陷及其整改（场景 4 首轮作废归档、每臂嵌套 git init 恢复
+      P1/P2 先例、场景 1–3 零命中审计结论）；
+  (b) 路径臂名自知（两臂 task-project 路径含臂名，P1/P2 以来一贯的已披露限制，
+      非本次缺陷）；
+  (c) readiness=degraded 持续全程（零 blocked 归因于图内容之外的固定降级）；
+  (d) 拦截识别规则未获实测（全窗口零拦截案例，§5 规则无实证机会）；
+  (e) 若重跑中 clv0 依 D' 停机：提取层停机段（t17 类 reconcile 3/3 连败 → 隔离 →
+      readiness=blocked）与 clv0 缺失检查点（如 t20/t22 剔除）须在"未覆盖或不可判定
+      路径"五要素中列明。

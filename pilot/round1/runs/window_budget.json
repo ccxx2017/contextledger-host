@@ -1,4 +1,9 @@
 {
+  "archived": {
+    "host_turns": 33,
+    "extractions": 17,
+    "note": "reassignment_recovery 首轮污染运行（git 组间污染，第七号裁定 C' 作废归档）已移入 pilot/round1/archive/rr_polluted_20260924/，不随 run-root 重数；其消耗计入总预算（61+44=105/300，53 抽取≈6.1/50 元）。"
+  },
   "checks": [
     {
       "at_check_turn": 1,

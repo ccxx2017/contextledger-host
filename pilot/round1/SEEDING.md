@@ -24,11 +24,39 @@ reassignment_recovery 种子 `pytest -q` 应 3 passed（实测确认）。
 ```
 <run_root>/<scenario_id>/<arm>/task-project/   ← 新建空目录
   └─ 复制 seeds/<scenario_id>/*  （逐字节复制，布景后记录 sha256 快照）
+  └─ 写入 .gitignore（内容 ".opencode/"）     ← 装置管线不进臂内提交历史
+  └─ git init + git add -A + 初始提交          ← 嵌套 git 隔离（见 §2.1）
 ```
 
 - 两臂种子同源同哈希（布景公平性）；
 - 布景快照（文件 → sha256）写入 `<run_root>/<scenario_id>/seeding_manifest.json`；
 - **不得**在窗口内修改 seeds/ 或场景 JSON——布景只读。
+
+## 2.1 嵌套 git 隔离（第七号裁定 C' 修订，2026-09-24）
+
+**每臂 task-project 必须是独立 git 仓库**（恢复 P1/P2 先例）：
+
+- 布景时（种子复制后、cl_install 前）对该臂 task-project 执行
+  `git init` + `git config user.email/user.name` + `git add -A` +
+  `git commit -m "round1 window seed（布景初始提交）"`；初始 HEAD 记入
+  `<run_root>/<scenario_id>/git_heads.json`。
+- 原因（缺陷记录）：round1 首轮窗口曾漏掉本步，场景 4 第 5 轮的 `git commit`
+  指令使两臂作业提交落入**宿主仓主历史**（`5ec05ba`/`45c53f3`），clv0 t17
+  甚至把他臂 HEAD 当作本仓状态引用——组间污染，场景作废归档
+  （审计：`graph/projects/abu_modern/host_integration/round1_window_git_audit.md`）。
+- 任务项目 `.gitignore` 固定含 `.opencode/`：CL 装置管线（cl_v0.json、插件、
+  node_modules）不得进入臂内提交历史，也不得被臂的 `git add -A` 扫入。
+- 两臂 git 互相不可见（各自 .git 独立），满足任务书"避免组间污染"。
+
+## 2.2 场景收尾：臂内 git 史导出与嵌套 .git 清理
+
+场景结束后（P1/P2"清理内嵌 git"先例）：
+
+1. 各臂导出 `git log --all`（含日期与主题）与 `git status --short` 至
+   `<arm>/git_history.txt`，HEAD 与行数记入 `<scenario_id>/git_export.json`；
+2. 删除该臂 task-project 内的 `.git`。
+3. 原因：外层宿主仓 `git add` 一个含嵌套 `.git` 的目录只会记成 gitlink
+   （文件证据丢失；显式文件路径亦被拒收）——必须先导出再清理，文件才能入外层仓。
 
 ## 3. 重置
 
