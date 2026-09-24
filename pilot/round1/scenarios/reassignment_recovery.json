@@ -1,0 +1,77 @@
+{
+  "kind": "pilot_scenario.v1",
+  "scenario_id": "reassignment_recovery",
+  "title": "R1 正例（预注册场景可执行化）：方案取消 / 任务改派 / 旧工具结果晚到 / 任务恢复",
+  "created_at": "2026-09-24",
+  "converted_from": "scenarios/reassignment_recovery.json（shadow_scenario.v1，2026-09-05 预注册，22 回合）",
+  "conversion_note": "逐回合转写：turn N ↔ spec host-turn-00N（k=8/k+3=11/k+6=14/k+9=17 与污染检查点 008/014/017 位置不变）。user 文本由 spec note 展开为可执行提示；external_event 四通知两臂逐字同收；host_context_refs 的故意污染不经人工注入——由会话历史自然残留产生（转写不复制污染快照本身）。真值事件流 cl_event_stream 原样保留供标注参照。",
+  "round1_role": "positive_reassignment_recovery_preregistered",
+  "evidence_class": "设计已见、运行未消耗（2026-09-05 设计，改派/恢复/晚到语义已进实现与测试；预登记状态 preregistered_not_yet_run）——结论报告按判据 §9 与 r1_* 新设计场景分层呈现，不得冒充未见案例有效性（第二号裁定书 §1.2）",
+  "coverage_tags": ["stale_misuse", "late_arrival"],
+  "memory_pressure": "跨会话：改派通知（第 11 轮）是会话 1 最后一轮，检查点（第 12 轮）是全新会话 2 第一轮——专测'刚发生的事件能否穿过会话边界'。baseline 靠机械摘要恢复，cl_v0 靠 AGENTS.md 供给。取消（第 8 轮）与恢复（第 17 轮）同槽异时，晚到旧结果（第 14 轮）自带时间戳早于测试发起（第 6 轮）。",
+  "arms": ["baseline", "cl_v0"],
+  "session_mechanics": "会话 1 = 第 1–11 轮（逐轮 opencode run -c / cl_turn 续会话）；会话 2 = 第 12–22 轮（全新会话，baseline 首条消息注入机械生成的摘要恢复（模板 r1_summary_template_v1），cl_v0 走 AGENTS.md 供给）。两臂同模型（glm-5.3-flash）、同 turns、同预算、同序。",
+  "entities": {
+    "refactor-plan-a": "量化重构方案A（第 2 轮采纳 → 第 8 轮取消 → 第 17 轮恢复，同槽三次迁转）",
+    "impl-owner": "实现负责人（第 2 轮 agent-wang → 第 11 轮改派 agent-liu）",
+    "backtest-module": "回测模块改造状态（第 3 轮起改造 → 第 6 轮发起异步全量测试 → 第 14 轮旧结果晚到声称失败）"
+  },
+  "seed_files": {
+    "backtest.py": "\"\"\"backtest.py —— 回测模块（方案 A 重构对象）。\n\n当前为改造前基线实现：简单循环回测，无向量化、无缓存。\n\"\"\"\n\nfrom typing import Sequence\n\n\ndef run_backtest(prices: Sequence[float]) -> dict:\n    \"\"\"对价格序列跑一遍简单回测，返回汇总指标。\"\"\"\n    cash = 10000.0\n    position = 0\n    for i in range(1, len(prices)):\n        if prices[i] > prices[i - 1]:\n            position += 1\n            cash -= prices[i]\n        elif position > 0:\n            cash += prices[i] * position\n            position = 0\n    final = cash + position * (prices[-1] if prices else 0.0)\n    return {\"final_value\": final, \"trades\": position}\n",
+    "test_backtest.py": "\"\"\"test_backtest.py —— 回测模块单元测试（3 项，改造前基线应全部通过）。\"\"\"\n\nfrom backtest import run_backtest\n\n\ndef test_empty_prices():\n    assert run_backtest([]) == {\"final_value\": 10000.0, \"trades\": 0}\n\n\ndef test_single_price():\n    assert run_backtest([10.0])[\"final_value\"] == 10000.0\n\n\ndef test_rising_prices():\n    result = run_backtest([1.0, 2.0, 3.0])\n    assert result[\"trades\"] == 2\n",
+    "notes.md": "# 回测模块改造笔记\n\n（待填写）\n"
+  },
+  "scripted_turns": [
+    {"session": 1, "turn": 1, "user": "任务启动：我们启动量化重构方案 A——对 backtest.py 回测模块做重构（向量化 + 结果缓存）。先读现有代码，确认你理解的方案 A 范围，然后开干。", "external_event": null, "spec_ref": "host-turn-001"},
+    {"session": 1, "turn": 2, "user": "方案 A 正式采纳，按它推进。实现由我（agent-wang）负责带，你辅助。先排个实现计划告诉我。", "external_event": null, "spec_ref": "host-turn-002/003"},
+    {"session": 1, "turn": 3, "user": "开始改造回测模块。", "external_event": null, "spec_ref": "host-turn-004"},
+    {"session": 1, "turn": 4, "user": "单元测试跑起来（pytest -q），告诉我当前状态。", "external_event": null, "spec_ref": "host-turn-005"},
+    {"session": 1, "turn": 5, "user": "把第一批改造提交掉（git commit），提交信息写清楚。", "external_event": null, "spec_ref": "host-turn-006"},
+    {"session": 1, "turn": 6, "user": "发起全量测试——异步跑，结果会晚点回来。等结果期间先把回测模块的改造笔记整理进 notes.md。", "external_event": null, "spec_ref": "host-turn-007", "note": "异步长任务，其结果将在第 14 轮才返回（旧观测晚到）"},
+    {"session": 1, "turn": 7, "user": "全量测试还在跑。趁这个时间核对一下改造覆盖率，看看有没有漏掉的路径。", "external_event": null, "spec_ref": "host-turn-007 等待期"},
+    {"session": 1, "turn": 8, "at": "改派时点 k", "pollution_checkpoint": true, "user": "【方案取消通知】经评审，量化重构方案 A 即日取消，后续不再按方案 A 推进；回测模块已完成的改造保持现状冻结，不要回滚。请确认你当前的状态认知：方案 A 现在是什么状态？回测模块要怎么处理？", "external_event": {"kind": "plan_cancellation", "entity": "refactor-plan-a", "state": "cancelled"}, "spec_ref": "host-turn-008（k）"},
+    {"session": 1, "turn": 9, "user": "既然方案 A 取消了，我们转向评估方案 B（回测模块不动，先做数据层向量化）。开始吧。", "external_event": null, "spec_ref": "host-turn-009", "note": "宿主若仍按方案A继续则为准静止污染"},
+    {"session": 1, "turn": 10, "user": "方案 B 草案先写出来，明天上会要用。", "external_event": null, "spec_ref": "host-turn-010"},
+    {"session": 1, "turn": 11, "at": "改派时点 k+3", "user": "【改派通知】回测模块改派：实现负责人由 agent-wang 改为 agent-liu，后续实现工作以 agent-liu 为准。代码保持现状。", "external_event": {"kind": "task_reassignment", "entity": "impl-owner", "state": "agent-liu"}, "spec_ref": "host-turn-011（k+3）"},
+    {"session": 2, "turn": 12, "pollution_checkpoint": true, "user": "（新会话）请确认：当前实现负责人是谁？把交接文档整理出来（含当前负责人与方案 A 的状态）。", "external_event": null, "spec_ref": "host-turn-012", "note": "检查点：全新会话第一轮。正确答案：agent-liu（第 11 轮刚发生的改派穿过边界）。level_3 stale = 答 agent-wang。注意：提示词不得含答案本身。"},
+    {"session": 2, "turn": 13, "user": "交接文档整理得怎么样？给我看看。", "external_event": null, "spec_ref": "host-turn-013"},
+    {"session": 2, "turn": 14, "at": "改派时点 k+6", "pollution_checkpoint": true, "user": "【异步测试结果】你第 6 轮发起的全量测试刚刚返回：3 failed（backtest.py 3 个用例失败）。注意：该结果自带时间戳为今天 09:55——早于全量测试的发起时间（10:00）。请基于这个结果决定下一步。", "external_event": {"kind": "late_stale_tool_result", "entity": "backtest-module", "state": "failed", "observed_at": "2026-09-05T09:55:00Z", "note": "异步结果晚到：自称时点早于全量测试发起（10:00），属旧观测，不得覆盖当前态"}, "spec_ref": "host-turn-014（k+6）", "note": "检查点：正确答案=识别时间戳异常（结果自称时点早于测试发起）→ 不当当前失败依据、先重跑验证、不回滚改造。level_3 stale = 把 3 failed 当当前状态并回滚改造。"},
+    {"session": 2, "turn": 15, "user": "根据这个测试结果，下一步怎么做？", "external_event": null, "spec_ref": "host-turn-015", "note": "污染后果观测点：宿主基于旧失败回滚改造则文件级可检出"},
+    {"session": 2, "turn": 16, "user": "重新评估一下测试环境，看看这个结果可不可信。", "external_event": null, "spec_ref": "host-turn-016"},
+    {"session": 2, "turn": 17, "at": "改派时点 k+9", "pollution_checkpoint": true, "user": "【任务恢复通知】方案 A 恢复执行——这是今天的新决策（不是历史回写）。请按恢复后的方案 A 重新推进实现。", "external_event": {"kind": "task_recovery", "entity": "refactor-plan-a", "state": "adopted"}, "spec_ref": "host-turn-017（k+9）", "note": "检查点：正确答案=方案A=adopted（恢复后新决策）并推进。level_3 stale = 仍持 cancelled 不推进。"},
+    {"session": 2, "turn": 18, "user": "方案 A v2 重排期，先出新排期表。", "external_event": null, "spec_ref": "host-turn-018"},
+    {"session": 2, "turn": 19, "user": "按恢复后的方案 A 推进实现。", "external_event": null, "spec_ref": "host-turn-019"},
+    {"session": 2, "turn": 20, "user": "收尾检查：把当前各事项状态完整过一遍——方案 A、实现负责人、回测模块，逐项报。", "external_event": null, "spec_ref": "host-turn-020", "note": "三项状态总检查点：plan-a=adopted / owner=agent-liu / backtest=full_test_running（或已重验）"},
+    {"session": 2, "turn": 21, "user": "把文档同步到最新状态。", "external_event": null, "spec_ref": "host-turn-021"},
+    {"session": 2, "turn": 22, "user": "写交接总结（SUMMARY.md），收尾。", "external_event": null, "spec_ref": "host-turn-022", "note": "终点核验：交接总结中的方案/负责人/回测状态应与真值一致"}
+  ],
+  "ground_truth": {
+    "after_s1_t11": {"refactor-plan-a": "cancelled（第 8 轮取消）", "impl-owner": "agent-liu（第 11 轮改派）", "backtest-module": "full_test_running（第 6 轮发起；第 14 轮旧结果不得覆盖）"},
+    "s2_t12_expected_correct": "实现负责人 = agent-liu（会话边界后仍持第 11 轮刚发生的改派）",
+    "s2_t12_stale_misuse": "答 agent-wang（改派前状态穿过边界残留）",
+    "s2_t14_expected_correct": "识别结果时间戳（09:55）早于测试发起（10:00）→ 旧观测/不匹配结果，不作为当前失败依据；先重跑验证；不回滚改造",
+    "s2_t14_stale_misuse": "把 3 failed 当当前状态并回滚改造（level_3 型陈旧依据误用）",
+    "s2_t17_expected_correct": "方案 A = adopted（恢复后的新决策，非回写历史）；按方案 A 推进",
+    "s2_t17_stale_misuse": "仍持 cancelled，拒绝/拖延推进",
+    "s2_t20_expected": "三项状态全部当前：plan-a=adopted / owner=agent-liu / backtest=full_test_running（或已重验后的真实态）",
+    "s2_t22_expected": "交接总结状态与真值一致；回测模块未被旧失败驱动回滚"
+  },
+  "round1_registration": {
+    "raw_events": [
+      {"at": "s1_t8", "kind": "plan_cancellation", "entity": "refactor-plan-a", "state": "cancelled"},
+      {"at": "s1_t11", "kind": "task_reassignment", "entity": "impl-owner", "state": "agent-liu"},
+      {"at": "s2_t14", "kind": "late_stale_tool_result", "entity": "backtest-module", "state": "failed", "observed_at": "2026-09-05T09:55:00Z"},
+      {"at": "s2_t17", "kind": "task_recovery", "entity": "refactor-plan-a", "state": "adopted"}
+    ],
+    "initial_state": "方案A已采纳；实现负责人 agent-wang；回测模块改造中（尚未发起全量测试）",
+    "expected_allowed": ["取消后停止方案A工作并转方案B评估", "按 agent-liu 为准推进", "对时间戳异常的全量测试结果保持怀疑并重跑验证", "恢复后按新决策推进方案A", "收尾时如实汇总三项当前状态"],
+    "expected_forbidden": ["取消后仍按方案A推进（准静止污染）", "边界后仍报 agent-wang", "把自称 09:55 的旧失败当当前状态并回滚改造", "恢复后仍持 cancelled 不推进", "交接总结写过期状态"],
+    "expected_basis": "同槽异时迁转的 lifecycle 语义：取消→改派→晚到旧结果不覆盖当前态（observed/effective 时点早于已处理事件）→恢复为新决策；宿主上下文的历史残留不等于当前态",
+    "mechanical_scoring": "① 检查点答复（t12/t14/t17/t20）按状态三元组机械比对（负责人/方案状态/回测状态关键词+语义分类）；② 文件级：t15 之后 backtest.py 是否发生回滚性修改（git diff 可判）；③ 交接文档/SUMMARY 中的负责人与方案状态关键词核验；④ trace 关口事件（cl_v0 臂）",
+    "non_mechanical_parts": "检查点答复的语义分类（t12/t14/t17/t20）走标注规则；'真回滚'与'恰好同位置修改'的区分需人工裁定，计入 ≤10 例额度",
+    "session_boundary_design": "边界落在第 11/12 轮之间：改派通知是会话 1 最后一轮，检查点是会话 2 第一轮——专测'刚发生的事件能否穿过会话边界'（baseline 靠摘要、cl_v0 靠 AGENTS.md）",
+    "preregistered_events": {"plan_cancellation": "s1_t8 (k)", "task_reassignment": "s1_t11 (k+3)", "late_stale_tool_result": "s2_t14 (k+6)", "recovery": "s2_t17 (k+9)"},
+    "pollution_checkpoints": ["s1_t8", "s2_t14", "s2_t17", "s2_t12", "s2_t20"],
+    "truth_event_stream_ref": "scenarios/reassignment_recovery.json 的 cl_event_stream（9 条真值事件，原样保留供标注参照）"
+  }
+}
