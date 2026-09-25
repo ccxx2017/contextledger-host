@@ -1,0 +1,22 @@
+{
+  "workspace-a": {
+    ".coverage": "fa8c78665ae0ed82",
+    ".gitignore": "f2295a92852f1575",
+    "AGENTS.md": "6a633bb3cac6a8a4",
+    "backtest.py": "2ca07a4a69bc5552",
+    "HANDOVER.md": "8123e26feb7cb8fa",
+    "notes.md": "b76dd5fcc6e7f732",
+    "plan_b.md": "531bfde1b6214425",
+    "test_backtest.py": "2a7c95530f1f105b"
+  },
+  "workspace-b": {
+    ".coverage": "5fb5525231dad7c8",
+    ".gitignore": "54195d3b9a95537b",
+    "backtest.py": "b8bb8b63e714232b",
+    "HANDOVER.md": "7ba98c5be7d52bf2",
+    "notes.md": "0edea7715f478ef5",
+    "PLAN_A_V2_SCHEDULE.md": "d464122b05450c1b",
+    "plan_b_draft.md": "221b19648f942f80",
+    "test_backtest.py": "afd354e22f555bd6"
+  }
+}

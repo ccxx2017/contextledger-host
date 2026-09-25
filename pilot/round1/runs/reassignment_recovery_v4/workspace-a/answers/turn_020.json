@@ -1,0 +1,26 @@
+{
+  "cmd": [
+    "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+    "D:\\CCXXLESSON\\contextledger-host\\tools\\cl_turn.py",
+    "--project",
+    "D:\\CCXXLESSON\\contextledger-host\\pilot\\round1\\runs\\reassignment_recovery_v4\\workspace-a\\task-project",
+    "--cl-project",
+    "round1_wr1rr4_p1",
+    "--text",
+    "收尾检查：把当前各事项状态完整过一遍——方案 A、实现负责人、回测模块，逐项报。",
+    "--timeout",
+    "420"
+  ],
+  "cwd": "D:\\CCXXLESSON\\contextledger-host",
+  "rc": 0,
+  "stdout": "[装配] revision -> 0019:97d7054a201a\n[宿主] opencode run -c 收尾检查：把当前各事项状态完整过一遍——方案 A、实现负责人、回测模块，逐项报。...\n[宿主] rc=0\nsed**（3 基线 + 4 补强）\n- 行为契约：与基线 bit-exact（含浮点顺序），无回归\n\n## 4. 流程状态（CL 就绪度：degraded）\n| 项 | 状态 | 备注 |\n|---|---|---|\n| git_commit | open | 未提交：backtest.py、notes.md、.gitignore 已改；AGENTS.md、plan_b.md 未跟踪 |\n| notes.md | open | v2 数据已入档，待裁定后收敛 |\n| data_layer（方案 B） | in_progress | 草案待上会 D1–D5 |\n| handover_doc | open | 交接文档已出，未落盘 |\n| pytest | resolved | 7/7 绿 |\n\n## 5. 遗留小项\n1. `__pycache__/*.pyc` 已入 `.gitignore` 但**仍被 git 跟踪**（此前已提交过）——需 `git rm -r --cached __pycache__` 才真正生效\n2. LINT_WARNING_PRESENT：仓库无 lint 配置，来源未定位\n3. 方案 B 上会（D1–D5）未动\n\n**一句话总结**：代码与验证全绿，唯一阻塞是 v2 验收口径待 agent-wang 在 R1/R2/R3 中拍板；拍板后即可提交收口。\n\n[CL] pilot_turn_driver turn 20 ...\n[turn_020] CL 轮完成：nodes=31 states={'git_commit@execution_status': 'open', 'notes.md@execution_status': 'open', 'data_layer@execution_status': 'in_progress', 'handover_doc@execution_status': 'open', 'pytest@execution_status': 'resolved', 'backtest.py@execution_status': 'in_progress'} revision=0020:1de98d1aba09\n\n",
+  "stderr": "",
+  "seconds": 47.0,
+  "arm": "clv0",
+  "session": 2,
+  "turn": 20,
+  "attempt": 1,
+  "new_session": false,
+  "user_text": "收尾检查：把当前各事项状态完整过一遍——方案 A、实现负责人、回测模块，逐项报。",
+  "delivered_text": "收尾检查：把当前各事项状态完整过一遍——方案 A、实现负责人、回测模块，逐项报。"
+}

@@ -1,0 +1,26 @@
+{
+  "cmd": [
+    "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+    "D:\\CCXXLESSON\\contextledger-host\\tools\\cl_turn.py",
+    "--project",
+    "D:\\CCXXLESSON\\contextledger-host\\pilot\\round1\\runs\\reassignment_recovery_v4\\workspace-a\\task-project",
+    "--cl-project",
+    "round1_wr1rr4_p1",
+    "--text",
+    "按恢复后的方案 A 推进实现。",
+    "--timeout",
+    "420"
+  ],
+  "cwd": "D:\\CCXXLESSON\\contextledger-host",
+  "rc": 0,
+  "stdout": "[装配] revision -> 0018:b9601e47062e\n[宿主] opencode run -c 按恢复后的方案 A 推进实现。...\n[宿主] rc=0\n7.90ms vs 基线 6.72ms（慢 18%，30/30 全败）。分解：入口 `tuple()` 转换 0.40ms + `prices[1:]` 切片 0.40ms + 循环体≈基线——**任何“循环+元组键缓存”的 bit-exact 实现冷路径必然慢于裸基线**；numpy 方向因 pairwise 求和无法复现逐笔浮点顺序，与 bit-exact 不相容。原门禁“冷路径快于基线”被证伪为不可满足。\n\n**亮点**：v2 冷路径比 v1 快 3.2x（7.90 vs 25.11ms），命中路径 2.4~2.8ms（快于基线 2.5x），且第 2 次重复调用即回本（10.65 < 13.44ms）。v2 在冷/命中两路径均不劣于冻结的 v1。\n\n**M3 入档完成**：notes.md 已记录全部数据与变更链路；`.gitignore` 补齐 `__pycache__/`、`.coverage`、`.pytest_cache/`。未提交（待你指示）。\n\n**待 agent-wang 裁定（唯一阻塞项）**——验收口径：\n- **R1（我的倾向）**：采纳 v2——门禁改为“冷快于 v1 + 命中快于基线 + 2 次调用回本”，接受单次冷调用 +18%\n- R2：否决 v2，回退冻结 v1（不推荐，两路径均劣于 v2）\n- R3：放弃缓存，回归纯基线（等于方案 A 终止）\n\n[CL] pilot_turn_driver turn 19 ...\n[turn_019] CL 轮完成：nodes=30 states={'git_commit@execution_status': 'open', 'notes.md@execution_status': 'open', 'data_layer@execution_status': 'in_progress', 'handover_doc@execution_status': 'open', 'pytest@execution_status': 'resolved', 'backtest.py@execution_status': 'in_progress'} revision=0019:97d7054a201a\n\n",
+  "stderr": "",
+  "seconds": 415.8,
+  "arm": "clv0",
+  "session": 2,
+  "turn": 19,
+  "attempt": 1,
+  "new_session": false,
+  "user_text": "按恢复后的方案 A 推进实现。",
+  "delivered_text": "按恢复后的方案 A 推进实现。"
+}

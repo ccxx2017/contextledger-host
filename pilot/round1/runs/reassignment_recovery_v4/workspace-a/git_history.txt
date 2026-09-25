@@ -1,0 +1,15 @@
+$ git log --all（clv0 臂 task-project 内嵌仓库，运行期快照）
+7359f28 2026-09-25 09:28:19 方案A首批：backtest向量化+结果缓存
+4fe18a5 2026-09-25 09:03:33 round1 window seed（布景初始提交）
+
+$ git status --short
+ M .gitignore
+ M __pycache__/backtest.cpython-39.pyc
+ M __pycache__/test_backtest.cpython-39-pytest-8.4.2.pyc
+ M backtest.py
+ M notes.md
+?? AGENTS.md
+?? HANDOVER.md
+?? SUMMARY.md
+?? plan_b.md
+

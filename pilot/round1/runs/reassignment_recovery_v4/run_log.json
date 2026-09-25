@@ -1,0 +1,416 @@
+{
+  "scenario": "reassignment_recovery",
+  "run_name": "reassignment_recovery_v4",
+  "scenario_path": "D:\\CCXXLESSON\\contextledger-host\\pilot\\round1\\scenarios\\reassignment_recovery.json",
+  "cl_project": "round1_wr1rr4_p1",
+  "arm_dirs": {
+    "clv0": "workspace-a",
+    "baseline": "workspace-b"
+  },
+  "steps": [
+    {
+      "step": "git_init",
+      "arm_dir": "workspace-a",
+      "head": "4fe18a5",
+      "rc": 0
+    },
+    {
+      "step": "git_init",
+      "arm_dir": "workspace-b",
+      "head": "4fe18a5",
+      "rc": 0
+    },
+    {
+      "step": "cl_install",
+      "rc": 0
+    },
+    {
+      "step": "cl_selfcheck",
+      "rc": 0,
+      "six_of_six": true
+    },
+    {
+      "step": "baseline_summary",
+      "rc": 0
+    },
+    {
+      "step": "info_floor",
+      "rc": 0
+    },
+    {
+      "step": "turn_clv0_1",
+      "rc": 0,
+      "seconds": 268.6,
+      "session": 1,
+      "turn": 1,
+      "attempt": 1
+    },
+    {
+      "step": "turn_baseline_1",
+      "rc": 0,
+      "seconds": 357.0,
+      "session": 1,
+      "turn": 1,
+      "attempt": 1
+    },
+    {
+      "step": "turn_clv0_2",
+      "rc": 0,
+      "seconds": 70.8,
+      "session": 1,
+      "turn": 2,
+      "attempt": 1
+    },
+    {
+      "step": "turn_baseline_2",
+      "rc": 0,
+      "seconds": 34.8,
+      "session": 1,
+      "turn": 2,
+      "attempt": 1
+    },
+    {
+      "step": "turn_clv0_3",
+      "rc": 0,
+      "seconds": 193.3,
+      "session": 1,
+      "turn": 3,
+      "attempt": 1
+    },
+    {
+      "step": "turn_baseline_3",
+      "rc": "TIMEOUT",
+      "seconds": 420.1,
+      "session": 1,
+      "turn": 3,
+      "attempt": 1
+    },
+    {
+      "step": "turn_baseline_3_timeout",
+      "seconds": 420.1
+    },
+    {
+      "step": "turn_baseline_3_r2",
+      "rc": 0,
+      "seconds": 31.6,
+      "session": 1,
+      "turn": 3,
+      "attempt": 2
+    },
+    {
+      "step": "turn_clv0_4",
+      "rc": 0,
+      "seconds": 39.7,
+      "session": 1,
+      "turn": 4,
+      "attempt": 1
+    },
+    {
+      "step": "turn_baseline_4",
+      "rc": 0,
+      "seconds": 31.5,
+      "session": 1,
+      "turn": 4,
+      "attempt": 1
+    },
+    {
+      "step": "turn_clv0_5",
+      "rc": 0,
+      "seconds": 53.4,
+      "session": 1,
+      "turn": 5,
+      "attempt": 1
+    },
+    {
+      "step": "turn_baseline_5",
+      "rc": 0,
+      "seconds": 46.6,
+      "session": 1,
+      "turn": 5,
+      "attempt": 1
+    },
+    {
+      "step": "turn_clv0_6",
+      "rc": 0,
+      "seconds": 86.9,
+      "session": 1,
+      "turn": 6,
+      "attempt": 1
+    },
+    {
+      "step": "turn_baseline_6",
+      "rc": 0,
+      "seconds": 74.5,
+      "session": 1,
+      "turn": 6,
+      "attempt": 1
+    },
+    {
+      "step": "turn_clv0_7",
+      "rc": 0,
+      "seconds": 142.7,
+      "session": 1,
+      "turn": 7,
+      "attempt": 1
+    },
+    {
+      "step": "turn_baseline_7",
+      "rc": 0,
+      "seconds": 120.3,
+      "session": 1,
+      "turn": 7,
+      "attempt": 1
+    },
+    {
+      "step": "turn_clv0_8",
+      "rc": 0,
+      "seconds": 59.8,
+      "session": 1,
+      "turn": 8,
+      "attempt": 1
+    },
+    {
+      "step": "turn_baseline_8",
+      "rc": 0,
+      "seconds": 27.3,
+      "session": 1,
+      "turn": 8,
+      "attempt": 1
+    },
+    {
+      "step": "turn_clv0_9",
+      "rc": 0,
+      "seconds": 62.0,
+      "session": 1,
+      "turn": 9,
+      "attempt": 1
+    },
+    {
+      "step": "turn_baseline_9",
+      "rc": 0,
+      "seconds": 44.6,
+      "session": 1,
+      "turn": 9,
+      "attempt": 1
+    },
+    {
+      "step": "turn_clv0_10",
+      "rc": 0,
+      "seconds": 73.0,
+      "session": 1,
+      "turn": 10,
+      "attempt": 1
+    },
+    {
+      "step": "turn_baseline_10",
+      "rc": 0,
+      "seconds": 73.4,
+      "session": 1,
+      "turn": 10,
+      "attempt": 1
+    },
+    {
+      "step": "turn_clv0_11",
+      "rc": 0,
+      "seconds": 30.1,
+      "session": 1,
+      "turn": 11,
+      "attempt": 1
+    },
+    {
+      "step": "turn_baseline_11",
+      "rc": 0,
+      "seconds": 15.4,
+      "session": 1,
+      "turn": 11,
+      "attempt": 1
+    },
+    {
+      "step": "turn_clv0_12",
+      "rc": 0,
+      "seconds": 62.2,
+      "session": 2,
+      "turn": 12,
+      "attempt": 1
+    },
+    {
+      "step": "turn_baseline_12",
+      "rc": 0,
+      "seconds": 69.0,
+      "session": 2,
+      "turn": 12,
+      "attempt": 1
+    },
+    {
+      "step": "turn_clv0_13",
+      "rc": 0,
+      "seconds": 21.0,
+      "session": 2,
+      "turn": 13,
+      "attempt": 1
+    },
+    {
+      "step": "turn_baseline_13",
+      "rc": 0,
+      "seconds": 18.2,
+      "session": 2,
+      "turn": 13,
+      "attempt": 1
+    },
+    {
+      "step": "turn_clv0_14",
+      "rc": 0,
+      "seconds": 83.6,
+      "session": 2,
+      "turn": 14,
+      "attempt": 1
+    },
+    {
+      "step": "turn_baseline_14",
+      "rc": 0,
+      "seconds": 50.7,
+      "session": 2,
+      "turn": 14,
+      "attempt": 1
+    },
+    {
+      "step": "turn_clv0_15",
+      "rc": 0,
+      "seconds": 22.6,
+      "session": 2,
+      "turn": 15,
+      "attempt": 1
+    },
+    {
+      "step": "turn_baseline_15",
+      "rc": 0,
+      "seconds": 13.8,
+      "session": 2,
+      "turn": 15,
+      "attempt": 1
+    },
+    {
+      "step": "turn_clv0_16",
+      "rc": 0,
+      "seconds": 64.9,
+      "session": 2,
+      "turn": 16,
+      "attempt": 1
+    },
+    {
+      "step": "turn_baseline_16",
+      "rc": 0,
+      "seconds": 150.6,
+      "session": 2,
+      "turn": 16,
+      "attempt": 1
+    },
+    {
+      "step": "turn_clv0_17",
+      "rc": 0,
+      "seconds": 64.5,
+      "session": 2,
+      "turn": 17,
+      "attempt": 1
+    },
+    {
+      "step": "turn_baseline_17",
+      "rc": 0,
+      "seconds": 91.2,
+      "session": 2,
+      "turn": 17,
+      "attempt": 1
+    },
+    {
+      "step": "turn_clv0_18",
+      "rc": 0,
+      "seconds": 65.1,
+      "session": 2,
+      "turn": 18,
+      "attempt": 1
+    },
+    {
+      "step": "turn_baseline_18",
+      "rc": 0,
+      "seconds": 63.5,
+      "session": 2,
+      "turn": 18,
+      "attempt": 1
+    },
+    {
+      "step": "turn_clv0_19",
+      "rc": 0,
+      "seconds": 415.8,
+      "session": 2,
+      "turn": 19,
+      "attempt": 1
+    },
+    {
+      "step": "turn_baseline_19",
+      "rc": 0,
+      "seconds": 60.1,
+      "session": 2,
+      "turn": 19,
+      "attempt": 1
+    },
+    {
+      "step": "turn_clv0_20",
+      "rc": 0,
+      "seconds": 47.0,
+      "session": 2,
+      "turn": 20,
+      "attempt": 1
+    },
+    {
+      "step": "turn_baseline_20",
+      "rc": 0,
+      "seconds": 30.8,
+      "session": 2,
+      "turn": 20,
+      "attempt": 1
+    },
+    {
+      "step": "turn_clv0_21",
+      "rc": 0,
+      "seconds": 87.2,
+      "session": 2,
+      "turn": 21,
+      "attempt": 1
+    },
+    {
+      "step": "turn_baseline_21",
+      "rc": 0,
+      "seconds": 54.3,
+      "session": 2,
+      "turn": 21,
+      "attempt": 1
+    },
+    {
+      "step": "turn_clv0_22",
+      "rc": 0,
+      "seconds": 35.6,
+      "session": 2,
+      "turn": 22,
+      "attempt": 1
+    },
+    {
+      "step": "turn_baseline_22",
+      "rc": 0,
+      "seconds": 53.8,
+      "session": 2,
+      "turn": 22,
+      "attempt": 1
+    },
+    {
+      "step": "git_archive",
+      "clv0": {
+        "head": "7359f28",
+        "history_preserved": true
+      },
+      "baseline": {
+        "head": "2052f5c",
+        "history_preserved": true
+      }
+    }
+  ]
+}

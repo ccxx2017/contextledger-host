@@ -1,0 +1,15 @@
+{
+  "workspace-a": {
+    ".gitignore": "b35bf22357192397",
+    "AGENTS.md": "870c167073a6bbec",
+    "backtest.py": "ea2d6591f9532913",
+    "notes.md": "2e0b50a44334225f",
+    "test_backtest.py": "39d60e90c037e280"
+  },
+  "workspace-b": {
+    ".gitignore": "b35bf22357192397",
+    "backtest.py": "e30d020ce11cb952",
+    "notes.md": "8d73fc56c58042a0",
+    "test_backtest.py": "ce7cf21d17077ecb"
+  }
+}

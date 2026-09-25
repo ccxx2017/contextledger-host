@@ -1,0 +1,13 @@
+$ git log --all（baseline 臂 task-project 内嵌仓库，运行期快照）
+2052f5c 2026-09-25 10:04:33 方案A v2收尾：测试扩至13项 + 状态笔记同步
+7ac1f1c 2026-09-25 09:29:16 方案A：backtest.py 向量化重构 + 结果缓存
+4fe18a5 2026-09-25 09:03:33 round1 window seed（布景初始提交）
+
+$ git status --short
+ M notes.md
+?? .coverage
+?? HANDOVER.md
+?? PLAN_A_V2_SCHEDULE.md
+?? SUMMARY.md
+?? plan_b_draft.md
+

@@ -1,0 +1,26 @@
+{
+  "cmd": [
+    "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+    "D:\\CCXXLESSON\\contextledger-host\\tools\\cl_turn.py",
+    "--project",
+    "D:\\CCXXLESSON\\contextledger-host\\pilot\\round1\\runs\\reassignment_recovery_v4\\workspace-a\\task-project",
+    "--cl-project",
+    "round1_wr1rr4_p1",
+    "--text",
+    "全量测试还在跑。趁这个时间核对一下改造覆盖率，看看有没有漏掉的路径。",
+    "--timeout",
+    "420"
+  ],
+  "cwd": "D:\\CCXXLESSON\\contextledger-host",
+  "rc": 0,
+  "stdout": "[装配] revision -> 0006:e7f2e0b333f5\n[宿主] opencode run -c 全量测试还在跑。趁这个时间核对一下改造覆盖率，看看有没有漏掉的路径。...\n[宿主] rc=0\n盖：100%**（`coverage --branch`：24 语句 / 8 分支，0 miss、0 部分分支）——改造后代码没有物理上未执行的路径。\n\n**语义路径矩阵：发现 4 个“执行了但未被单测断言”的缺口**（属测试债，非正确性缺陷——5006 组随机 harness 已对它们做过 bit-exact 验证）：\n\n| 路径 | 示例 | bit-exact 结果 | 单测现状 |\n|---|---|---|---|\n| 严格下跌（全程无上涨段） | `[3, 2.5, 2, 1]` | 10000.0 / 0 | 缺 |\n| 以卖出收尾（期末清仓归零） | `[1, 2, 1]` | 9999.0 / 0 | 缺（仅缓存测试路过，未断言值） |\n| 横盘打断上涨段（严格 `>` 语义） | `[1, 2, 2, 3, 2]` | 9999.0 / 0 | 缺 |\n| 缓存淘汰（>512 不同序列，currsize 封顶） | — | 行为正常 | 缺（只在临时 harness 查过） |\n\n已断言覆盖的路径：空序列、单点、纯上涨期末持仓、混合序列全分支（手算 9999.5/1）、缓存命中、tuple/list 等价、dict 不共享。\n\n建议补 4 个用例把上表封死。你点头我就加进 `test_backtest.py`，一并跑 `pytest -q` + 分支覆盖复验。\n\n[CL] pilot_turn_driver turn 7 ...\n[turn_007] CL 轮完成：nodes=13 states={'backtest.py@execution_status': 'in_progress', 'git_commit@execution_status': 'open', 'pytest@build_status': 'in_progress', 'notes.md@execution_status': 'open'} revision=0007:3ff9893742ee\n\n",
+  "stderr": "",
+  "seconds": 142.7,
+  "arm": "clv0",
+  "session": 1,
+  "turn": 7,
+  "attempt": 1,
+  "new_session": false,
+  "user_text": "全量测试还在跑。趁这个时间核对一下改造覆盖率，看看有没有漏掉的路径。",
+  "delivered_text": "全量测试还在跑。趁这个时间核对一下改造覆盖率，看看有没有漏掉的路径。"
+}

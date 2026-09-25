@@ -1,0 +1,2 @@
+{"type":"cl_v0_boundary_dump","ts":"2026-09-25T01:14:02.522Z","payload":{"message_count":14,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_injected","ts":"2026-09-25T01:14:03.720Z","payload":{"states_count":3,"readiness":"degraded","state_revision":"0001:4ad5b043ef8c"}}

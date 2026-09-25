@@ -1,0 +1,6 @@
+{"type":"cl_v0_boundary_dump","ts":"2026-09-25T01:37:55.748Z","payload":{"message_count":47,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_injected","ts":"2026-09-25T01:37:56.866Z","payload":{"states_count":3,"readiness":"degraded","state_revision":"0008:fb67ab97132e"}}
+{"type":"cl_gate_verdict","ts":"2026-09-25T01:38:22.782Z","tool":"bash","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-25T01:38:22.902Z","tool":"bash","payload":{"gate":"preaction","exit_code":0,"reason_codes":[]}}
+{"type":"cl_v0_boundary_dump","ts":"2026-09-25T01:38:24.833Z","payload":{"message_count":48,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_injected","ts":"2026-09-25T01:38:24.889Z","payload":{"states_count":3,"readiness":"degraded","state_revision":"0008:fb67ab97132e"}}
