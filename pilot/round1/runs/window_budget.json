@@ -102,6 +102,79 @@
       "extractions_total": 36,
       "deepseek_est_cny": 4.14,
       "at": "2026-09-24T23:10:55+0800"
+    },
+    {
+      "at_turn": 5,
+      "scenario": "reassignment_recovery_v4",
+      "live_host_turns": 67,
+      "archived_host_turns": 35,
+      "host_turns_total": 102,
+      "extractions_total": 44,
+      "deepseek_est_cny": 5.06,
+      "at": "2026-09-25T09:29:21+0800"
+    },
+    {
+      "at_turn": 10,
+      "scenario": "reassignment_recovery_v4",
+      "live_host_turns": 77,
+      "archived_host_turns": 35,
+      "host_turns_total": 112,
+      "extractions_total": 49,
+      "deepseek_est_cny": 5.635,
+      "at": "2026-09-25T09:42:06+0800"
+    },
+    {
+      "at_turn": 15,
+      "scenario": "reassignment_recovery_v4",
+      "live_host_turns": 87,
+      "archived_host_turns": 35,
+      "host_turns_total": 122,
+      "extractions_total": 54,
+      "deepseek_est_cny": 6.21,
+      "at": "2026-09-25T09:48:32+0800"
+    },
+    {
+      "at_turn": 20,
+      "scenario": "reassignment_recovery_v4",
+      "live_host_turns": 97,
+      "archived_host_turns": 35,
+      "host_turns_total": 132,
+      "extractions_total": 59,
+      "deepseek_est_cny": 6.785,
+      "at": "2026-09-25T10:06:06+0800"
+    },
+    {
+      "at_turn": 22,
+      "scenario": "reassignment_recovery_v4",
+      "live_host_turns": 101,
+      "archived_host_turns": 35,
+      "host_turns_total": 136,
+      "extractions_total": 61,
+      "deepseek_est_cny": 7.015,
+      "at": "2026-09-25T10:09:57+0800"
     }
-  ]
+  ],
+  "expansion_meta_truth": {
+    "as_of": "2026-09-25T10:50:00+08:00",
+    "method": "各 CL 项目 reports/extractor_meta*.json 落盘实数（errata 纪律：计划数与答复文件数不入账）",
+    "breakdown": {
+      "live_sealed": 19,
+      "live_sealed_note": "wr1np 4 + wr1ud 5 + wr1str 5 + wr1rr3 5",
+      "early_attempt_r1np": 4,
+      "early_attempt_note": "2026-09-24 10:53-10:57 UTC 场景 1 早期尝试（round1_r1np_clv0），errata 39 漏计",
+      "archived_polluted": 22,
+      "archived_polluted_note": "污染运行 meta 实数（17 轮 + 5 次重试：t3×2、t7×3、t17×3）；errata 按轮数计 17，少计 5",
+      "archived_v2_aborted": 0,
+      "archived_fixreg": 2,
+      "archived_blocktest": 1,
+      "expansion_v4": 23,
+      "expansion_v4_note": "22 轮 + t14 reconcile 重试 1 次（attempt 1 STATE_CONFLICT_MISSING_SUPERSEDE，attempt 2 闭合，未停机）；驱动按答复文件计 22"
+    },
+    "extractions_total": 71,
+    "deepseek_est_cny": 8.17,
+    "limit_cny": 50,
+    "host_turns_total": 136,
+    "host_limit": 300,
+    "note": "扩样判断点预算以本实数起算；两处对 errata 39 的修正均为保守方向（多计）：早期尝试 4 次漏计 + 污染运行重试 5 次少计；另 v4 的 t14 重试 1 次为驱动文件计数所漏。均远低于上限，不影响预算合规结论。"
+  }
 }
