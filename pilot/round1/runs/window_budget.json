@@ -2,7 +2,7 @@
   "archived": {
     "host_turns": 35,
     "extractions": 20,
-    "note": "四笔不计入 run-root 重数、但计入总账：(1) reassignment_recovery 首轮污染运行（git 组间污染，第七号裁定 C' 作废）33 轮/17 抽取 -> pilot/round1/archive/rr_polluted_20260924/；(2) v2 尝试（clv0 t1 超时 + baseline t1 被中断，共 2 次 opencode 调用、0 次完成的抽取）-> pilot/round1/archive/v2_aborted_timeout_misclass_20260924/；(3) 装置整改回归实证 2 次抽取（第八号裁定书 Round 2 前置 1，v3 t3 原样输入复跑修复后回路，均在 attempt 1 闭合败链）-> temp/round1_judgment/fixreg/（主仓 temp/，证据哈希随案）；(4) 拦截识别规则构造实测 1 次抽取（Round 2 前置 4，scratch 项目 round1_blocktest_p1，readiness=blocked 真态，R1-R4 全过）-> temp/round1_judgment/blocktest/。全账：宿主 91/300（live 56 + archived 35，装置测试不进 run-root）；抽取 36 live + 20 archived = 56 次 ≈6.45/50 元。"
+    "note": "四笔不计入 run-root 重数、但计入总账：(1) reassignment_recovery 首轮污染运行（git 组间污染，第七号裁定 C' 作废）33 轮/17 抽取 -> pilot/round1/archive/rr_polluted_20260924/；(2) v2 尝试（clv0 t1 超时 + baseline t1 被中断，共 2 次 opencode 调用、0 次完成的抽取）-> pilot/round1/archive/v2_aborted_timeout_misclass_20260924/；(3) 装置整改回归实证 2 次抽取（第八号裁定书 Round 2 前置 1，v3 t3 原样输入复跑修复后回路，均在 attempt 1 闭合败链）-> temp/round1_judgment/fixreg/（主仓 temp/，证据哈希随案）；(4) 拦截识别规则构造实测 1 次抽取（Round 2 前置 4，scratch 项目 round1_blocktest_p1，readiness=blocked 真态，R1-R4 全过）-> temp/round1_judgment/blocktest/。抽取全账（以各 CL 项目 reports/extractor_meta*.json 实数为准，2026-09-25 复核）：live 19（wr1np 4 + wr1ud 5 + wr1str 5 + wr1rr3 5[=t1 1 + t2 1 + t3 首采1+重试2]）+ archived 20 = 39 次 ≈4.49/50 元。【勘误】round1 判断点报告与第八号裁定书所载'53 次≈6.1 元'含 v3 clv0 计划 22 轮的高估（实际停机 t3、仅 5 次），方向保守（多计）；round1 封存报告文本不改，勘误见主仓 round1_budget_errata.md。宿主 91/300（live 56 + archived 35）。"
   },
   "checks": [
     {
