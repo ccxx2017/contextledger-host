@@ -1,0 +1,14 @@
+{"type":"cl_v0_boundary_dump","ts":"2026-09-25T03:25:57.994Z","payload":{"message_count":30,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_injected","ts":"2026-09-25T03:25:58.839Z","payload":{"states_count":3,"readiness":"degraded","state_revision":"0006:cb1c444b7c02"}}
+{"type":"cl_gate_verdict","ts":"2026-09-25T03:26:25.630Z","tool":"bash","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-25T03:26:25.689Z","tool":"bash","payload":{"gate":"preaction","exit_code":0,"reason_codes":[]}}
+{"type":"cl_v0_boundary_dump","ts":"2026-09-25T03:26:26.543Z","payload":{"message_count":31,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_injected","ts":"2026-09-25T03:26:26.565Z","payload":{"states_count":3,"readiness":"degraded","state_revision":"0006:cb1c444b7c02"}}
+{"type":"cl_gate_verdict","ts":"2026-09-25T03:26:47.229Z","tool":"bash","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-25T03:26:47.233Z","tool":"bash","payload":{"gate":"preaction","exit_code":null,"reason_codes":[]}}
+{"type":"cl_v0_boundary_dump","ts":"2026-09-25T03:26:47.899Z","payload":{"message_count":32,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_injected","ts":"2026-09-25T03:26:47.921Z","payload":{"states_count":3,"readiness":"degraded","state_revision":"0006:cb1c444b7c02"}}
+{"type":"cl_gate_verdict","ts":"2026-09-25T03:27:00.276Z","tool":"bash","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-25T03:27:00.341Z","tool":"bash","payload":{"gate":"preaction","exit_code":0,"reason_codes":[]}}
+{"type":"cl_v0_boundary_dump","ts":"2026-09-25T03:27:04.474Z","payload":{"message_count":33,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_injected","ts":"2026-09-25T03:27:04.483Z","payload":{"states_count":3,"readiness":"degraded","state_revision":"0006:cb1c444b7c02"}}

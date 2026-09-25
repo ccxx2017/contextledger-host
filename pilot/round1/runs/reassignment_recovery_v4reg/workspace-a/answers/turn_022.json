@@ -1,0 +1,26 @@
+{
+  "cmd": [
+    "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+    "D:\\CCXXLESSON\\contextledger-host\\tools\\cl_turn.py",
+    "--project",
+    "D:\\CCXXLESSON\\contextledger-host\\pilot\\round1\\runs\\reassignment_recovery_v4reg\\workspace-a\\task-project",
+    "--cl-project",
+    "round1_wr1rr4r_p1",
+    "--text",
+    "写交接总结（SUMMARY.md），收尾。",
+    "--timeout",
+    "420"
+  ],
+  "cwd": "D:\\CCXXLESSON\\contextledger-host",
+  "rc": 0,
+  "stdout": "[装配] revision -> 0021:4ea03eb6281e\n[宿主] opencode run -c 写交接总结（SUMMARY.md），收尾。...\n[宿主] rc=0\n`SUMMARY.md` 已写入，收尾完成。\n\n最终态：方案 A 完结冻结（`cd0e3eb`，实测 12 passed）｜负责人 agent-liu｜`backtest.py` 零改动｜不可信异步结果已证伪归档｜待办移交清单见 `SUMMARY.md`，细节见 `HANDOVER.md`。\n\n[CL] pilot_turn_driver turn 22 ...\n[turn_022] CL 轮完成：nodes=34 states={'backtest.py': '[事实] 回测模块（backtest.py）已完成的方案 A 改造保持现状冻结，不得回滚', 'backtest.py@owner': '[事实] 回测模块改派：实现负责人由 agent-wang 改为 agent-liu，后续实现工作以 agent-liu 为准，代码保持现状', 'backtest.py@build_status': '[事实] 第 6 轮发起的全量测试异步返回结果：3 failed，backtest.py 3 个用例失败', 'backtest.py@execution_status': 'in_progress', 'SUMMARY.md@execution_status': 'open'} revision=0022:5a6acd2bcbd2\n\n",
+  "stderr": "",
+  "seconds": 67.0,
+  "arm": "clv0",
+  "session": 2,
+  "turn": 22,
+  "attempt": 1,
+  "new_session": false,
+  "user_text": "写交接总结（SUMMARY.md），收尾。",
+  "delivered_text": "写交接总结（SUMMARY.md），收尾。"
+}

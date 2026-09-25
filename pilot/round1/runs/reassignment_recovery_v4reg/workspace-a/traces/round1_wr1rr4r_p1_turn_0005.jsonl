@@ -1,0 +1,14 @@
+{"type":"cl_v0_boundary_dump","ts":"2026-09-25T03:24:45.411Z","payload":{"message_count":25,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_injected","ts":"2026-09-25T03:24:46.282Z","payload":{"states_count":3,"readiness":"degraded","state_revision":"0005:0cafd19a56ad"}}
+{"type":"cl_gate_verdict","ts":"2026-09-25T03:25:24.733Z","tool":"bash","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-25T03:25:24.791Z","tool":"bash","payload":{"gate":"preaction","exit_code":0,"reason_codes":[]}}
+{"type":"cl_v0_boundary_dump","ts":"2026-09-25T03:25:25.525Z","payload":{"message_count":26,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_injected","ts":"2026-09-25T03:25:25.562Z","payload":{"states_count":3,"readiness":"degraded","state_revision":"0005:0cafd19a56ad"}}
+{"type":"cl_gate_verdict","ts":"2026-09-25T03:25:31.628Z","tool":"edit","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-25T03:25:31.683Z","tool":"edit","payload":{"gate":"preaction","exit_code":0,"reason_codes":[]}}
+{"type":"cl_v0_boundary_dump","ts":"2026-09-25T03:25:32.281Z","payload":{"message_count":27,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_injected","ts":"2026-09-25T03:25:32.298Z","payload":{"states_count":3,"readiness":"degraded","state_revision":"0005:0cafd19a56ad"}}
+{"type":"cl_gate_verdict","ts":"2026-09-25T03:25:34.372Z","tool":"bash","payload":{"gate":"readiness","readiness":"degraded","reason_codes":["LINT_WARNING_PRESENT"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-25T03:25:34.429Z","tool":"bash","payload":{"gate":"preaction","exit_code":0,"reason_codes":[]}}
+{"type":"cl_v0_boundary_dump","ts":"2026-09-25T03:25:37.401Z","payload":{"message_count":28,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_injected","ts":"2026-09-25T03:25:37.420Z","payload":{"states_count":3,"readiness":"degraded","state_revision":"0005:0cafd19a56ad"}}

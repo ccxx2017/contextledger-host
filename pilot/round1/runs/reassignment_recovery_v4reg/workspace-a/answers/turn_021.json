@@ -1,0 +1,26 @@
+{
+  "cmd": [
+    "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+    "D:\\CCXXLESSON\\contextledger-host\\tools\\cl_turn.py",
+    "--project",
+    "D:\\CCXXLESSON\\contextledger-host\\pilot\\round1\\runs\\reassignment_recovery_v4reg\\workspace-a\\task-project",
+    "--cl-project",
+    "round1_wr1rr4r_p1",
+    "--text",
+    "把文档同步到最新状态。",
+    "--timeout",
+    "420"
+  ],
+  "cwd": "D:\\CCXXLESSON\\contextledger-host",
+  "rc": 0,
+  "stdout": "[装配] revision -> 0020:b7327c464859\n[宿主] opencode run -c 把文档同步到最新状态。...\n[宿主] rc=0\n`HANDOVER.md` 已同步至 CL 0019:4bbe11c1f67f，更新点：\n\n1. CL 版本引用修正（0011 → 0019），并记录会话内版本演进（0016 → 0019 新增 `execution_status = in_progress`）。\n2. 新增证伪记录：09:55 “3 failed” 异步结果不采信的完整证据链，及流程改进项（运行 ID + 时间戳配对）。\n3. 新增会话事件：三次“恢复执行 / v2 重排期”指令因与裁定态冲突未执行，全库无 v2 定义。\n4. 负责人归属补充：in_progress 事项归属 agent-liu；工作区状态补入 `HANDOVER.md` 本身为未跟踪文件。\n5. 实测真值更新：本会话三次复跑 12 passed（含收尾检查）。\n\n`notes.md` 未动（其未提交编辑属遗留裁定事项，不擅自处置）。\n\n[CL] pilot_turn_driver turn 21 ...\n[turn_021] CL 轮完成：nodes=33 states={'backtest.py': '[事实] 回测模块（backtest.py）已完成的方案 A 改造保持现状冻结，不得回滚', 'backtest.py@owner': '[事实] 回测模块改派：实现负责人由 agent-wang 改为 agent-liu，后续实现工作以 agent-liu 为准，代码保持现状', 'backtest.py@execution_status': 'in_progress', 'backtest.py@build_status': '[事实] 第 6 轮发起的全量测试异步返回结果：3 failed，backtest.py 3 个用例失败'} revision=0021:4ea03eb6281e\n\n",
+  "stderr": "",
+  "seconds": 85.7,
+  "arm": "clv0",
+  "session": 2,
+  "turn": 21,
+  "attempt": 1,
+  "new_session": false,
+  "user_text": "把文档同步到最新状态。",
+  "delivered_text": "把文档同步到最新状态。"
+}

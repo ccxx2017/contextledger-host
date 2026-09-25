@@ -1,0 +1,15 @@
+{
+  "seeds": {
+    "workspace-a": {
+      "backtest.py": "aaf5ddbeb5ddc61a",
+      "notes.md": "d212d6166a549346",
+      "test_backtest.py": "39d60e90c037e280"
+    },
+    "workspace-b": {
+      "backtest.py": "aaf5ddbeb5ddc61a",
+      "notes.md": "d212d6166a549346",
+      "test_backtest.py": "39d60e90c037e280"
+    }
+  },
+  "arms_equal": true
+}

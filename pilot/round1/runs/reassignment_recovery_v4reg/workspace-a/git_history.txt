@@ -1,0 +1,14 @@
+$ git log --all（clv0 臂 task-project 内嵌仓库，运行期快照）
+cd0e3eb 2026-09-25 11:24:19 方案A重构backtest.py：NumPy向量化+lru_cache结果缓存
+b8278b1 2026-09-25 11:09:54 round1 window seed（布景初始提交）
+
+$ git status --short
+ M __pycache__/backtest.cpython-39.pyc
+ M __pycache__/test_backtest.cpython-39-pytest-8.4.2.pyc
+ M notes.md
+?? .coverage
+?? AGENTS.md
+?? HANDOVER.md
+?? SUMMARY.md
+?? plan_b_draft.md
+

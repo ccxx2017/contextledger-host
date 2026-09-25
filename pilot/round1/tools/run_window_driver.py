@@ -161,7 +161,13 @@ def main() -> int:
     ap.add_argument("--run-root", default=str(HOST / "pilot" / "round1" / "runs"))
     ap.add_argument("--run-name", default=None, help="运行目录名（默认=scenario；重跑用新目录）")
     ap.add_argument("--cl-suffix", default="", help="CL 项目名后缀（重跑隔离状态，如 '2' -> round1_wr1rr2_clv0）")
+    ap.add_argument("--arms", default="clv0,baseline",
+                    help="要跑的臂（默认双臂；装置回归可只跑 clv0——导出层修复只影响 clv0 供给面）")
     args = ap.parse_args()
+    arms_to_run = [a.strip() for a in args.arms.split(",") if a.strip()]
+    for a in arms_to_run:
+        if a not in ("clv0", "baseline"):
+            raise SystemExit(f"--arms 仅接受 clv0/baseline，收到: {a}")
 
     scenario_path = HOST / "pilot" / "round1" / "scenarios" / f"{args.scenario}.json"
     scenario = json.loads(scenario_path.read_text(encoding="utf-8"))
@@ -172,7 +178,7 @@ def main() -> int:
     # CL 项目名去臂名（trace 文件名由它生成，模型可窥见 traces/ 目录）
     cl_project = f"round1_w{CL_SHORT[args.scenario]}{args.cl_suffix}_p1"
     log = {"scenario": args.scenario, "run_name": run_name, "scenario_path": str(scenario_path),
-           "cl_project": cl_project, "arm_dirs": ARM_DIR, "steps": []}
+           "cl_project": cl_project, "arm_dirs": ARM_DIR, "arms_to_run": arms_to_run, "steps": []}
     # 臂映射外置到驱动侧（运行目录内不落臂名）
     ARM_MAP_PATH.mkdir(parents=True, exist_ok=True)
     save(ARM_MAP_PATH / f"arm_map_{run_name}.json",
@@ -292,6 +298,8 @@ def main() -> int:
         ran_any = False
 
         for arm in ("clv0", "baseline"):
+            if arm not in arms_to_run:
+                continue
             if arm == "clv0" and clv0_halted:
                 print(f"[halt] clv0 t{turn_no}（臂已停机，D' 终态不补跑）", flush=True)
                 continue
@@ -413,11 +421,16 @@ def main() -> int:
         # ---- 5. 投递核验（M3，会话 2 首轮后） ----
         if new_session or first_of_s1:
             if session != 1:
-                dc_path = sc_dir / "delivery_check.json"
-                if dc_path.exists() and json.loads(dc_path.read_text(encoding="utf-8")).get("ok"):
+                if "baseline" not in arms_to_run:
+                    print(f"[投递核验 M3] t{turn_no} 跳过（单臂回归：无 baseline 臂，M3 对象不存在）", flush=True)
+                elif dc_path.exists() and json.loads(dc_path.read_text(encoding="utf-8")).get("ok"):
                     print(f"[投递核验 M3] t{turn_no} 已有核验记录，跳过", flush=True)
                 else:
                     b_path = answer_file(sc_dir, "baseline", turn_no)
+                    if b_path is None:
+                        scenario_stop(sc_dir, f"M3 装置故障：baseline t{turn_no} 无答复文件")
+                        save(sc_dir / "run_log.json", log)
+                        return 2
                     b_ans = json.load(open(b_path, encoding="utf-8"))
                     delivered = b_ans.get("delivered_text") or b_ans.get("user_text", "")
                     first_line = summary_text.splitlines()[0] if summary_text else ""

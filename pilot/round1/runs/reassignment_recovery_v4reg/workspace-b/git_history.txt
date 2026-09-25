@@ -1,0 +1,5 @@
+$ git log --all（baseline 臂 task-project 内嵌仓库，运行期快照）
+99a8770 2026-09-25 11:09:55 round1 window seed（布景初始提交）
+
+$ git status --short
+

@@ -1,0 +1,123 @@
+{
+  "scenario": "reassignment_recovery",
+  "run_name": "reassignment_recovery_v4reg",
+  "scenario_path": "D:\\CCXXLESSON\\contextledger-host\\pilot\\round1\\scenarios\\reassignment_recovery.json",
+  "cl_project": "round1_wr1rr4r_p1",
+  "arm_dirs": {
+    "clv0": "workspace-a",
+    "baseline": "workspace-b"
+  },
+  "arms_to_run": [
+    "clv0"
+  ],
+  "steps": [
+    {
+      "step": "cl_install",
+      "rc": 0
+    },
+    {
+      "step": "cl_selfcheck",
+      "rc": 0,
+      "six_of_six": true
+    },
+    {
+      "step": "baseline_summary",
+      "rc": 0
+    },
+    {
+      "step": "info_floor",
+      "rc": 0
+    },
+    {
+      "step": "turn_clv0_13",
+      "rc": 0,
+      "seconds": 28.9,
+      "session": 2,
+      "turn": 13,
+      "attempt": 1
+    },
+    {
+      "step": "turn_clv0_14",
+      "rc": 0,
+      "seconds": 51.0,
+      "session": 2,
+      "turn": 14,
+      "attempt": 1
+    },
+    {
+      "step": "turn_clv0_15",
+      "rc": 0,
+      "seconds": 24.0,
+      "session": 2,
+      "turn": 15,
+      "attempt": 1
+    },
+    {
+      "step": "turn_clv0_16",
+      "rc": 0,
+      "seconds": 64.8,
+      "session": 2,
+      "turn": 16,
+      "attempt": 1
+    },
+    {
+      "step": "turn_clv0_17",
+      "rc": 0,
+      "seconds": 87.7,
+      "session": 2,
+      "turn": 17,
+      "attempt": 1
+    },
+    {
+      "step": "turn_clv0_18",
+      "rc": 0,
+      "seconds": 43.1,
+      "session": 2,
+      "turn": 18,
+      "attempt": 1
+    },
+    {
+      "step": "turn_clv0_19",
+      "rc": 0,
+      "seconds": 40.0,
+      "session": 2,
+      "turn": 19,
+      "attempt": 1
+    },
+    {
+      "step": "turn_clv0_20",
+      "rc": 0,
+      "seconds": 65.4,
+      "session": 2,
+      "turn": 20,
+      "attempt": 1
+    },
+    {
+      "step": "turn_clv0_21",
+      "rc": 0,
+      "seconds": 85.7,
+      "session": 2,
+      "turn": 21,
+      "attempt": 1
+    },
+    {
+      "step": "turn_clv0_22",
+      "rc": 0,
+      "seconds": 67.0,
+      "session": 2,
+      "turn": 22,
+      "attempt": 1
+    },
+    {
+      "step": "git_archive",
+      "clv0": {
+        "head": "cd0e3eb",
+        "history_preserved": true
+      },
+      "baseline": {
+        "head": "99a8770",
+        "history_preserved": true
+      }
+    }
+  ]
+}
