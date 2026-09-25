@@ -164,3 +164,45 @@ blocked/decision 字段。因此机械识别规则为：
   (e) 若重跑中 clv0 依 D' 停机：提取层停机段（t17 类 reconcile 3/3 连败 → 隔离 →
       readiness=blocked）与 clv0 缺失检查点（如 t20/t22 剔除）须在"未覆盖或不可判定
       路径"五要素中列明。
+
+## 10. 扩样窗口附录（第八号裁定书授权，2026-09-25；装置版本钉 6c0302c）
+
+**范围**：只补场景 4（reassignment_recovery）一格，双臂各 22 轮；场景 1–3 数据
+不重采。判据 `b638e56`、预注册 `6ebbca4` 零改动；round1 已采证据全部有效。
+
+**运行参数**：run_root 下新目录 `reassignment_recovery_v4/`；CL 项目名
+`round1_wr1rr4_p1`（去臂名）；种子同 `seeds/reassignment_recovery/`；
+每臂布景时 `git init` + 初始提交（C' 先例保持）。
+
+**中性路径名（Round 2 前置 2）**：两臂落盘目录改为 `workspace-a`（cl_v0 逻辑臂）
+/ `workspace-b`（baseline 逻辑臂）；运行目录内所有 JSON 件（seeding_manifest /
+git_heads / hashes / HALTED.json / delivery_check）一律中性键；臂映射写驱动侧
+`temp/round1_trial/arm_map_reassignment_recovery_v4.json`（不进运行目录）。
+残余泄漏面（如实披露）：trace 文件名由 cl_turn 装置生成（随 CL 项目名中性化），
+但模型若主动越目录窥探仍可能推断——与 round1 污染运行的跨臂窥探同型。
+
+**拦截识别规则状态更新**：§5"未获实测"的限定已由**构造实测**解除（第八号裁定书
+Round 2 前置 4）：scratch 项目 `round1_blocktest_p1`（隔离条目标 unreviewed 构造
+readiness=blocked 真态）跑真 cl_turn，R1 宿主输出含
+`CL_READINESS_BLOCKED: LINT_WARNING_PRESENT, QUARANTINE_NONEMPTY`、R2 trace 3 条
+`cl_gate_verdict`（readiness=blocked）、R3 双证据齐备、R4 阻断前置（26.1s）。
+证据：主仓 `temp/round1_judgment/blocktest/`。扩样窗口若出现自然拦截，仍按 §5
+规则识别并人工核验一次（首例）。
+
+**测量口径注记（必进扩样报告局限节）**：扩样 cl_v0 臂运行**修复后**提取层
+（提示词 open→in_progress 互斥迁移补齐 + reconcile 错误回喂；主仓 6c0302c），
+场景 1–3 运行修复前提取层；该缺陷在场景 1–3 未触发（reconcile 全过），修复为
+contract 03 既有语义的提示词补齐，不改判定逻辑。readiness=degraded 恒置维持
+（O2 根因：全局 lint 报告路径 + pilot 项目从未建 lint_baseline.json——一条他项目
+陈旧 warning 让所有 pilot 项目恒降级；degraded 非阻断、构造实测证实 lint 不进
+阻塞集；修复会動 assembler 核心件且改变测量条件，故文档化不修复）。
+
+**预算延续**：宿主 91/300 起算 + 44 = 135/300；DeepSeek ≈6.45/50 起算
+（56 次：36 live + 20 archived 含回归实证 2 + 拦截实测 1）+ 22 ≈ 78 次 ≈ 9.0/50；
+人工裁定额度已用 1/10（D1），扩样段新争议另计。
+
+**驱动与实测脚本快照（可复现性）**：扩样驱动 `tools/run_window_driver.py`
+（sha256 `4302e9ecf8c6002e`）；装置测试脚本 `tools/fixreg_replay.py`
+（`556358de09f39e28`，败链修复充分性实证）、`tools/blocktest_intercept.py`
+（`48fdae68547c427e`，拦截识别规则实测）。三脚本与主仓 temp/round1_trial/ 工作件
+同源；判据/评分器/五件套零改动（装置版本钉见主仓 round1_version_freeze.md §6）。
