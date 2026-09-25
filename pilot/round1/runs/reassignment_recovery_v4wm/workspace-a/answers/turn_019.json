@@ -1,0 +1,26 @@
+{
+  "cmd": [
+    "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+    "D:\\CCXXLESSON\\contextledger-host\\tools\\cl_turn.py",
+    "--project",
+    "D:\\CCXXLESSON\\contextledger-host\\pilot\\round1\\runs\\reassignment_recovery_v4wm\\workspace-a\\task-project",
+    "--cl-project",
+    "round1_wr1rr4wm_p1",
+    "--text",
+    "按恢复后的方案 A 推进实现。",
+    "--timeout",
+    "420"
+  ],
+  "cwd": "D:\\CCXXLESSON\\contextledger-host",
+  "rc": 0,
+  "stdout": "[装配] revision -> 0018:622796e705b8\n[宿主] opencode run -c 按恢复后的方案 A 推进实现。...\n[宿主] rc=0\n授权** |\n| A2-M2 NaN 语义 | ✅ 关闭 | 按建议默认：回测层维持基线容忍，从严拒绝归数据层入口（notes.md §7 v2 拍板记录，可翻案） |\n| A2-M3 缓存键 | ✅ 关闭 | 按建议默认：维持 tuple 键，业务键缓存列后续优化 |\n| A2-M4 trades 更名 | ⏸ | 外部协商项，未启动，代码不动 |\n| A2-M5 质量门 + 冻结审计 | ✅ 全绿 | pytest 10 passed / ruff 零告警 / 分支覆盖 100%（88 语句 16 分支 0 缺失）/ `backtest.py`+`test_backtest.py` 对 `5b99949` **零 diff** |\n| 联动-B | ✅ | plan_b_draft.md 前置事实更新至 v0.2（方案 A 恢复、解冻路径打通） |\n\n**待你指令的两项**：① M1 提交授权（`.gitignore` + notes.md + AGENTS.md + plan_b_draft.md 一个 commit，含 `.pyc` 脱管）；② M4 与使用方的更名协商何时发起。\n\n插曲说明：`.gitignore` 原是被跟踪文件（首次盘点漏看），我覆盖后已从 `git show HEAD:.gitignore` 还原合并，现内容 = 原有一行 + 新增卫生项，无丢失。\n\n[CL] pilot_turn_driver turn 19 ...\n[turn_019] CL 轮完成：nodes=32 states={'git@execution_status': 'open', 'backtest.py@execution_status': 'in_progress'} revision=0019:2fcc25eeb844\n\n",
+  "stderr": "",
+  "seconds": 162.1,
+  "arm": "clv0",
+  "session": 2,
+  "turn": 19,
+  "attempt": 1,
+  "new_session": false,
+  "user_text": "按恢复后的方案 A 推进实现。",
+  "delivered_text": "按恢复后的方案 A 推进实现。"
+}

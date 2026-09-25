@@ -1,0 +1,6 @@
+{
+  "rc": 0,
+  "stdout": "[装配] revision -> 0002:e6fa83deab44\n[宿主] opencode run 装置测试：请看一下当前项目状态。...\n[宿主] rc=0\n无法获取项目状态。所有工具调用（git status、git log、目录读取）均被环境拦截，返回同一错误：\n\n```\nCL_READINESS_BLOCKED: LINT_WARNING_PRESENT, QUARANTINE_NONEMPTY\n```\n\n结合 AGENTS.md 中的状态标注，当前环境处于**就绪度封锁**：\n\n| 项目 | 状态 |\n|---|---|\n| backtest.py 执行状态 | open（进行中） |\n| turn_003 | 未通过机械裁定，处于隔离区 |\n| 就绪度 | blocked（QUARANTINE_NONEMPTY） |\n\n即当前所有读取/执行操作都被就绪度门禁拦截，我无法确认实际文件或 git 状态。AGENTS.md 也警告当前态快照可能缺失本轮变更，不可据此断言事件。\n\n如需继续，可能需要先解决 turn_003 的隔离问题（清空隔离区）或修复 lint 警告。你希望我如何处理？\n\n[CL] pilot_turn_driver turn 4 ...\n[turn_004] CL ����ɣ�nodes=7 states={'backtest.py@execution_status': 'open'} revision=0004:57033c552cab\n\n",
+  "stderr": "",
+  "seconds": 26.1
+}

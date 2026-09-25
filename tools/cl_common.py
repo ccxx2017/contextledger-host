@@ -42,8 +42,11 @@ def current_revision(graph_state: Path) -> str:
 
 def refresh_control(control_file: Path, cl_home: str, cl_project: str,
                     graph_state: Path, manifest_path: Path | None,
-                    states_path: Path | None, *, gate: bool = True, inject: bool = True) -> dict[str, Any]:
-    """会话起始装配 / 每轮装配的公共实现：刷新宿主控制文件到当前权威图。"""
+                    states_path: Path | None, *, gate: bool = False, inject: bool = True) -> dict[str, Any]:
+    """会话起始装配 / 每轮装配的公共实现：刷新宿主控制文件到当前权威图。
+
+    gate 默认 False（2026-09-25 收口裁定：关口降为可选、默认关闭）。
+    """
     control: dict[str, Any] = {}
     if control_file.exists():
         try:
@@ -69,9 +72,20 @@ def render_agents_md(states: dict[str, str], readiness: str, reason_codes: list[
     for k, v in states.items():
         lines.append(f"{k} = {v}")
     lines.append("")
+    # 水位线（Q3 设计①）：N 取自 state_revision 前缀 turn_counter
+    turn_label = ""
+    if ":" in revision:
+        try:
+            turn_label = f"第 {int(revision.split(':')[0])} 轮"
+        except ValueError:
+            turn_label = ""
+    if turn_label:
+        lines.append(f"【CL 状态截至】{turn_label} / revision {revision}")
+        lines.append("")
     if warning:
         lines.append(f"【CL 警告】{warning}")
     rc = f"（{', '.join(reason_codes)}）" if reason_codes else ""
     lines += [f"【CL 就绪度】{readiness}{rc}", f"【CL 版本】{revision}",
-              "【CL 使用规则】以上为经裁定机制维护的当前态；与其冲突的早期记忆应以此为准。"]
+              "【CL 使用规则】以上为经裁定机制维护的当前态（截至上方水位线）；与其冲突的早期记忆应以此为准。"
+              "水位线之后的本轮用户指令为新决策，优先于上表；上表在下一轮抽取后收敛。"]
     return "\n".join(lines) + "\n"

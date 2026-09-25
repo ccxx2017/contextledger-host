@@ -1,0 +1,8 @@
+{"type":"cl_v0_injected","ts":"2026-09-25T00:53:15.195Z","payload":{"states_count":3,"readiness":"blocked","state_revision":"0002:e6fa83deab44"}}
+{"type":"cl_v0_boundary_dump","ts":"2026-09-25T00:53:16.058Z","payload":{"message_count":1,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_injected","ts":"2026-09-25T00:53:17.557Z","payload":{"states_count":3,"readiness":"blocked","state_revision":"0002:e6fa83deab44"}}
+{"type":"cl_gate_verdict","ts":"2026-09-25T00:53:21.941Z","tool":"bash","payload":{"gate":"readiness","readiness":"blocked","reason_codes":["LINT_WARNING_PRESENT","QUARANTINE_NONEMPTY"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-25T00:53:22.083Z","tool":"bash","payload":{"gate":"readiness","readiness":"blocked","reason_codes":["LINT_WARNING_PRESENT","QUARANTINE_NONEMPTY"]}}
+{"type":"cl_gate_verdict","ts":"2026-09-25T00:53:22.450Z","tool":"read","payload":{"gate":"readiness","readiness":"blocked","reason_codes":["LINT_WARNING_PRESENT","QUARANTINE_NONEMPTY"]}}
+{"type":"cl_v0_boundary_dump","ts":"2026-09-25T00:53:22.995Z","payload":{"message_count":2,"cl_injection_locations":[],"cl_injection_in_system_message":false}}
+{"type":"cl_v0_injected","ts":"2026-09-25T00:53:23.110Z","payload":{"states_count":3,"readiness":"blocked","state_revision":"0002:e6fa83deab44"}}

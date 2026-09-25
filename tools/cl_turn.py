@@ -46,7 +46,10 @@ def main() -> int:
     project = Path(args.project).resolve()
     pp = project_paths(project)
     control_path = pp["control_file"]
-    control = load_json(control_path) if control_path.exists() else {"gate": True, "inject": True}
+    # 关口默认关闭（2026-09-25 收口裁定：关口降为可选——其阻断能力未经有机窗口检验，
+    # 且结构上看不见答复级陈旧；插件代码与 blocktest 证据归档保留，需要时以
+    # "gate": true 显式开启）
+    control = load_json(control_path) if control_path.exists() else {"gate": False, "inject": True}
     cl_project = control.get("cl_project") or args.cl_project
     cl_home = Path(control.get("cl_home") or CL_HOME)
 
@@ -64,7 +67,7 @@ def main() -> int:
         capture_output=True, text=True,
     )
     refresh_control(control_path, str(cl_home), cl_project, graph, manifest if manifest.exists() else None, None,
-                    gate=control.get("gate", True), inject=control.get("inject", True))
+                    gate=control.get("gate", False), inject=control.get("inject", True))
     print(f"[装配] revision -> {revision}")
 
     # 1. 宿主会话

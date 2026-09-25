@@ -71,10 +71,12 @@ def main() -> int:
     print(f"installed plugin: {pp['plugin_file']}")
 
     # 3. 控制文件（首次安装写模板；已存在则保留用户/驱动器状态，仅确保键存在）
+    # gate 默认 false（2026-09-25 收口裁定：关口降为可选、默认关闭；代码与
+    # blocktest 证据归档保留，需要时显式置 true）
     control = pp["control_file"]
     if not control.exists():
         control.write_text(
-            '{\n  "gate": true,\n  "inject": true,\n'
+            '{\n  "gate": false,\n  "inject": true,\n'
             f'  "cl_home": "{args.cl_home.replace(chr(92), "/")}",\n'
             f'  "cl_project": "{args.cl_project}"\n}}\n',
             encoding="utf-8",

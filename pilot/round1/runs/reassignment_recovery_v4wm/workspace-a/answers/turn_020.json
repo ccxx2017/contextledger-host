@@ -1,0 +1,26 @@
+{
+  "cmd": [
+    "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+    "D:\\CCXXLESSON\\contextledger-host\\tools\\cl_turn.py",
+    "--project",
+    "D:\\CCXXLESSON\\contextledger-host\\pilot\\round1\\runs\\reassignment_recovery_v4wm\\workspace-a\\task-project",
+    "--cl-project",
+    "round1_wr1rr4wm_p1",
+    "--text",
+    "收尾检查：把当前各事项状态完整过一遍——方案 A、实现负责人、回测模块，逐项报。",
+    "--timeout",
+    "420"
+  ],
+  "cwd": "D:\\CCXXLESSON\\contextledger-host",
+  "rc": 0,
+  "stdout": "[装配] revision -> 0019:2fcc25eeb844\n[宿主] opencode run -c 收尾检查：把当前各事项状态完整过一遍——方案 A、实现负责人、回测模块，逐项报。...\n[宿主] rc=0\n44）——与 v2 收尾进行中一致；M1 完成后即可请求转结\n- **代码**：对 `5b99949` 零 diff（多轮审计），契约测试锁定未动\n- **语义现状**：NaN/±inf 容忍（基线，文档化 + 测试锁定）；int 序列兼容；`lru_cache(maxsize=256)` tuple 键；对外每次新建 dict\n- **git 卫生**：`.gitignore` 现为「原 `.opencode/` 行 + 5 条卫生项」，`.pyc` 仍在跟踪中（脱管属 M1，待授权）\n\n## 4. 周边状态\n- **git**：open；待入库 = 4 M（`.gitignore`、notes.md、2 `.pyc`）+ 2 ??（AGENTS.md、plan_b_draft.md），一个 commit 待你授权\n- **CL 就绪度**：degraded（LINT_WARNING_PRESENT）——与本地 ruff 零告警实测不符，疑为待收敛旧态，提请下一轮水位线确认\n- **方案 B**：草案 v0.2 待上会评审（前提已随方案 A 恢复修订）\n- **已作废数据**：09:55「3 failed」报告（时间悖论），不进入任何决策链\n\n**结论**：方案 A v2 除「commit 授权」与「M4 外部协商」两项外全部收口；回测模块代码、测试、文档三线一致，可交付状态。\n\n[CL] pilot_turn_driver turn 20 ...\n[turn_020] CL 轮完成：nodes=33 states={'git@execution_status': 'open', 'backtest.py': 'in_progress', 'backtest.py@execution_status': 'in_progress'} revision=0020:ff592856c27f\n\n",
+  "stderr": "",
+  "seconds": 99.1,
+  "arm": "clv0",
+  "session": 2,
+  "turn": 20,
+  "attempt": 1,
+  "new_session": false,
+  "user_text": "收尾检查：把当前各事项状态完整过一遍——方案 A、实现负责人、回测模块，逐项报。",
+  "delivered_text": "收尾检查：把当前各事项状态完整过一遍——方案 A、实现负责人、回测模块，逐项报。"
+}

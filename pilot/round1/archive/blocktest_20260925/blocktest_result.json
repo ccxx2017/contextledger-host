@@ -1,0 +1,13 @@
+{
+  "R1_error_string": true,
+  "R2_verdict_blocked": true,
+  "R3_rule_applicable": true,
+  "R4_preemptive": true,
+  "cl_turn_rc": 0,
+  "seconds": 26.1,
+  "verdict_count": 3,
+  "traces": [
+    "round1_blocktest_p1_turn_0002.jsonl"
+  ],
+  "note": "装置测试（第八号裁定书 Round 2 前置 4）：构造 readiness=blocked 真态（隔离 unreviewed）实测拦截识别规则；round1 窗口零自然阻断，v3 t3 停机为 reconcile 失败路径（不含拦截错误串）。"
+}

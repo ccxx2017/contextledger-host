@@ -202,10 +202,60 @@
       "extractions_total": 84,
       "deepseek_est_cny": 9.66,
       "at": "2026-09-25T11:47:02+0800"
+    },
+    {
+      "at_turn": 5,
+      "scenario": "reassignment_recovery_v4wm",
+      "live_host_turns": 129,
+      "archived_host_turns": 35,
+      "host_turns_total": 164,
+      "extractions_total": 89,
+      "deepseek_est_cny": 10.235,
+      "at": "2026-09-25T12:35:32+0800"
+    },
+    {
+      "at_turn": 10,
+      "scenario": "reassignment_recovery_v4wm",
+      "live_host_turns": 134,
+      "archived_host_turns": 35,
+      "host_turns_total": 169,
+      "extractions_total": 94,
+      "deepseek_est_cny": 10.81,
+      "at": "2026-09-25T12:44:03+0800"
+    },
+    {
+      "at_turn": 15,
+      "scenario": "reassignment_recovery_v4wm",
+      "live_host_turns": 139,
+      "archived_host_turns": 35,
+      "host_turns_total": 174,
+      "extractions_total": 99,
+      "deepseek_est_cny": 11.385,
+      "at": "2026-09-25T12:47:48+0800"
+    },
+    {
+      "at_turn": 20,
+      "scenario": "reassignment_recovery_v4wm",
+      "live_host_turns": 144,
+      "archived_host_turns": 35,
+      "host_turns_total": 179,
+      "extractions_total": 104,
+      "deepseek_est_cny": 11.96,
+      "at": "2026-09-25T12:58:22+0800"
+    },
+    {
+      "at_turn": 22,
+      "scenario": "reassignment_recovery_v4wm",
+      "live_host_turns": 146,
+      "archived_host_turns": 35,
+      "host_turns_total": 181,
+      "extractions_total": 106,
+      "deepseek_est_cny": 12.19,
+      "at": "2026-09-25T13:01:09+0800"
     }
   ],
   "expansion_meta_truth": {
-    "as_of": "2026-09-25T12:00:00+08:00",
+    "as_of": "2026-09-25T13:10:00+08:00",
     "method": "各 CL 项目 reports/extractor_meta*.json 落盘实数（errata 纪律：计划数与答复文件数不入账）",
     "breakdown": {
       "live_sealed": 19,
@@ -220,14 +270,16 @@
       "expansion_v4": 23,
       "expansion_v4_note": "22 轮 + t14 reconcile 重试 1 次（attempt 1 STATE_CONFLICT_MISSING_SUPERSEDE，attempt 2 闭合，未停机）；驱动按答复文件计 22",
       "expansion_v4reg": 23,
-      "expansion_v4reg_note": "导出层修复后的 RR 场景回归（clv0 单臂 22 轮 + t3 reconcile 重试 1 次双抽；t1 宿主超时 attempt 1 失败未入账——未产生抽取）。按用户裁定只算回归测试、不算价值证据；数据不进入 b638e56 计量。驱动 checks 计数器末值 84 系按成功答复文件计，漏 reconcile 双抽，errata 纪律以 meta 实数入账。"
+      "expansion_v4reg_note": "导出层修复后的 RR 场景回归（clv0 单臂 22 轮 + t3 reconcile 重试 1 次双抽；t1 宿主超时 attempt 1 失败未入账——未产生抽取）。按用户裁定只算回归测试、不算价值证据；数据不进入 b638e56 计量。驱动 checks 计数器末值 84 系按成功答复文件计，漏 reconcile 双抽，errata 纪律以 meta 实数入账。；v4wm（水位线+泄漏防护回归）另计 24 次",
+      "expansion_v4wm": 24,
+      "expansion_v4wm_note": "Q3 水位线 + n_0025 泄漏防护后的 RR 场景回归（clv0 单臂 22 轮 + t3/t17 两次 reconcile 重试双抽；宿主轮全 rc=0 无超时）。按纪律只算回归测试、不算价值证据。"
     },
-    "extractions_total": 94,
-    "deepseek_est_cny": 10.81,
+    "extractions_total": 118,
+    "deepseek_est_cny": 13.57,
     "limit_cny": 50,
-    "host_turns_total": 159,
+    "host_turns_total": 182,
     "host_limit": 300,
     "note": "扩样判断点预算以本实数起算；回归测试预算单列（同账合并、口径注明），均低于上限，不影响预算合规结论。",
-    "host_turns_note": "live 124 + archived 35；回归新增 23 宿主轮（22 成功 + t1 超时 attempt 1）。上限 300。"
+    "host_turns_note": "live 147 + archived 35；回归两轮共新增 46 宿主轮（v4reg 23 + v4wm 23）。上限 300。"
   }
 }

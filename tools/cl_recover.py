@@ -37,15 +37,13 @@ def main() -> int:
 
     if args.issue == "agents_md":
         if not graph.exists():
-            print(f"ERROR: CL 图不存在: {graph}")
+            print(f"ERROR: CL 图不存在（先完成首轮 CL 处理）: {graph}")
             return 1
-        states: dict[str, str] = {}
-        for node in load_json(graph).get("nodes", {}).values():
-            if (node.get("status") or "active") == "active" and node.get("entity_ref"):
-                st = node.get("state")
-                if st and str(st).strip().lower() not in {"unknown", "null"}:
-                    key = f"{node['entity_ref']}@{node['state_slot']}" if node.get("state_slot") else str(node["entity_ref"])
-                    states[key] = str(st)
+        # 导出语义以主仓状态文件生成器为唯一权威（Fact 回退 + 待核标记），
+        # 恢复路径不得另立规则（2026-09-25 收口：三处渲染实现收敛为一处语义）
+        sys.path.insert(0, str(CL_HOME / "graph" / "scripts"))
+        from pilot_turn_driver import build_current_states  # noqa: E402
+        states = build_current_states(load_json(graph))
         readiness, codes = "ready", []
         subprocess.run(
             [sys.executable, str(CL_HOME / "graph" / "scripts" / "assembler_manifest.py"),

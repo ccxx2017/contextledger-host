@@ -1,0 +1,35 @@
+[
+  {
+    "file": "round1_blocktest_p1_turn_0002.jsonl",
+    "payload": {
+      "gate": "readiness",
+      "readiness": "blocked",
+      "reason_codes": [
+        "LINT_WARNING_PRESENT",
+        "QUARANTINE_NONEMPTY"
+      ]
+    }
+  },
+  {
+    "file": "round1_blocktest_p1_turn_0002.jsonl",
+    "payload": {
+      "gate": "readiness",
+      "readiness": "blocked",
+      "reason_codes": [
+        "LINT_WARNING_PRESENT",
+        "QUARANTINE_NONEMPTY"
+      ]
+    }
+  },
+  {
+    "file": "round1_blocktest_p1_turn_0002.jsonl",
+    "payload": {
+      "gate": "readiness",
+      "readiness": "blocked",
+      "reason_codes": [
+        "LINT_WARNING_PRESENT",
+        "QUARANTINE_NONEMPTY"
+      ]
+    }
+  }
+]

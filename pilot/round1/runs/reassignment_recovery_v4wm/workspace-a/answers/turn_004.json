@@ -1,0 +1,26 @@
+{
+  "cmd": [
+    "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+    "D:\\CCXXLESSON\\contextledger-host\\tools\\cl_turn.py",
+    "--project",
+    "D:\\CCXXLESSON\\contextledger-host\\pilot\\round1\\runs\\reassignment_recovery_v4wm\\workspace-a\\task-project",
+    "--cl-project",
+    "round1_wr1rr4wm_p1",
+    "--text",
+    "单元测试跑起来（pytest -q），告诉我当前状态。",
+    "--timeout",
+    "420"
+  ],
+  "cwd": "D:\\CCXXLESSON\\contextledger-host",
+  "rc": 0,
+  "stdout": "[装配] revision -> 0003:0bc08d5fbc2a\n[宿主] opencode run -c 单元测试跑起来（pytest -q），告诉我当前状态。...\n[宿主] rc=0\n**10 passed in 0.08s**——全部通过，无失败无跳过。含 3 项基线契约测试 + 7 项方案 A 新增（等价性 fuzz 207 用例、边界、非有限值、缓存行为）。质量状态：pytest 与 ruff 双绿，改动未提交。\n\n[CL] pilot_turn_driver turn 4 ...\n[turn_004] CL 轮完成：nodes=8 states={'agent_wang@owner': 'resolved', 'backtest.py@execution_status': 'in_progress', 'pytest@build_status': 'open'} revision=0004:84e3e2dd1fe1\n\n",
+  "stderr": "",
+  "seconds": 22.6,
+  "arm": "clv0",
+  "session": 1,
+  "turn": 4,
+  "attempt": 1,
+  "new_session": false,
+  "user_text": "单元测试跑起来（pytest -q），告诉我当前状态。",
+  "delivered_text": "单元测试跑起来（pytest -q），告诉我当前状态。"
+}

@@ -1,0 +1,17 @@
+{
+  "workspace-a": {
+    ".coverage": "3a5f19340f58cc0f",
+    ".gitignore": "b35bf22357192397",
+    "AGENTS.md": "7911c09a7ffb70e5",
+    "backtest.py": "0a13748ef6375bee",
+    "notes.md": "feef57cb0ed82449",
+    "plan_b_draft.md": "ade60e1ead8cdaa0",
+    "test_backtest.py": "b6c8fd7d2b3e019e"
+  },
+  "workspace-b": {
+    ".gitignore": "b35bf22357192397",
+    "backtest.py": "aaf5ddbeb5ddc61a",
+    "notes.md": "d212d6166a549346",
+    "test_backtest.py": "39d60e90c037e280"
+  }
+}
