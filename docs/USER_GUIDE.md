@@ -147,3 +147,28 @@ python tools/cl_disable.py --project <你的项目目录>
 5. 按第四节停用，确认 AGENTS.md 还原、插件移除、项目行为与装前一致
 
 验收通过/问题请记录（含 trace 文件），提交给开发者。
+
+## 六、试用记录与使用报告（cl_report.py，v0.1 新增）
+
+CL 在试用全程**自动留痕**，你无需干预：
+
+| 侧 | 位置 | 内容 |
+|---|---|---|
+| 项目侧 | `traces/<CL项目名>_turn_NNNN.jsonl` | 注入/边界/门控事件（cl_v0_injected、cl_v0_boundary_dump、cl_gate_verdict、cl_v0_error） |
+| 项目侧 | `.opencode/cl_turn_state.json` | 轮次计数 |
+| CL 侧 | `graph/projects/<CL项目名>/` | 每轮 patch、`run/` 当前态与 manifest、`reports/` 抽取留痕与成本 meta |
+
+试用结束生成报告（一条命令）：
+
+```bash
+python tools/cl_report.py --project <你的项目目录>
+# 输出：<你的项目目录>/usage_report.md
+```
+
+报告含：版本钉（两仓 commit）、轮次总览（用户输入/抽取次数/工具调用/拦截/readiness/异常）、账本动作与状态迁转、供给面终态、注入与边界记录、异常与缺口、成本估算、空白裁定区（供指导员/裁定方填写）。本报告为**机械聚合，不做价值判定**。
+
+**记录口径三要点（须知）**：
+
+1. **工具调用记录依赖 `gate=true`**：插件只在门控开启时经 `tool.execute.before` 记录工具名（不含参数）；默认 `gate=false` 下 trace 只有注入/边界事件。若本次试用需要"实施行为"级记录，试用期间把 `.opencode/cl_v0.json` 的 `"gate"` 置 `true`——注意这是**真实行为变化**（readiness=blocked 或装配过期会真实拦截动作；round1 全部窗口实测 150 条 verdict 0 次拦截，一般只增记录不增阻碍，但请知情后自行决定）；
+2. 已知缺口（装置属性）：CL raw 的"本轮工具活动摘要"用旧事件格式解析，用户路径下可能为空——不影响 `cl_report.py`（工具数直接来自 trace 解析）；
+3. 装后未先跑 `cl_turn.py` 就直接开会话时，trace 可能出现 `read_states` fail-open error——无害，先跑一轮 cl_turn 即消失。
