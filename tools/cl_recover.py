@@ -7,7 +7,7 @@
     python tools/cl_recover.py --project <项目目录> --cl-project <CL项目名> --issue control_file
     python tools/cl_recover.py --project <项目目录> --cl-project <CL项目名> --issue quarantine
 
-    agents_md     AGENTS.md 缺失/损坏 → 从 CL 当前图 + manifest 重建
+    agents_md     AGENTS.md 缺失/损坏 → 重建 CL 管理区块（只替换 CL 区块，其他规则保留）
     control_file  控制文件损坏 → 重建（刷新到当前权威图 revision）
     quarantine    查看隔离裁定队列 → sync + check 报告（裁定后按 S6 流程销账）
 """
@@ -19,7 +19,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from cl_common import current_revision, load_json, project_paths, render_agents_md  # noqa: E402
+from cl_common import current_revision, load_json, project_paths, render_agents_md, write_agents_md  # noqa: E402
 
 CL_HOME = Path("D:/CCXXLESSON/contextledger")
 
@@ -53,9 +53,10 @@ def main() -> int:
         if manifest.exists():
             m = load_json(manifest)
             readiness, codes = m.get("readiness", "ready"), m.get("reason_codes", [])
-        pp["agents_md"].write_text(
-            render_agents_md(states, readiness, codes, current_revision(graph),
-                             warning="本文件由 cl_recover 重建"), encoding="utf-8")
+        # 只替换 CL 管理区块；AGENTS.md 中的其他规则原样保留（复核修复 G1）
+        write_agents_md(pp["agents_md"],
+                        render_agents_md(states, readiness, codes, current_revision(graph),
+                                         warning="本文件由 cl_recover 重建"))
         print(f"AGENTS.md 已重建（states={len(states)} readiness={readiness}）")
         return 0
 
