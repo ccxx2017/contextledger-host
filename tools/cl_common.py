@@ -128,7 +128,24 @@ def merge_agents_md(existing_text: str | None, rendered_block: str) -> str:
 
 
 def write_agents_md(path: Path, rendered_block: str) -> None:
-    """按区块合并写回 AGENTS.md（不覆盖 CL 区块之外的内容）。"""
-    existing = path.read_text(encoding="utf-8") if path.exists() else None
+    """按区块合并写回 AGENTS.md（不覆盖 CL 区块之外的内容）。
+
+    与主仓 pilot_turn_driver.write_agents_md 同语义；非 UTF-8 旧文件无法
+    安全识别标记时字节级追加，既有内容一字不丢。
+    """
     path.parent.mkdir(parents=True, exist_ok=True)
+    if not path.exists():
+        path.write_text(merge_agents_md(None, rendered_block), encoding="utf-8")
+        return
+    raw = path.read_bytes()
+    try:
+        existing = raw.decode("utf-8")
+    except UnicodeDecodeError:
+        print(f"[warn] {path} 不是 UTF-8，无法识别 CL 区块标记；CL 区块已追加到文件末尾，"
+              "既有内容未改动（建议人工核查该文件编码）")
+        with open(path, "ab") as f:
+            if raw and not raw.endswith(b"\n"):
+                f.write(b"\n")
+            f.write(b"\n" + merge_agents_md(None, rendered_block).encode("utf-8"))
+        return
     path.write_text(merge_agents_md(existing, rendered_block), encoding="utf-8")
