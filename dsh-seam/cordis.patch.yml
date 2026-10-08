@@ -1,0 +1,11 @@
+# dsh-host-seam 随包补丁（dsh.bundle.patch 指向本文件）。
+# profile 用户补丁层用 `- id: cl-host-seam` 的 config: 覆盖 mode 等字段。
+- insert:
+    - id: cl-host-seam
+      name: "@contextledger/dsh-host-seam"
+      config:
+        mode: off
+        clProject: abu_modern_host_shadow
+        clHome: "D:/CCXXLESSON/contextledger"
+        tracePath: ""
+        verbose: true

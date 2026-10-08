@@ -1,0 +1,25 @@
+{
+  "name": "@contextledger/dsh-host-seam",
+  "version": "0.1.0-spike",
+  "description": "D4-spike minimal DSH host seam for ContextLedger: off/shadow/on modes, semantic host_event.v1 emission, published-memory injection. Spike scratch build on C: (repo copy pending).",
+  "type": "module",
+  "license": "UNLICENSED",
+  "private": true,
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "cordis.patch.yml",
+    "dist/index.js",
+    "dist/index.d.ts"
+  ]
+}
