@@ -218,7 +218,7 @@ export function apply(ctx, config) {
       const key = sessionKey(sessionId);
       let st = supplyState.get(key);
       if (!st) {
-        st = { lastSuppliedRevision: undefined, pendingMsgId: undefined };
+        st = { lastSuppliedRevision: undefined, lastSuppliedMsgId: undefined, pendingMsgId: undefined };
         supplyState.set(key, st);
       }
       const resupplyByCompaction = compactionSeen && st.lastSuppliedRevision !== undefined;
@@ -274,6 +274,7 @@ export function apply(ctx, config) {
           });
           if (accepted) {
             st.lastSuppliedRevision = revision;
+            st.lastSuppliedMsgId = msg.id;
             st.pendingMsgId = undefined;
             if (decided === "supply(post-compaction)") compactionSeen = false;
             statusLine({ status: "ok", lastSupplied: revision, turn, step });
@@ -331,6 +332,19 @@ export function apply(ctx, config) {
       } catch {
         toolHistory = undefined;
       }
+      // 请求时点观测：最近一次供给消息是否出现在派生摘要中（按生产者 kind 匹配）。
+      let supplyVisible;
+      let supplyMsgId;
+      try {
+        const st = supplyState.get(sessionKey(base.sessionId));
+        if (st && st.lastSuppliedMsgId) {
+          supplyMsgId = st.lastSuppliedMsgId;
+          supplyVisible = derived.some((mm) => mm && mm.id === st.lastSuppliedMsgId) ||
+            derived.some((mm) => mm && mm.source && mm.source.kind === PRODUCER_KIND);
+        }
+      } catch {
+        supplyVisible = undefined;
+      }
       emitContract({
         type: "llm_call_start",
         ts: base.ts,
@@ -342,6 +356,8 @@ export function apply(ctx, config) {
           note: "该次实际模型请求；注意 derived 可能滞后于本步领取批次（完整输入=derived+premise 合并）",
           step: base.step,
           sessionId: base.sessionId,
+          supply_visible_in_derived: supplyVisible,
+          supply_msg_id: supplyMsgId,
           request: {
             provider,
             model: modelId,
