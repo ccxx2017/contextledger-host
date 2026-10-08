@@ -107,8 +107,11 @@ CL 宿主集成从设计上契约中立（`README.md` 边界规则 1-2）：
 1. 外部 Bundle 包（宿主仓 `dsh/` 目录起，包名建议
    `@contextledger/dsh-host-seam`），原生 Cordis 插件根（named `apply`
    命名空间或默认导出函数），**root-scope** 注册：
-   - `agent/pre-step`：只读发射 `llm_call_start`（enter 批次即宿主上下文快照）
-     +（cl_v0 臂）enter 决策阶段替换消息注入 CL 任务记忆；
+   - `agent/pre-step`：**只读**发射本轮**新领取输入批次**的观察事件
+     （`messages: UserMessage[]` = 本步新输入，非全量最终输入，见 §6-R2/M1
+     修正；llm_call_start 的实际请求依据需关联 Session 派生历史，
+     不得仅凭本事件冒载"实际模型调用"语义）；
+     （cl_v0 臂）enter 决策阶段注入 CL 任务记忆；
    - `tools/pre-execute`：cl_v0 关口——readiness=blocked 或
      `verify_preaction.py` 退出码 2 时返回 deny（模型可见 reason）；
    - `tools/post-execute`：附加上下文（注入的受控通道，替代 OpenCode 的
