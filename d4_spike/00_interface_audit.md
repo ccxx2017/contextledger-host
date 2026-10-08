@@ -48,3 +48,24 @@
 - 公开接口**满足**原 S3（经由 0.2 四件组合），**不触发**停止条件；
 - 无任何一项承重结论依赖私有接口或宿主补丁；
 - 遗留核对项（不阻塞阶段 1，但进 spike 取证）：`deriveMessages()` 在**多变体消息/替换**后的缓存失效语义是否与 loop 所见严格一致（同源同函数，理论自洽；运行时以"旁证摘要 vs 日志重建摘要"对账证明）。
+
+## 0.4 勘误（2026-10-08，依据阶段 1 运行时证据 + 安装物复核）
+
+以下三条阶段 0 表述经运行时证据证伪或修正：
+
+1. **L29-30 "pre-step→emit 后即可调 deriveMessages() 取当次依据"** —— 不成立。
+   实测（on 模式注入 run，session-58b6d403，step-2）：pre-step 领取批次含被注入记忆
+   （premise 旁证 context_refs/批次摘要可证），但随后 `agent/request` 时点的
+   `deriveMessages()` **不含该刚领取消息**（derived=5 无记忆消息）。
+   修正：`deriveMessages()` 在瀑布时点是"会话已提交视图"，**不含本步刚领取的收件箱消息**；
+   完整请求依据 = **派生摘要 + 本步领取批次（premise 旁证）两份合并**。
+2. **L35 "日志重建可与旁证逐字节对齐"** —— 限定收窄：对齐仅对"派生部分"成立；
+   领取批次部分由 premise 旁证单独承载，两份不得互相替代，也不能预设二者相加即完整
+   （需在验证 run 中以消息 ID/指纹对账，见 04_supply_design_v3.md §4）。
+3. **L41 "用 deriveMessages() 取全量；pre-step 仅作时点标记"** —— 修正为：
+   pre-step 的领取批次记录（premise 旁证）是请求依据的**必要组成**，非仅时点标记。
+
+另：`systemPromptUpdate` 经复核为**模型能力声明**（`dsh-llm/lib/types/types.d.ts:365`，
+`type SystemPromptUpdate = 'in-history'`，见 `LlmResolvedModelInfo` L385"Declared mid-conversation
+system prompt handling"），**不是内容更新接口**——阶段 0 未将其列为供给通道，此处正式记笔，
+防止后续误用。
