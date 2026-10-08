@@ -26,6 +26,9 @@ export const Config = z.object({
   clHome: z.string().default("D:/CCXXLESSON/contextledger"),
   tracePath: z.string().default(""),
   verbose: z.union([true, false]).default(true),
+  // 本轮试验专用：调用前预算闸门（每次 LLM 调用放行前占用额度；耗尽即在进入适配器前抛错终止）。
+  // undefined = 不设闸（生产默认）。覆盖主循环、重试及辅助模型调用（全部经过 llm 运行时）。
+  budgetMaxCalls: z.any(),
 });
 
 const PRODUCER_KIND = "@contextledger/dsh-host-seam";
@@ -379,9 +382,30 @@ export function apply(ctx, config) {
     return next();
   });
 
-  // 3) llm/stream — 只读观测 provider 实际所见 messages（不修改请求）。
-  //    与 agent/request 的 turn/step 关联为"最近邻"启发式（时序上紧跟其后），如实标注。
+  // 3) llm/stream — 调用前预算闸门 + 只读观测（不修改请求）。
+  //    本瀑布包裹 adapterStream（dsh-llm lib/index.js:932）：在此抛错 = 请求永不进入适配器。
+  //    主循环、重试、辅助模型调用（title 等）均经过本运行时 → 闸门全覆盖。
+  let admittedCalls = 0;
+  const budgetActive = typeof config.budgetMaxCalls === "number" && config.budgetMaxCalls > 0;
   ctx.on("llm/stream", async (options, next) => {
+    if (budgetActive) {
+      admittedCalls += 1; // 放行前先占用额度
+      if (admittedCalls > config.budgetMaxCalls) {
+        emitSidestep({
+          seam: "cl-host-seam",
+          seam_event: "budget_gate_blocked",
+          ts: new Date().toISOString(),
+          call_index: admittedCalls,
+          budget: config.budgetMaxCalls,
+          provider: options && options.provider,
+          model: options && options.model,
+          note: "预算闸门：额度耗尽，请求未放行至适配器（抛错终止；重试亦将再次被本闸门拦截）",
+        });
+        throw new Error(
+          `cl-host-seam budget gate: LLM call #${admittedCalls} exceeds budgetMaxCalls=${config.budgetMaxCalls}; blocked before adapter`,
+        );
+      }
+    }
     try {
       const msgs = (options && Array.isArray(options.messages)) ? options.messages : [];
       let supplyMsg;
@@ -395,6 +419,7 @@ export function apply(ctx, config) {
         seam: "cl-host-seam",
         seam_event: "request_messages_observed",
         ts: new Date().toISOString(),
+        call_index: budgetActive ? admittedCalls : undefined,
         provider: options && options.provider,
         model: options && options.model,
         messages_count: msgs.length,
@@ -403,7 +428,7 @@ export function apply(ctx, config) {
         supply_content_sha256_12: supplyMsg ? sha256Short(supplyMsg.content) : undefined,
         supply_revision: supplyMsg ? (contentText(supplyMsg).match(/revision=([^\s】·\)]+)/) || [])[1] : undefined,
         correlation: "nearest-preceding agent/request (heuristic; llm/stream payload carries no turn/step)",
-        note: "只读观测：options.messages 即 provider 实际所见（dsh-llm types L496-501）；未修改请求",
+        note: "只读观测：options.messages 即 provider 实际所见（dsh-llm types L496-501）；未修改请求；仅证明调用入口可见，不宣称远端接收已验证",
       });
     } catch (error) {
       ctx.logger.warn(`cl-host-seam: llm/stream observe failed: ${String(error)}`);
