@@ -387,7 +387,9 @@ export function apply(ctx, config) {
   //    主循环、重试、辅助模型调用（title 等）均经过本运行时 → 闸门全覆盖。
   let admittedCalls = 0;
   const budgetActive = typeof config.budgetMaxCalls === "number" && config.budgetMaxCalls > 0;
-  ctx.on("llm/stream", async (options, next) => {
+  // 注意：llm/stream 监听器必须同步返回流（async 包装会把 AsyncIterable 变成 Promise，
+  // 宿主 `for await` 将报 "stream is not async iterable"）。观测代码全部为同步实现。
+  ctx.on("llm/stream", (options, next) => {
     if (budgetActive) {
       admittedCalls += 1; // 放行前先占用额度
       if (admittedCalls > config.budgetMaxCalls) {
