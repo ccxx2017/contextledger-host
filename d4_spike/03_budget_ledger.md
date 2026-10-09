@@ -67,6 +67,13 @@
 | G4 对话（off 误运行） | 1 | 对话真实有效；无 CL 供给（时序失误，已改 on 补救） |
 | G4 补救轮（resume+on 供给） | 1 | ✅ rev-0002 供给触发，模型内容级回答（agent-zhao/删除语义精确） |
 
+## G4 抽取与发布（deepseek-flash 抽取 1 次，零费用于宿主闸门）
+
+- build_graph_slice + invoke_extractor：1 次抽取调用（patch_086 + 原始响应 + prompt 快照落盘）
+- entity_resolver：pending_merge.turn_086（n_0206）
+- 裁定：25 条全部 coexist/alias 落账（用户批准）
+- apply_patch + assembler_manifest：发布 rev=0086:f77325d8e8cc，readiness=degraded（STATE_REVISION_STALE + lint 缺失，如实标记）
+
 ## 费用核算
 
 - step-fun/step-5-preview 计费单价未录入；如需精确到元，请从 stepfun 控制台导出 2026-10-08 当日用量后填入：
