@@ -74,6 +74,16 @@
 - 裁定：25 条全部 coexist/alias 落账（用户批准）
 - apply_patch + assembler_manifest：发布 rev=0086:f77325d8e8cc，readiness=degraded（STATE_REVISION_STALE + lint 缺失，如实标记）
 
+## 送达复验（用户真实磁盘出发点，2026-10-10）
+
+| 项 | 值 |
+|---|---|
+| 会话 | session-b6f2fd29-f70b-454d-b7e9-cd9906ed815b |
+| 供给提议 | rev=0086:f77325d8e8cc msgId=aa0a7c5e entered-final-batch ✅ |
+| 请求观测 | llm/stream present=true 同 msgId ✅ |
+| 模型复述 | 0086:f77325d8e8cc / TKT-2026-005C ✅ |
+| 调用 | 1（闸门内） |
+
 ## 费用核算
 
 - step-fun/step-5-preview 计费单价未录入；如需精确到元，请从 stepfun 控制台导出 2026-10-08 当日用量后填入：
